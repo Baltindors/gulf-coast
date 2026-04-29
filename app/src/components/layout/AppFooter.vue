@@ -48,11 +48,11 @@
         <ul class="flex flex-col gap-2.5">
           <li class="text-[13px] text-ivory/75">
             <span class="block text-gold/60 text-[10px] uppercase tracking-wider mb-0.5">Phone / Text</span>
-            (239) 555-0192
+            (561) 948-1233
           </li>
           <li class="text-[13px] text-ivory/75 mt-2">
             <span class="block text-gold/60 text-[10px] uppercase tracking-wider mb-0.5">Email</span>
-            concierge@gulfcoastiv.com
+            info@gulfcoastiv.com
           </li>
           <li class="text-[13px] text-ivory/75 mt-2">
             <span class="block text-gold/60 text-[10px] uppercase tracking-wider mb-0.5">Hours</span>

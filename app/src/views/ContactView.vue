@@ -22,12 +22,12 @@ import BaseButton from '@/components/ui/BaseButton.vue'
             <div class="space-y-8">
               <div>
                 <span class="block text-gold/80 text-[10px] uppercase tracking-[0.2em] mb-2 font-medium">Direct Line / Text</span>
-                <p class="font-sans text-navy text-lg">(239) 555-0192</p>
+                <p class="font-sans text-navy text-lg">(561) 948-1233</p>
               </div>
               
               <div>
                 <span class="block text-gold/80 text-[10px] uppercase tracking-[0.2em] mb-2 font-medium">Email Address</span>
-                <p class="font-sans text-navy text-lg">concierge@gulfcoastiv.com</p>
+                <p class="font-sans text-navy text-lg">info@gulfcoastiv.com</p>
               </div>
               
               <div>
@@ -65,7 +65,7 @@ import BaseButton from '@/components/ui/BaseButton.vue'
               
               <div>
                 <label class="block text-[11px] font-medium tracking-wider uppercase text-slate mb-2">Phone Number *</label>
-                <input type="tel" class="w-full bg-ivory-warm/50 border border-gold/30 rounded-sm px-4 py-3 text-navy focus:outline-none focus:border-gold transition-colors" placeholder="(239) 555-0000" />
+                <input type="tel" class="w-full bg-ivory-warm/50 border border-gold/30 rounded-sm px-4 py-3 text-navy focus:outline-none focus:border-gold transition-colors" placeholder="(561) 948-1233" />
               </div>
 
               <!-- Reservation Details -->
