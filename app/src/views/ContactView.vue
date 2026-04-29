@@ -1,6 +1,6 @@
 <script setup>
 import { useRoute } from 'vue-router'
-import { ref, computed } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 import packagesData from '@/data/packages.json'
 import SectionHeader from '@/components/ui/SectionHeader.vue'
 import BaseButton from '@/components/ui/BaseButton.vue'
@@ -9,9 +9,12 @@ import AddonSelector from '@/components/booking/AddonSelector.vue'
 const route = useRoute()
 const { packages, addons } = packagesData
 
-// Form & Logic State
+/**
+ * INITIAL SELECTION LOGIC
+ * Pulls from URL query params (passed by BookingWidget or PackageCards)
+ */
 const selectedPackageName = ref(route.query.service || '')
-const selectedTierName = ref(route.query.tier || '')
+const selectedTierName = ref(route.query.tier || 'Gold') // Default to Gold if only package is picked
 const isFirstTime = ref(null) 
 
 const selections = ref({
@@ -20,28 +23,44 @@ const selections = ref({
   medications: []
 })
 
+/**
+ * SERVICE DETAILS DATA
+ * Pre-filled using route.query from the Booking Widget
+ */
 const formData = ref({
-  firstName: '', lastName: '', email: '', phone: '',
-  location: route.query.location || '', serviceType: '',
-  date: route.query.date || '', time: route.query.time || '',
+  firstName: '',
+  lastName: '',
+  email: '',
+  phone: '',
+  location: route.query.location || '', // Sync with widget 'location'
+  serviceType: '',                      // Home, Hotel, or Yacht
+  date: route.query.date || '',         // Sync with widget 'date'
+  time: route.query.time || '',         // Sync with widget 'time'
   message: ''
 })
 
-// Listen to the child component
 const updateAddons = (newSelections) => {
   selections.value = newSelections
 }
+const today = new Date().toISOString().split('T')[0]
 
-// Pricing Logic
+/**
+ * PRICING CALCULATION
+ */
 const basePrice = computed(() => {
-  const pkg = packages.find(p => p.name === selectedPackageName.value)
-  const tier = pkg?.tiers.find(t => t.level === selectedTierName.value || t.name === selectedTierName.value)
-  return tier?.price || 0
+  if (!selectedPackageName.value) return 0
+  // Find package by ID (widget) or Name (card)
+  const pkg = packages.find(p => p.id === selectedPackageName.value || p.name === selectedPackageName.value)
+  if (!pkg) return 0
+  
+  // Find tier by level
+  const tier = pkg.tiers.find(t => t.level === selectedTierName.value)
+  return tier?.price || pkg.tiers[0].price // Fallback to first tier if not found
 })
 
 const totalPrice = computed(() => {
   let total = basePrice.value
-  if (isFirstTime.value === 'yes') total += 30
+  if (isFirstTime.value === 'yes') total += 30 // Good Faith Exam Fee
   selections.value.vitamins.forEach(v => total += v.price)
   if (selections.value.glutathione) total += selections.value.glutathione.price
   selections.value.medications.forEach(m => total += m.price)
@@ -61,7 +80,7 @@ const totalPrice = computed(() => {
             <div class="absolute top-0 left-0 w-1 h-full bg-gold"></div>
             <h4 class="font-serif text-2xl text-navy mb-2">Patient Status</h4>
             <p class="text-xs text-slate mb-6">
-              A one-time good faith exam with a provider is required ($30) for new patients. 
+              A one-time good faith exam with a provider is required ($30) for new patients booking for the first time.
             </p>
             
             <div class="flex flex-col md:flex-row gap-4">
@@ -97,11 +116,11 @@ const totalPrice = computed(() => {
                 <option value="">Select Service Area</option>
                 <option value="Naples">Naples</option>
                 <option value="Marco Island">Marco Island</option>
-                <option value="Sanibel">Sanibel</option>
-                <option value="Captiva">Captiva</option>
+                <option value="Sanibel & Captiva">Sanibel & Captiva</option>
+                <option value="Bonita Springs">Bonita Springs</option>
               </select>
 
-              <input type="date" v-model="formData.date" class="border-b border-line py-3 outline-none focus:border-gold text-sm text-slate" />
+              <input type="date" v-model="formData.date" :min="today" class="border-b border-line py-3 outline-none focus:border-gold text-sm text-slate" />              
               <select v-model="formData.time" class="border-b border-line py-3 outline-none focus:border-gold text-sm bg-transparent">
                 <option value="">Preferred Time</option>
                 <option value="morning">Morning (8am-12pm)</option>
@@ -109,6 +128,9 @@ const totalPrice = computed(() => {
                 <option value="evening">Evening (4pm-8pm)</option>
               </select>
             </div>
+            <p class="text-[10px] text-slate mt-6 italic">
+              * Note: A $120 after-hours fee applies for services scheduled after 8:00 PM.
+            </p>
           </div>
         </div>
 
@@ -118,7 +140,7 @@ const totalPrice = computed(() => {
             
             <div class="space-y-4 mb-8">
               <div v-if="selectedPackageName" class="flex justify-between text-sm">
-                <span>{{ selectedPackageName }} ({{ selectedTierName }})</span>
+                <span class="capitalize">{{ selectedPackageName }} ({{ selectedTierName }})</span>
                 <span class="font-medium">${{ basePrice }}</span>
               </div>
               <div v-if="isFirstTime === 'yes'" class="flex justify-between text-xs text-gold-light italic">
@@ -147,11 +169,11 @@ const totalPrice = computed(() => {
               <span class="text-3xl font-serif text-gold-light">${{ totalPrice }}</span>
             </div>
 
-            <BaseButton variant="outline-gold" class="w-full mb-4">Confirm Booking Request</BaseButton>
+            <BaseButton variant="outline-gold" class="w-full mb-4">Complete Request</BaseButton>
             <p class="text-[10px] text-ivory/40 text-center italic">Final price confirmed upon clinical assessment.</p>
           </div>
         </div>
       </div>
     </div>
   </div>
-</template>
+</template> 
