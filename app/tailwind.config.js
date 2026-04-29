@@ -8,17 +8,17 @@ export default {
     extend: {
       colors: {
         navy: {
-          DEFAULT: '#0F2438',
-          soft: '#1a324a'
+          DEFAULT: '#021E36',
+          soft: '#052a4a'
         },
         gold: {
-          DEFAULT: '#B89668',
-          light: '#d4b88a',
-          dark: '#8f7148'
+          DEFAULT: '#C1A172',
+          light: '#dfcfb7',
+          dark: '#9d7f52'
         },
         ivory: {
-          DEFAULT: '#F8F4ED',
-          warm: '#F2EBDD'
+          DEFAULT: '#FAF9F6',
+          warm: '#F5F2ED'
         },
         sand: {
           DEFAULT: '#EDE4D3',
@@ -29,7 +29,7 @@ export default {
           DEFAULT: '#6B7585',
           light: '#9aa0ab'
         },
-        line: '#e3d8c2'
+        line: '#EAE3D5'
       },
       fontFamily: {
         sans: ['Inter', '-apple-system', 'sans-serif'],

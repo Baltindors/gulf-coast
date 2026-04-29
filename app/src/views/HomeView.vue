@@ -11,7 +11,7 @@ const popularPackages = packagesData.slice(0, 3)
 <template>
   <div>
     <!-- Hero Section -->
-    <section class="relative h-screen min-h-[700px] flex items-center pt-24">
+    <section class="relative h-[70vh] min-h-[50vh] flex items-center pt-24">
       <div class="absolute inset-0 z-0">
         <img src="/images/banner_desktop.png" alt="Luxury IV Therapy" class="w-full h-full object-cover" />
         <div class="absolute inset-0 bg-navy/40"></div>

@@ -2,8 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
+/* */
 @layer base {
-  body {
-    @apply bg-ivory text-ink font-sans antialiased;
+  h1, h2, h3 {
+    @apply font-serif font-medium; /* */
+  }
+
+  /* Standardizing the "Luxury Tag" style seen in the mockup (e.g., HOME, HOTEL) */
+  .text-tag {
+    @apply font-sans text-[10px] tracking-[0.3em] uppercase font-semibold text-navy; /* */
+  }
+
+  /* The thin vertical line dividers seen between categories in the mockup */
+  .divider-v {
+    @apply w-px h-10 bg-gold/30 mx-6; /* */
   }
 }
