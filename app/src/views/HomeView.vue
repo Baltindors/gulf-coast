@@ -1,17 +1,36 @@
 <script setup>
+import { computed } from 'vue'
 import BaseButton from '@/components/ui/BaseButton.vue'
 import SectionHeader from '@/components/ui/SectionHeader.vue'
-import PackageCard from '@/components/packages/PackageCard.vue'
+import PackageCard from '@/components/packages/PackageCard.vue' // Reuse the card logic
 import TrustIcons from '@/components/home/TrustIcons.vue'
-import packagesData from '@/data/packages.json'
 import BookingWidget from '@/components/home/BookingWidget.vue'
+import packagesData from '@/data/packages.json'
 
-const popularPackages = packagesData.slice(0, 3)
+// Logic to extract only the featured tiers from the packages
+const popularTiers = computed(() => {
+  const featured = []
+  
+  packagesData.packages.forEach(pkg => {
+    // Find the specific tier marked as featured within this package
+    const featuredTier = pkg.tiers.find(tier => tier.featured === true)
+    
+    if (featuredTier) {
+      featured.push({
+        ...pkg,
+        // Overwrite tiers to only contain the one featured tier for this view
+        tiers: [featuredTier]
+      })
+    }
+  })
+  
+  // Return only the top 3 most popular
+  return featured.slice(0, 3)
+})
 </script>
 
 <template>
   <div>
-    <!-- Hero Section -->
     <section class="relative h-[70vh] min-h-[50vh] flex items-center pt-24">
       <div class="absolute inset-0 z-0">
         <img src="/images/banner_desktop.png" alt="Luxury IV Therapy" class="w-full h-full object-cover" />
@@ -27,32 +46,30 @@ const popularPackages = packagesData.slice(0, 3)
         <p class="text-[16px] text-ivory/80 max-w-[600px] mx-auto mb-10 leading-[1.6]">
           Luxury IV therapy, delivered directly to you. hotel, or yacht by licensed medical professionals.
         </p>
-
       </div>
     </section>
 
     <BookingWidget />
 
-    <!-- Most Popular Packages -->
     <section class="py-32 px-6 md:px-16 bg-ivory">
       <div class="container mx-auto">
         <SectionHeader 
           tag="Curated For You"
           title="Most Popular"
           accent="Treatments"
-          description="Discover our most requested concierge IV infusions, expertly formulated to restore your vitality and elevate your well-being."
+          description="Discover our most requested concierge IV infusions, expertly formulated to restore your vitality."
         />
         
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
           <PackageCard 
-            v-for="pkg in popularPackages" 
+            v-for="pkg in popularTiers" 
             :key="pkg.id" 
             :pkg="pkg" 
           />
         </div>
         
         <div class="text-center mt-16">
-          <BaseButton to="/packages" variant="outline-gold">View All Packages</BaseButton>
+          <BaseButton to="/packages" variant="outline-gold">View All Packages & Tiers</BaseButton>
         </div>
       </div>
     </section>

@@ -1,149 +1,154 @@
 <script setup>
 import { useRoute } from 'vue-router'
-import { ref, onMounted } from 'vue'
+import { ref, computed } from 'vue'
+import packagesData from '@/data/packages.json'
 import SectionHeader from '@/components/ui/SectionHeader.vue'
 import BaseButton from '@/components/ui/BaseButton.vue'
+import AddonSelector from '@/components/booking/AddonSelector.vue'
 
 const route = useRoute()
-// Update your form refs to react to route query
+const { packages, addons } = packagesData
+
+// Form & Logic State
+const selectedPackageName = ref(route.query.service || '')
+const selectedTierName = ref(route.query.tier || '')
+const isFirstTime = ref(null) 
+
+const selections = ref({
+  vitamins: [],
+  glutathione: null,
+  medications: []
+})
+
 const formData = ref({
-  firstName: '',
-  lastName: '',
-  email: '',
-  phone: '',
-  location: route.query.location || '', // Prefilled from widget
-  date: route.query.date || '',         // Prefilled from widget
-  time: route.query.time || '',         // Prefilled from widget
-  service: route.query.service || '',   // Prefilled from widget
+  firstName: '', lastName: '', email: '', phone: '',
+  location: route.query.location || '', serviceType: '',
+  date: route.query.date || '', time: route.query.time || '',
   message: ''
 })
 
+// Listen to the child component
+const updateAddons = (newSelections) => {
+  selections.value = newSelections
+}
+
+// Pricing Logic
+const basePrice = computed(() => {
+  const pkg = packages.find(p => p.name === selectedPackageName.value)
+  const tier = pkg?.tiers.find(t => t.level === selectedTierName.value || t.name === selectedTierName.value)
+  return tier?.price || 0
+})
+
+const totalPrice = computed(() => {
+  let total = basePrice.value
+  if (isFirstTime.value === 'yes') total += 30
+  selections.value.vitamins.forEach(v => total += v.price)
+  if (selections.value.glutathione) total += selections.value.glutathione.price
+  selections.value.medications.forEach(m => total += m.price)
+  return total
+})
 </script>
 
 <template>
   <div class="bg-ivory pt-32 pb-24 min-h-screen">
     <div class="container mx-auto px-6 md:px-16">
-      <SectionHeader 
-        tag="Book Your Experience"
-        title="Contact &"
-        accent="Reservations"
-        description="Request your concierge IV therapy appointment or submit an inquiry. Our team will contact you promptly to confirm your reservation."
-      />
-      
-      <div class="max-w-6xl mx-auto mt-16 flex flex-col lg:flex-row gap-16">
-        <!-- Contact Info -->
-        <div class="lg:w-1/3">
-          <div class="bg-white p-10 rounded border border-line shadow-sm h-full flex flex-col justify-center">
-            <h3 class="font-serif text-3xl text-navy mb-8">Get in Touch</h3>
+      <SectionHeader title="Finalize Your" accent="Reservation" />
+
+      <div class="max-w-7xl mx-auto flex flex-col lg:flex-row gap-12 mt-12">
+        <div class="lg:w-2/3 space-y-8">
+          
+          <div class="bg-white p-8 rounded border border-gold/20 shadow-sm relative overflow-hidden">
+            <div class="absolute top-0 left-0 w-1 h-full bg-gold"></div>
+            <h4 class="font-serif text-2xl text-navy mb-2">Patient Status</h4>
+            <p class="text-xs text-slate mb-6">
+              A one-time good faith exam with a provider is required ($30) for new patients. 
+            </p>
             
-            <div class="space-y-8">
-              <div>
-                <span class="block text-gold/80 text-[10px] uppercase tracking-[0.2em] mb-2 font-medium">Direct Line / Text</span>
-                <p class="font-sans text-navy text-lg">(561) 948-1233</p>
-              </div>
+            <div class="flex flex-col md:flex-row gap-4">
+              <button @click="isFirstTime = 'yes'" :class="['flex-1 p-4 border rounded-sm text-left transition-all', isFirstTime === 'yes' ? 'border-gold bg-gold/5' : 'border-line']">
+                <span class="block font-bold text-navy text-[11px] uppercase tracking-widest">New Patient</span>
+                <span class="text-xs text-slate">First-time booking + $30 exam fee</span>
+              </button>
+              <button @click="isFirstTime = 'no'" :class="['flex-1 p-4 border rounded-sm text-left transition-all', isFirstTime === 'no' ? 'border-gold bg-gold/5' : 'border-line']">
+                <span class="block font-bold text-navy text-[11px] uppercase tracking-widest">Returning Patient</span>
+                <span class="text-xs text-slate">Exam already completed</span>
+              </button>
+            </div>
+          </div>
+
+          <AddonSelector :addons="addons" @update:selections="updateAddons" />
+
+          <div class="bg-white p-8 rounded border border-gold/20 shadow-sm">
+            <h4 class="font-serif text-2xl text-navy mb-6">Service Details</h4>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <input type="text" v-model="formData.firstName" placeholder="First Name *" class="border-b border-line py-3 outline-none focus:border-gold text-sm" />
+              <input type="text" v-model="formData.lastName" placeholder="Last Name *" class="border-b border-line py-3 outline-none focus:border-gold text-sm" />
+              <input type="email" v-model="formData.email" placeholder="Email Address *" class="border-b border-line py-3 outline-none focus:border-gold text-sm" />
+              <input type="tel" v-model="formData.phone" placeholder="Phone Number *" class="border-b border-line py-3 outline-none focus:border-gold text-sm" />
               
-              <div>
-                <span class="block text-gold/80 text-[10px] uppercase tracking-[0.2em] mb-2 font-medium">Email Address</span>
-                <p class="font-sans text-navy text-lg">info@gulfcoastiv.com</p>
-              </div>
-              
-              <div>
-                <span class="block text-gold/80 text-[10px] uppercase tracking-[0.2em] mb-2 font-medium">Concierge Hours</span>
-                <p class="font-sans text-navy text-lg">Available Daily<br/><span class="text-slate text-sm">8:00 AM - 8:00 PM</span></p>
-              </div>
+              <select v-model="formData.serviceType" class="border-b border-line py-3 outline-none focus:border-gold text-sm bg-transparent">
+                <option value="">Setting: Home, Hotel, or Yacht?</option>
+                <option value="Home">Private Residence</option>
+                <option value="Hotel">Hotel / Resort</option>
+                <option value="Yacht">Private Yacht</option>
+              </select>
+
+              <select v-model="formData.location" class="border-b border-line py-3 outline-none focus:border-gold text-sm bg-transparent">
+                <option value="">Select Service Area</option>
+                <option value="Naples">Naples</option>
+                <option value="Marco Island">Marco Island</option>
+                <option value="Sanibel">Sanibel</option>
+                <option value="Captiva">Captiva</option>
+              </select>
+
+              <input type="date" v-model="formData.date" class="border-b border-line py-3 outline-none focus:border-gold text-sm text-slate" />
+              <select v-model="formData.time" class="border-b border-line py-3 outline-none focus:border-gold text-sm bg-transparent">
+                <option value="">Preferred Time</option>
+                <option value="morning">Morning (8am-12pm)</option>
+                <option value="afternoon">Afternoon (12pm-4pm)</option>
+                <option value="evening">Evening (4pm-8pm)</option>
+              </select>
             </div>
           </div>
         </div>
 
-        <!-- Booking Form UI (Placeholder) -->
-        <div class="lg:w-2/3">
-          <div class="bg-white p-10 rounded border border-line shadow-sm">
-            <form @submit.prevent class="grid grid-cols-1 md:grid-cols-2 gap-6">
-              
-              <!-- Personal Info -->
-              <div class="md:col-span-2">
-                <h4 class="font-serif text-xl text-navy mb-4 border-b border-line pb-2">Guest Information</h4>
+        <div class="lg:w-1/3">
+          <div class="bg-navy text-ivory p-8 rounded-lg sticky top-32 shadow-xl border border-gold/30">
+            <h3 class="font-serif text-xl border-b border-gold/20 pb-4 mb-6 uppercase tracking-widest">Booking Summary</h3>
+            
+            <div class="space-y-4 mb-8">
+              <div v-if="selectedPackageName" class="flex justify-between text-sm">
+                <span>{{ selectedPackageName }} ({{ selectedTierName }})</span>
+                <span class="font-medium">${{ basePrice }}</span>
               </div>
-              
-              <div>
-                <label class="block text-[11px] font-medium tracking-wider uppercase text-slate mb-2">First Name *</label>
-                <input type="text" class="w-full bg-ivory-warm/50 border border-gold/30 rounded-sm px-4 py-3 text-navy focus:outline-none focus:border-gold transition-colors" placeholder="Jane" />
-              </div>
-              
-              <div>
-                <label class="block text-[11px] font-medium tracking-wider uppercase text-slate mb-2">Last Name *</label>
-                <input type="text" class="w-full bg-ivory-warm/50 border border-gold/30 rounded-sm px-4 py-3 text-navy focus:outline-none focus:border-gold transition-colors" placeholder="Doe" />
-              </div>
-              
-              <div>
-                <label class="block text-[11px] font-medium tracking-wider uppercase text-slate mb-2">Email Address *</label>
-                <input type="email" class="w-full bg-ivory-warm/50 border border-gold/30 rounded-sm px-4 py-3 text-navy focus:outline-none focus:border-gold transition-colors" placeholder="jane@example.com" />
-              </div>
-              
-              <div>
-                <label class="block text-[11px] font-medium tracking-wider uppercase text-slate mb-2">Phone Number *</label>
-                <input type="tel" class="w-full bg-ivory-warm/50 border border-gold/30 rounded-sm px-4 py-3 text-navy focus:outline-none focus:border-gold transition-colors" placeholder="(561) 948-1233" />
+              <div v-if="isFirstTime === 'yes'" class="flex justify-between text-xs text-gold-light italic">
+                <span>Good Faith Exam</span>
+                <span>+$30</span>
               </div>
 
-              <!-- Reservation Details -->
-              <div class="md:col-span-2 mt-4">
-                <h4 class="font-serif text-xl text-navy mb-4 border-b border-line pb-2">Reservation Details</h4>
+              <div v-for="v in selections.vitamins" :key="v.name" class="flex justify-between text-[11px] opacity-70">
+                <span>+ {{ v.name }}</span>
+                <span>${{ v.price }}</span>
               </div>
               
-              <div>
-                <label class="block text-[11px] font-medium tracking-wider uppercase text-slate mb-2">Service Location (City/Zip) *</label>
-                <input type="text" v-model="formData.location" class="w-full bg-ivory-warm/50 border border-gold/30 rounded-sm px-4 py-3 text-navy focus:outline-none focus:border-gold transition-colors" placeholder="e.g. Naples, 34102" />
-              </div>
-              
-              <div>
-                <label class="block text-[11px] font-medium tracking-wider uppercase text-slate mb-2">Service Area Type</label>
-                <select v-model="formData.service" class="w-full bg-ivory-warm/50 border border-gold/30 rounded-sm px-4 py-3 text-navy focus:outline-none focus:border-gold transition-colors appearance-none">
-                  <option value="">Select an option</option>
-                  <option value="residence">Private Residence</option>
-                  <option value="hotel">Hotel / Resort</option>
-                  <option value="yacht">Private Yacht</option>
-                  <option value="office">Office</option>
-                </select>
+              <div v-if="selections.glutathione" class="flex justify-between text-[11px] opacity-70">
+                <span>+ Glutathione ({{ selections.glutathione.amount }})</span>
+                <span>${{ selections.glutathione.price }}</span>
               </div>
 
-              <div>
-                <label class="block text-[11px] font-medium tracking-wider uppercase text-slate mb-2">Preferred Date</label>
-                <input type="date" v-model="formData.date" class="w-full bg-ivory-warm/50 border border-gold/30 rounded-sm px-4 py-3 text-navy focus:outline-none focus:border-gold transition-colors" />
+              <div v-for="m in selections.medications" :key="m.name" class="flex justify-between text-[11px] opacity-70">
+                <span>+ {{ m.name }}</span>
+                <span>${{ m.price }}</span>
               </div>
-              
-              <div>
-                <label class="block text-[11px] font-medium tracking-wider uppercase text-slate mb-2">Preferred Time</label>
-                <select v-model="formData.time" class="w-full bg-ivory-warm/50 border border-gold/30 rounded-sm px-4 py-3 text-navy focus:outline-none focus:border-gold transition-colors appearance-none">
-                  <option value="">Select a time</option>
-                  <option value="morning">Morning (8am - 12pm)</option>
-                  <option value="afternoon">Afternoon (12pm - 4pm)</option>
-                  <option value="evening">Evening (4pm - 8pm)</option>
-                </select>
-              </div>
-              
-              <div class="md:col-span-2">
-                <label class="block text-[11px] font-medium tracking-wider uppercase text-slate mb-2">Treatment of Interest</label>
-                <select class="w-full bg-ivory-warm/50 border border-gold/30 rounded-sm px-4 py-3 text-navy focus:outline-none focus:border-gold transition-colors appearance-none">
-                  <option value="">Select a treatment</option>
-                  <option value="hydration">The Hydration Boost</option>
-                  <option value="immune">Immune Shield</option>
-                  <option value="hangover">Hangover Rescue</option>
-                  <option value="beauty">The Beauty Glow</option>
-                  <option value="custom">Not Sure / Custom Blend</option>
-                </select>
-              </div>
+            </div>
 
-              <div class="md:col-span-2">
-                <label class="block text-[11px] font-medium tracking-wider uppercase text-slate mb-2">Additional Notes / Message</label>
-                <textarea rows="4" class="w-full bg-ivory-warm/50 border border-gold/30 rounded-sm px-4 py-3 text-navy focus:outline-none focus:border-gold transition-colors resize-none" placeholder="Let us know about any special requests, group sizes, or questions..."></textarea>
-              </div>
+            <div class="border-t border-gold pb-6 pt-6 flex justify-between items-center mb-8">
+              <span class="text-xs uppercase tracking-widest font-bold">Estimated Total</span>
+              <span class="text-3xl font-serif text-gold-light">${{ totalPrice }}</span>
+            </div>
 
-              <div class="md:col-span-2 mt-4 text-center">
-                <BaseButton type="submit" variant="primary" class="w-full md:w-auto md:px-12">Submit Request</BaseButton>
-                <p class="text-xs text-slate mt-4 text-center">Our concierge team will review your request and contact you to confirm your appointment details.</p>
-              </div>
-              
-            </form>
+            <BaseButton variant="outline-gold" class="w-full mb-4">Confirm Booking Request</BaseButton>
+            <p class="text-[10px] text-ivory/40 text-center italic">Final price confirmed upon clinical assessment.</p>
           </div>
         </div>
       </div>
