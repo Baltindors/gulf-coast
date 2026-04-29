@@ -2,19 +2,24 @@
 @tailwind components;
 @tailwind utilities;
 
-/* */
 @layer base {
+  /* Headings are lighter (font-light) and tighter (tracking-tight) in the mockup */
   h1, h2, h3 {
-    @apply font-serif font-medium; /* */
+    @apply font-serif font-light tracking-tight text-navy;
   }
 
-  /* Standardizing the "Luxury Tag" style seen in the mockup (e.g., HOME, HOTEL) */
+  /* Refined Luxury Tag with smaller font and wider spacing for a more high-end feel */
   .text-tag {
-    @apply font-sans text-[10px] tracking-[0.3em] uppercase font-semibold text-navy; /* */
+    @apply font-sans text-[9px] tracking-[0.35em] uppercase font-bold text-navy;
   }
 
-  /* The thin vertical line dividers seen between categories in the mockup */
+  /* Thinner, more subtle vertical dividers */
   .divider-v {
-    @apply w-px h-10 bg-gold/30 mx-6; /* */
+    @apply w-[0.5px] h-8 bg-gold/20 mx-6;
+  }
+
+  /* Global body color adjustment to match the mockup's softer ink tone */
+  body {
+    @apply bg-ivory text-navy/90 font-sans antialiased;
   }
 }

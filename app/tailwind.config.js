@@ -6,6 +6,13 @@ export default {
   ],
   theme: {
     extend: {
+      letterSpacing: {
+        'luxury': '0.35em',
+        'tag': '0.25em'
+      },
+      fontSize: {
+        'xxs': '0.65rem',
+      },
       colors: {
         navy: {
           DEFAULT: '#021E36',
