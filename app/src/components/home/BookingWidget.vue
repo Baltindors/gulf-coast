@@ -38,7 +38,7 @@ const handleBooking = () => {
           </svg>
           <div class="flex-grow">
             <label class="block text-[9px] uppercase tracking-[0.25em] text-slate/60 mb-0.5 font-bold">Select Location</label>
-            <select v-model="location" class="w-full bg-transparent text-navy font-serif text-[15px] focus:outline-none appearance-none cursor-pointer">
+            <select v-model="location" class="w-full bg-transparent text-navy font-serif text-[16px] focus:outline-none appearance-none cursor-pointer">
               <option v-for="area in serviceAreas" :key="area" :value="area">{{ area }}</option>
             </select>
           </div>
@@ -50,7 +50,7 @@ const handleBooking = () => {
           </svg>
           <div class="flex-grow">
             <label class="block text-[9px] uppercase tracking-[0.25em] text-slate/60 mb-0.5 font-bold">Date</label>
-            <input type="date" v-model="date" class="w-full bg-transparent text-navy font-serif text-[15px] focus:outline-none cursor-pointer" />
+            <input type="date" v-model="date" class="w-full bg-transparent text-navy font-serif text-[16px] focus:outline-none cursor-pointer" />
           </div>
         </div>
 
@@ -60,7 +60,7 @@ const handleBooking = () => {
           </svg>
           <div class="flex-grow">
             <label class="block text-[9px] uppercase tracking-[0.25em] text-slate/60 mb-0.5 font-bold">Time</label>
-            <select v-model="time" class="w-full bg-transparent text-navy font-serif text-[15px] focus:outline-none appearance-none cursor-pointer">
+            <select v-model="time" class="w-full bg-transparent text-navy font-serif text-[16px] focus:outline-none appearance-none cursor-pointer">
               <option value="" disabled>Select Time</option>
               <option value="morning">Morning</option>
               <option value="afternoon">Afternoon</option>
@@ -75,7 +75,7 @@ const handleBooking = () => {
           </svg>
           <div class="flex-grow">
             <label class="block text-[9px] uppercase tracking-[0.25em] text-slate/60 mb-0.5 font-bold">Services</label>
-            <select v-model="service" class="w-full bg-transparent text-navy font-serif text-[15px] focus:outline-none appearance-none cursor-pointer">
+            <select v-model="service" class="w-full bg-transparent text-navy font-serif text-[16px] focus:outline-none appearance-none cursor-pointer">
               <option value="" disabled>Select Service</option>
               <option value="hydration">Hydration Boost</option>
               <option value="immune">Immune Shield</option>
