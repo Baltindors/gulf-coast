@@ -4,6 +4,7 @@ import SectionHeader from '@/components/ui/SectionHeader.vue'
 import PackageCard from '@/components/packages/PackageCard.vue'
 import TrustIcons from '@/components/home/TrustIcons.vue'
 import packagesData from '@/data/packages.json'
+import BookingWidget from '@/components/home/BookingWidget.vue'
 
 const popularPackages = packagesData.slice(0, 3)
 </script>
@@ -19,19 +20,18 @@ const popularPackages = packagesData.slice(0, 3)
       
       <div class="container relative z-10 mx-auto px-6 md:px-16 text-center">
         <p class="font-sans text-[11px] font-medium tracking-[0.2em] uppercase text-gold-light mb-6">Naples &bull; Marco Island &bull; SWFL</p>
-        <h1 class="font-serif text-5xl md:text-7xl lg:text-[84px] text-ivory font-normal leading-[1.05] mb-8 max-w-[900px] mx-auto">
+        <h1 class="font-serif text-5xl md:text-7xl lg:text-[84px] text-navy font-normal leading-[1.05] mb-8 max-w-[900px] mx-auto">
           Elevated Wellness.<br/>
-          <span class="font-script text-gold italic text-[1.1em] block mt-4">Delivered.</span>
+          <span class="font-script text-gold-dark italic text-[1.1em] block mt-4">Delivered.</span>
         </h1>
         <p class="text-[16px] text-ivory/80 max-w-[600px] mx-auto mb-10 leading-[1.6]">
           Luxury IV therapy, delivered directly to you. hotel, or yacht by licensed medical professionals.
         </p>
-        <div class="flex flex-col sm:flex-row items-center justify-center gap-6">
-          <BaseButton to="/packages" variant="primary">View Packages</BaseButton>
-          <BaseButton to="/contact" variant="outline-gold">Book Appointment</BaseButton>
-        </div>
+
       </div>
     </section>
+
+    <BookingWidget />
 
     <!-- Most Popular Packages -->
     <section class="py-32 px-6 md:px-16 bg-ivory">

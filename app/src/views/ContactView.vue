@@ -1,6 +1,23 @@
 <script setup>
+import { useRoute } from 'vue-router'
+import { ref, onMounted } from 'vue'
 import SectionHeader from '@/components/ui/SectionHeader.vue'
 import BaseButton from '@/components/ui/BaseButton.vue'
+
+const route = useRoute()
+// Update your form refs to react to route query
+const formData = ref({
+  firstName: '',
+  lastName: '',
+  email: '',
+  phone: '',
+  location: route.query.location || '', // Prefilled from widget
+  date: route.query.date || '',         // Prefilled from widget
+  time: route.query.time || '',         // Prefilled from widget
+  service: route.query.service || '',   // Prefilled from widget
+  message: ''
+})
+
 </script>
 
 <template>
@@ -75,12 +92,12 @@ import BaseButton from '@/components/ui/BaseButton.vue'
               
               <div>
                 <label class="block text-[11px] font-medium tracking-wider uppercase text-slate mb-2">Service Location (City/Zip) *</label>
-                <input type="text" class="w-full bg-ivory-warm/50 border border-gold/30 rounded-sm px-4 py-3 text-navy focus:outline-none focus:border-gold transition-colors" placeholder="e.g. Naples, 34102" />
+                <input type="text" v-model="formData.location" class="w-full bg-ivory-warm/50 border border-gold/30 rounded-sm px-4 py-3 text-navy focus:outline-none focus:border-gold transition-colors" placeholder="e.g. Naples, 34102" />
               </div>
               
               <div>
                 <label class="block text-[11px] font-medium tracking-wider uppercase text-slate mb-2">Service Area Type</label>
-                <select class="w-full bg-ivory-warm/50 border border-gold/30 rounded-sm px-4 py-3 text-navy focus:outline-none focus:border-gold transition-colors appearance-none">
+                <select v-model="formData.service" class="w-full bg-ivory-warm/50 border border-gold/30 rounded-sm px-4 py-3 text-navy focus:outline-none focus:border-gold transition-colors appearance-none">
                   <option value="">Select an option</option>
                   <option value="residence">Private Residence</option>
                   <option value="hotel">Hotel / Resort</option>
@@ -91,12 +108,12 @@ import BaseButton from '@/components/ui/BaseButton.vue'
 
               <div>
                 <label class="block text-[11px] font-medium tracking-wider uppercase text-slate mb-2">Preferred Date</label>
-                <input type="date" class="w-full bg-ivory-warm/50 border border-gold/30 rounded-sm px-4 py-3 text-navy focus:outline-none focus:border-gold transition-colors" />
+                <input type="date" v-model="formData.date" class="w-full bg-ivory-warm/50 border border-gold/30 rounded-sm px-4 py-3 text-navy focus:outline-none focus:border-gold transition-colors" />
               </div>
               
               <div>
                 <label class="block text-[11px] font-medium tracking-wider uppercase text-slate mb-2">Preferred Time</label>
-                <select class="w-full bg-ivory-warm/50 border border-gold/30 rounded-sm px-4 py-3 text-navy focus:outline-none focus:border-gold transition-colors appearance-none">
+                <select v-model="formData.time" class="w-full bg-ivory-warm/50 border border-gold/30 rounded-sm px-4 py-3 text-navy focus:outline-none focus:border-gold transition-colors appearance-none">
                   <option value="">Select a time</option>
                   <option value="morning">Morning (8am - 12pm)</option>
                   <option value="afternoon">Afternoon (12pm - 4pm)</option>

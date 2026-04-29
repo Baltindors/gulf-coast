@@ -26,21 +26,16 @@ const links = [
       <div class="font-sans text-[7.5px] tracking-[0.32em] text-slate mt-1.5 uppercase">Premium Mobile Wellness</div>
     </router-link>
 
-    <nav class="hidden md:flex items-center gap-9">
-      <router-link 
-        v-for="link in links" 
-        :key="link.path" 
-        :to="link.path"
-        class="text-[11px] font-medium tracking-[0.22em] uppercase text-navy relative py-1 transition-colors duration-200 hover:text-gold group"
-        :class="{'text-gold': route.path === link.path}"
-      >
-        {{ link.name }}
-        <span 
-          class="absolute -bottom-0.5 left-0 right-0 h-px bg-gold transition-opacity duration-200"
-          :class="route.path === link.path ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'"
-        ></span>
-      </router-link>
-    </nav>
+<nav class="hidden md:flex items-center gap-10">
+  <router-link 
+    v-for="link in links" 
+    :key="link.path" 
+    :to="link.path"
+    class="text-[10px] font-bold tracking-[0.25em] uppercase text-navy/70 hover:text-gold transition-colors duration-300"
+  >
+    {{ link.name }}
+  </router-link>
+</nav>
 
     <div class="flex items-center gap-4">
       <BaseButton to="/contact" variant="ghost">Book Now</BaseButton>
