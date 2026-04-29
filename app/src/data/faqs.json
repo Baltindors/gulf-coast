@@ -1,0 +1,50 @@
+[
+  {
+    "id": "category-general",
+    "category": "General Questions",
+    "items": [
+      {
+        "id": "what-is-iv",
+        "question": "What is IV nutrient therapy?",
+        "answer": "IV nutrient therapy delivers vitamins, minerals, and hydration directly into your bloodstream. This bypasses the digestive system, allowing for 100% absorption and immediate cellular utilization."
+      },
+      {
+        "id": "how-long",
+        "question": "How long does a treatment take?",
+        "answer": "Most of our concierge IV treatments take between 45 to 60 minutes. We strive to make the experience as relaxing and luxurious as possible in the comfort of your home, hotel, or yacht."
+      }
+    ]
+  },
+  {
+    "id": "category-medical",
+    "category": "Medical & Safety",
+    "items": [
+      {
+        "id": "who-administers",
+        "question": "Who administers the IVs?",
+        "answer": "All treatments are administered by licensed, highly experienced registered nurses (RNs) under the direction of our Medical Director."
+      },
+      {
+        "id": "does-it-hurt",
+        "question": "Does the IV placement hurt?",
+        "answer": "We use advanced techniques and a topical numbing spray upon request. Most clients feel only a tiny pinch, followed by complete comfort during the infusion."
+      }
+    ]
+  },
+  {
+    "id": "category-booking",
+    "category": "Booking & Concierge",
+    "items": [
+      {
+        "id": "where-do-you-go",
+        "question": "Where do you travel to?",
+        "answer": "We are a fully mobile concierge service. We travel to private residences, hotels, offices, and yachts across Naples, Marco Island, Sanibel, Captiva, and surrounding areas."
+      },
+      {
+        "id": "group-bookings",
+        "question": "Do you offer group bookings or events?",
+        "answer": "Yes, we specialize in group bookings for wedding parties, golf retreats, corporate events, and family gatherings. Contact us for custom group packages."
+      }
+    ]
+  }
+]

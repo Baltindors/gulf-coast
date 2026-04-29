@@ -1,0 +1,32 @@
+[
+  {
+    "id": "naples",
+    "name": "Naples",
+    "description": "Serving Port Royal, Pelican Bay, and Greater Naples.",
+    "isPrimary": true
+  },
+  {
+    "id": "marco-island",
+    "name": "Marco Island",
+    "description": "Luxury concierge service to resorts and private residences.",
+    "isPrimary": true
+  },
+  {
+    "id": "sanibel-captiva",
+    "name": "Sanibel & Captiva",
+    "description": "Exclusive island service available by appointment.",
+    "isPrimary": false
+  },
+  {
+    "id": "bonita-springs",
+    "name": "Bonita Springs",
+    "description": "Serving Bonita Bay, Pelican Landing, and surrounding areas.",
+    "isPrimary": false
+  },
+  {
+    "id": "yachts",
+    "name": "Private Yachts",
+    "description": "Discreet, dockside or on-water service across SWFL marinas.",
+    "isPrimary": true
+  }
+]

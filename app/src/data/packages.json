@@ -1,0 +1,49 @@
+[
+  {
+    "id": "hydration-boost",
+    "name": "The Hydration Boost",
+    "description": "Replenish essential fluids and electrolytes instantly. Perfect for recovery, fatigue, and general wellness.",
+    "price": 149,
+    "features": [
+      "1000ml Normal Saline",
+      "Essential Electrolytes",
+      "Vitality Boost"
+    ]
+  },
+  {
+    "id": "immune-shield",
+    "name": "Immune Shield",
+    "description": "High-dose Vitamin C, Zinc, and B-Complex to fortify your immune system and protect against illness.",
+    "price": 199,
+    "features": [
+      "1000ml Normal Saline",
+      "High-Dose Vitamin C",
+      "Zinc & B-Complex",
+      "Glutathione Push"
+    ]
+  },
+  {
+    "id": "hangover-rescue",
+    "name": "Hangover Rescue",
+    "description": "Rapid recovery from nausea, headaches, and dehydration so you can get back to your day.",
+    "price": 229,
+    "features": [
+      "1000ml Normal Saline",
+      "Anti-Nausea Medication",
+      "Anti-Inflammatory",
+      "B-Complex Vitamins"
+    ]
+  },
+  {
+    "id": "beauty-glow",
+    "name": "The Beauty Glow",
+    "description": "Premium blend of antioxidants, Biotin, and Vitamin C for radiant skin, strong hair, and healthy nails.",
+    "price": 249,
+    "features": [
+      "1000ml Normal Saline",
+      "Premium Biotin",
+      "High-Dose Glutathione",
+      "Vitamin C & B-Complex"
+    ]
+  }
+]
