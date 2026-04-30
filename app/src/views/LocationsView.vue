@@ -15,10 +15,13 @@ import locationsData from '@/data/locations.json'
       />
       
       <!-- Map Placeholder -->
-      <div class="max-w-4xl mx-auto w-full aspect-[21/9] bg-[#e6ded0] rounded mb-20 relative overflow-hidden flex items-center justify-center border border-gold/20 shadow-sm">
-        <div class="absolute inset-4 border border-gold/30"></div>
-        <span class="font-mono text-[10px] tracking-widest text-navy bg-ivory px-4 py-2 border border-gold relative z-10">MAP PLACEHOLDER</span>
-        <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(#B89668 1px, transparent 1px); background-size: 20px 20px;"></div>
+      <div class="max-w-3xl mx-auto w-full mb-20 relative overflow-hidden rounded-lg border border-gold/20 shadow-md bg-white">
+        <img 
+          src="/images/Service_Map.jpg" 
+          alt="Gulf Coast IV Concierge Service Area Map" 
+          class="w-full h-auto block"
+        />
+        <div class="absolute inset-4 border border-gold/10 pointer-events-none rounded-sm"></div>
       </div>
 
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
