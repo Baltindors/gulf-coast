@@ -64,11 +64,14 @@ const featuredPackages = computed(() => {
       <div class="container mx-auto">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
           <div>
-            <div class="relative w-full aspect-[4/5] bg-sand rounded flex items-center justify-center overflow-hidden">
-               <div class="absolute inset-4 border border-gold/40"></div>
-               <div class="font-mono text-xs tracking-widest uppercase bg-ivory px-4 py-2 border border-gold text-navy relative z-10">IMAGE: WELLNESS LIFESTYLE</div>
-               <div class="absolute inset-0 opacity-20" style="background: repeating-linear-gradient(135deg, transparent, transparent 12px, #d9cdb5 12px, #d9cdb5 13px);"></div>
-            </div>
+            <div class="relative w-full aspect-[4/5] rounded overflow-hidden shadow-md">
+              <img 
+                src="/images/Wellness_Lifestyle.jpg" 
+                alt="Luxury Wellness Lifestyle" 
+                class="w-full h-full object-cover"
+              />
+  <div class="absolute inset-4 border border-gold/40"></div>
+</div>
           </div>
           <div>
             <p class="font-sans uppercase tracking-[0.18em] text-[11px] font-medium text-gold-dark mb-4">Effortless Wellness</p>

@@ -25,22 +25,22 @@ import BaseButton from '@/components/ui/BaseButton.vue'
               </p>
             </div>
             <div class="md:w-1/2 order-1 md:order-2 w-full">
-              <div class="aspect-video bg-sand rounded relative overflow-hidden flex items-center justify-center">
+              <div class="aspect-video bg-sand rounded relative overflow-hidden flex items-center justify-center shadow-sm">
+                <img src="/images/Select_Your_Treatment.jpg" alt="Menu Selection" class="w-full h-full object-cover" />
                 <div class="absolute inset-4 border border-gold/40"></div>
-                <span class="font-mono text-xs text-navy z-10 bg-ivory px-3 py-1 border border-gold">IMAGE: MENU SELECTION</span>
               </div>
             </div>
           </div>
 
           <!-- Step 2 -->
           <div class="flex flex-col md:flex-row gap-12 items-center">
-            <div class="md:w-1/2 w-full">
-              <div class="aspect-video bg-sand rounded relative overflow-hidden flex items-center justify-center">
+            <div class="md:w-1/2 order-2 md:order-1">
+              <div class="aspect-video bg-sand rounded relative overflow-hidden flex items-center justify-center shadow-sm">
+                <img src="/images/Choose_Location_Time.jpg" alt="Location Booking" class="w-full h-full object-cover" />
                 <div class="absolute inset-4 border border-gold/40"></div>
-                <span class="font-mono text-xs text-navy z-10 bg-ivory px-3 py-1 border border-gold">IMAGE: LOCATION/BOOKING</span>
               </div>
             </div>
-            <div class="md:w-1/2">
+            <div class="md:w-1/2 order-1 md:order-2">
               <span class="font-serif text-5xl text-gold/30 font-medium italic mb-4 block">02</span>
               <h3 class="font-serif text-3xl text-navy mb-4">Choose Location & Time</h3>
               <p class="text-slate leading-relaxed">
@@ -59,9 +59,9 @@ import BaseButton from '@/components/ui/BaseButton.vue'
               </p>
             </div>
             <div class="md:w-1/2 order-1 md:order-2 w-full">
-              <div class="aspect-video bg-sand rounded relative overflow-hidden flex items-center justify-center">
+              <div class="aspect-video bg-sand rounded relative overflow-hidden flex items-center justify-center shadow-sm">
+                <img src="/images/Complete_Brief_Intake.jpg" alt="Medical Consultation" class="w-full h-full object-cover" />
                 <div class="absolute inset-4 border border-gold/40"></div>
-                <span class="font-mono text-xs text-navy z-10 bg-ivory px-3 py-1 border border-gold">IMAGE: MEDICAL REVIEW</span>
               </div>
             </div>
           </div>
@@ -69,9 +69,9 @@ import BaseButton from '@/components/ui/BaseButton.vue'
           <!-- Step 4 -->
           <div class="flex flex-col md:flex-row gap-12 items-center">
             <div class="md:w-1/2 w-full">
-              <div class="aspect-video bg-sand rounded relative overflow-hidden flex items-center justify-center">
+              <div class="aspect-video bg-sand rounded relative overflow-hidden flex items-center justify-center shadow-sm">
+                <img src="/images/Receive_Concierge_Service.jpg" alt="IV Treatment" class="w-full h-full object-cover" />
                 <div class="absolute inset-4 border border-gold/40"></div>
-                <span class="font-mono text-xs text-navy z-10 bg-ivory px-3 py-1 border border-gold">IMAGE: IV TREATMENT</span>
               </div>
             </div>
             <div class="md:w-1/2">
