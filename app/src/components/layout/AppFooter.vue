@@ -65,8 +65,8 @@
     <div class="max-w-[1280px] mx-auto mt-14 pt-6 border-t border-gold/20 flex flex-col md:flex-row justify-between items-center gap-4 text-[11px] tracking-[0.18em] uppercase text-ivory/50">
       <p>&copy; 2026 Gulf Coast IV Concierge. All Rights Reserved.</p>
       <div class="flex gap-6">
-        <a href="#" class="hover:text-gold-light transition-colors">Privacy Policy</a>
-        <a href="#" class="hover:text-gold-light transition-colors">Terms of Service</a>
+        <router-link to="/privacy" class="hover:text-gold-light transition-colors">Privacy Policy</router-link>
+        <router-link to="/terms" class="hover:text-gold-light transition-colors">Terms of Service</router-link>
       </div>
     </div>
   </footer>

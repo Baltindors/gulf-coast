@@ -33,7 +33,19 @@ const router = createRouter({
       path: '/contact',
       name: 'contact',
       component: () => import('../views/ContactView.vue')
-    }
+    },
+    {
+      path: '/privacy',
+      name: 'privacy',
+      component: () => import('../views/LegalView.vue'),
+      props: { type: 'privacy' }
+    },
+    {
+      path: '/terms',
+      name: 'terms',
+      component: () => import('../views/LegalView.vue'),
+      props: { type: 'terms' }
+    }    
   ],
   scrollBehavior(to, from, savedPosition) {
     if (savedPosition) {

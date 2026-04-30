@@ -1,0 +1,30 @@
+{
+  "title": "Privacy Policy",
+  "lastUpdated": "April 29, 2026",
+  "sections": [
+    {
+      "heading": "Introduction and Scope",
+      "content": "This Privacy Policy describes how Gulf Coast IV Concierge LLC ('we,' 'us,' or 'our') collects, uses, and protects information from our clients across the Gulf Coast regions, including Naples, Marco Island, Sanibel & Captiva, and Bonita Springs[cite: 3]. We are committed to maintaining the highest standards of data security in compliance with the Health Insurance Portability and Accountability Act (HIPAA) and the Florida Information Protection Act (FIPA)[cite: 55]."
+    },
+    {
+      "heading": "Information We Collect",
+      "content": "We collect Personal Information (PI) and Protected Health Information (PHI) necessary to provide mobile medical services[cite: 57]. This includes: identification and billing details; comprehensive medical history, allergies, and current medications collected during your 'Good Faith Exam' (GFE); and precise geolocation data required to dispatch our nursing staff to your home, office, or hotel[cite: 27, 59]. We also collect technical data during synchronous video telehealth encounters, such as device identifiers and IP addresses[cite: 29, 30]."
+    },
+    {
+      "heading": "How We Use Your Information",
+      "content": "Your information is used solely to establish a legitimate provider-patient relationship, evaluate medical necessity for IV treatments, and coordinate field logistics[cite: 27, 89]. We utilize SMS for appointment reminders and marketing; you may opt-out at any time by texting 'STOP'[cite: 61]. We do not establish treatment relationships through 'audio-only' or 'asynchronous' data (such as online forms without video)[cite: 29]."
+    },
+    {
+      "heading": "Data Security and Retention",
+      "content": "We implement 'reasonable measures' for medical data protection as mandated by FIPA, including multi-factor authentication (MFA) on all systems touching electronic PHI and full-disk encryption on all field tablets[cite: 58, 62]. We adhere to the 30-day 'FIPA clock' for notifying Florida residents and the Florida Attorney General in the event of a data breach[cite: 58, 59]. Once you download or print your medical records from our platform, Gulf Coast IV Concierge LLC is no longer liable for the security of that individual copy[cite: 81]."
+    },
+    {
+      "heading": "Third-Party Disclosures",
+      "content": "We do not sell your personal information to third parties[cite: 48]. We may share data with licensed medical directors or management service organizations (MSOs) only when a Business Associate Agreement (BAA) is in place[cite: 12, 58]. These third parties are contractually required to notify us of any security incidents within 10 days[cite: 58]."
+    },
+    {
+      "heading": "Specific Protections and Care Coordination",
+      "content": "Our services are intended for individuals 18 years of age or older[cite: 47]. For elderly patients or those with diminished capacity, we coordinate care and data access only through verified legal guardians or individuals holding a valid Durable Power of Attorney[cite: 81]. We maintain medical records under the legal custodianship of our Medical Director as required by F.S. § 400.9935(1)(e)[cite: 14]."
+    }
+  ]
+}
