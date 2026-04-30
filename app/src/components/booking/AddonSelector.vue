@@ -67,7 +67,7 @@ watch([selectedVitamins, selectedGlutathione, selectedMedications, showAddons], 
                 v-model="selectedGlutathione" 
                 class="accent-gold h-4 w-4" 
               />
-              <span class="ml-3 text-xs text-navy group-hover:text-gold transition-colors italic">None / No Add-on</span>
+              <span class="ml-3 text-xs text-navy group-hover:text-gold transition-colors italic">No glutathione</span>
             </label>
 
             <label v-for="g in addons.glutathione" :key="g.amount" class="flex items-center group cursor-pointer">
