@@ -18,10 +18,10 @@ defineProps({
       <div v-for="tier in pkg.tiers" :key="tier.level" 
         :class="[
           'relative p-6 rounded-sm border transition-all duration-300',
-          tier.featured ? 'bg-white border-gold shadow-md scale-[1.02] z-10' : 'bg-transparent border-gold/10 opacity-80 hover:opacity-100'
+          tier.mostPopular ? 'bg-white border-gold shadow-md scale-[1.02] z-10' : 'bg-transparent border-gold/10 opacity-80 hover:opacity-100'
         ]">
         
-        <div v-if="tier.featured" class="absolute -top-3 left-1/2 -translate-x-1/2 bg-gold text-navy text-[8px] font-bold tracking-[0.2em] px-3 py-1 uppercase rounded-full">
+        <div v-if="tier.mostPopular" class="absolute -top-3 left-1/2 -translate-x-1/2 bg-gold text-navy text-[8px] font-bold tracking-[0.2em] px-3 py-1 uppercase rounded-full">
           Most Popular
         </div>
 

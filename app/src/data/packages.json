@@ -3,27 +3,28 @@
     {
       "id": "hydration-immunity",
       "name": "Hydration & Immunity",
+      "featured": true,
       "image": "/images/packages/hydration-immunity.jpg",
       "tiers": [
         {
           "level": "Silver",
           "name": "Coastal Silver",
           "price": 289,
-          "featured": false,
+          "mostPopular": false,
           "features": ["1L NS or LR", "B Complex"]
         },
         {
           "level": "Gold",
           "name": "Coastal Gold",
           "price": 489,
-          "featured": true,
+          "mostPopular": true,
           "features": ["1L NS or LR", "B Complex", "Magnesium", "B12"]
         },
         {
           "level": "Platinum",
           "name": "Coastal Platinum",
           "price": 589,
-          "featured": false,
+          "mostPopular": false,
           "features": ["1L NS or LR", "B Complex", "Magnesium", "B12", "Zinc", "Vitamin C"]
         }
       ]
@@ -31,6 +32,7 @@
     {
       "id": "coastal-reset",
       "name": "Coastal Reset IV",
+      "featured": true,
       "subtitle": "Hangover & Acute Recovery",
       "image": "/images/packages/coastal-reset.jpg",
       "tiers": [
@@ -38,21 +40,21 @@
           "level": "Silver",
           "name": "Silver",
           "price": 389,
-          "featured": false,
+          "mostPopular": false,
           "features": ["1L NS or LR", "1 Medication"]
         },
         {
           "level": "Gold",
           "name": "Gold",
           "price": 589,
-          "featured": true,
+          "mostPopular": true,
           "features": ["1L NS or LR", "2 Medications", "B Complex"]
         },
         {
           "level": "Platinum",
           "name": "Platinum",
           "price": 689,
-          "featured": false,
+          "mostPopular": false,
           "features": ["1L NS or LR", "3 Medications", "B Complex", "Magnesium"]
         }
       ]
@@ -60,6 +62,7 @@
     {
       "id": "coastal-restore",
       "name": "Coastal Restore IV",
+      "featured": true,
       "subtitle": "Recovery & Replenishment",
       "image": "/images/packages/coastal-restore.jpg",
       "tiers": [
@@ -67,21 +70,21 @@
           "level": "Silver",
           "name": "Silver",
           "price": 389,
-          "featured": false,
+          "mostPopular": false,
           "features": ["1L NS or LR", "B Complex", "Glutathione 400 mg"]
         },
         {
           "level": "Gold",
           "name": "Gold",
           "price": 589,
-          "featured": true,
+          "mostPopular": true,
           "features": ["1L NS or LR", "B Complex", "Magnesium", "B12", "Glutathione 600 mg"]
         },
         {
           "level": "Platinum",
           "name": "Platinum",
           "price": 689,
-          "featured": false,
+          "mostPopular": false,
           "features": ["1L NS or LR", "B Complex", "Magnesium", "B12", "Zinc", "Glutathione 800 mg"]
         }
       ]
@@ -89,6 +92,7 @@
     {
       "id": "coastal-vitality",
       "name": "Coastal Vitality IV",
+      "featured": false,
       "subtitle": "Energy & Performance",
       "image": "/images/packages/coastal-vitality.jpg",
       "tiers": [
@@ -96,21 +100,21 @@
           "level": "Silver",
           "name": "Silver",
           "price": 389,
-          "featured": false,
+          "mostPopular": false,
           "features": ["1L NS or LR", "B Complex", "B12", "Taurine"]
         },
         {
           "level": "Gold",
           "name": "Gold",
           "price": 589,
-          "featured": false,
+          "mostPopular": true,
           "features": ["1L NS or LR", "B Complex", "Magnesium", "B12", "Taurine"]
         },
         {
           "level": "Platinum",
           "name": "Platinum",
           "price": 689,
-          "featured": false,
+          "mostPopular": false,
           "features": ["1L NS or LR", "B Complex", "Magnesium", "B12", "Zinc", "Taurine"]
         }
       ]
@@ -118,6 +122,7 @@
     {
       "id": "coastal-radiance",
       "name": "Coastal Radiance IV",
+      "featured": false,
       "subtitle": "Glow Therapy",
       "image": "/images/packages/coastal-radiance.jpg",
       "tiers": [
@@ -125,14 +130,14 @@
           "level": "Gold",
           "name": "Gold",
           "price": 589,
-          "featured": false,
+          "mostPopular": true,
           "features": ["1L NS", "Glutathione 2000 mg", "Vitamin C 2000 mg"]
         },
         {
           "level": "Platinum",
           "name": "Platinum",
           "price": 689,
-          "featured": false,
+          "mostPopular": false,
           "features": ["1L NS", "Glutathione 3000 mg", "Vitamin C 3000 mg"]
         }
       ]

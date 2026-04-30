@@ -7,26 +7,11 @@ import TrustIcons from '@/components/home/TrustIcons.vue'
 import BookingWidget from '@/components/home/BookingWidget.vue'
 import packagesData from '@/data/packages.json'
 
-// Logic to extract only the featured tiers from the packages
-const popularTiers = computed(() => {
-  const featured = []
-  
-  packagesData.packages.forEach(pkg => {
-    // Find the specific tier marked as featured within this package
-    const featuredTier = pkg.tiers.find(tier => tier.featured === true)
-    
-    if (featuredTier) {
-      featured.push({
-        ...pkg,
-        // Overwrite tiers to only contain the one featured tier for this view
-        tiers: [featuredTier]
-      })
-    }
-  })
-  
-  // Return only the top 3 most popular
-  return featured.slice(0, 3)
+const featuredPackages = computed(() => {
+  // Filters packages where the top-level 'featured' is true
+  return packagesData.packages.filter(pkg => pkg.featured === true).slice(0, 3)
 })
+
 </script>
 
 <template>
@@ -62,7 +47,7 @@ const popularTiers = computed(() => {
         
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
           <PackageCard 
-            v-for="pkg in popularTiers" 
+            v-for="pkg in featuredPackages" 
             :key="pkg.id" 
             :pkg="pkg" 
           />
