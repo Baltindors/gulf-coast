@@ -15,32 +15,30 @@ import BaseButton from '@/components/ui/BaseButton.vue'
       
       <div class="max-w-4xl mx-auto mt-24">
         <div class="space-y-24">
-          <!-- Step 1 -->
           <div class="flex flex-col md:flex-row gap-12 items-center">
-            <div class="md:w-1/2 order-2 md:order-1">
+            <div class="md:w-1/2">
               <span class="font-serif text-5xl text-gold/30 font-medium italic mb-4 block">01</span>
               <h3 class="font-serif text-3xl text-navy mb-4">Select Your Treatment</h3>
               <p class="text-slate leading-relaxed">
                 Browse our curated menu of premium IV blends or consult with our medical professionals to customize a treatment perfectly suited to your current wellness needs.
               </p>
             </div>
-            <div class="md:w-1/2 order-1 md:order-2 w-full">
-              <div class="aspect-video bg-sand rounded relative overflow-hidden flex items-center justify-center shadow-sm">
+            <div class="md:w-1/2 w-full">
+              <div class="aspect-video bg-sand rounded relative overflow-hidden shadow-sm">
                 <img src="/images/Select_Your_Treatment.jpg" alt="Menu Selection" class="w-full h-full object-cover" />
                 <div class="absolute inset-4 border border-gold/40"></div>
               </div>
             </div>
           </div>
 
-          <!-- Step 2 -->
           <div class="flex flex-col md:flex-row gap-12 items-center">
-            <div class="md:w-1/2 order-2 md:order-1">
-              <div class="aspect-video bg-sand rounded relative overflow-hidden flex items-center justify-center shadow-sm">
+            <div class="md:w-1/2 w-full order-last md:order-first">
+              <div class="aspect-video bg-sand rounded relative overflow-hidden shadow-sm">
                 <img src="/images/Choose_Location_Time.jpg" alt="Location Booking" class="w-full h-full object-cover" />
                 <div class="absolute inset-4 border border-gold/40"></div>
               </div>
             </div>
-            <div class="md:w-1/2 order-1 md:order-2">
+            <div class="md:w-1/2">
               <span class="font-serif text-5xl text-gold/30 font-medium italic mb-4 block">02</span>
               <h3 class="font-serif text-3xl text-navy mb-4">Choose Location & Time</h3>
               <p class="text-slate leading-relaxed">
@@ -49,27 +47,25 @@ import BaseButton from '@/components/ui/BaseButton.vue'
             </div>
           </div>
 
-          <!-- Step 3 -->
           <div class="flex flex-col md:flex-row gap-12 items-center">
-            <div class="md:w-1/2 order-2 md:order-1">
+            <div class="md:w-1/2">
               <span class="font-serif text-5xl text-gold/30 font-medium italic mb-4 block">03</span>
               <h3 class="font-serif text-3xl text-navy mb-4">Complete Brief Intake</h3>
               <p class="text-slate leading-relaxed">
                 Prior to your appointment, you'll complete a brief, secure medical history form online to ensure your chosen treatment is safe and optimally effective for you.
               </p>
             </div>
-            <div class="md:w-1/2 order-1 md:order-2 w-full">
-              <div class="aspect-video bg-sand rounded relative overflow-hidden flex items-center justify-center shadow-sm">
+            <div class="md:w-1/2 w-full">
+              <div class="aspect-video bg-sand rounded relative overflow-hidden shadow-sm">
                 <img src="/images/Complete_Brief_Intake.jpg" alt="Medical Consultation" class="w-full h-full object-cover" />
                 <div class="absolute inset-4 border border-gold/40"></div>
               </div>
             </div>
           </div>
 
-          <!-- Step 4 -->
           <div class="flex flex-col md:flex-row gap-12 items-center">
-            <div class="md:w-1/2 w-full">
-              <div class="aspect-video bg-sand rounded relative overflow-hidden flex items-center justify-center shadow-sm">
+            <div class="md:w-1/2 w-full order-last md:order-first">
+              <div class="aspect-video bg-sand rounded relative overflow-hidden shadow-sm">
                 <img src="/images/Receive_Concierge_Service.jpg" alt="IV Treatment" class="w-full h-full object-cover" />
                 <div class="absolute inset-4 border border-gold/40"></div>
               </div>
