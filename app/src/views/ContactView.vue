@@ -240,9 +240,15 @@ const totalPrice = computed(() => {
 
             <BaseButton variant="outline-gold" class="w-full mb-4">Complete Request</BaseButton>
             <p class="text-[10px] text-ivory/40 text-center italic">Final price confirmed upon clinical assessment.</p>
+            <div class="flex justify-center">
+              <div class="w-12 h-px bg-gold/30"></div>
+            </div>
+            <p class="text-[8px] uppercase tracking-widest text-ivory/30 text-center leading-[1.6]">
+              The statements made regarding these products have not been evaluated by the FDA. Our services are wellness-oriented and are not intended to diagnose, treat, cure, or prevent any medical condition or disease.
+            </p>
           </div>
         </div>
       </div>
     </div>
-  </div>
+  </div>  
 </template>
