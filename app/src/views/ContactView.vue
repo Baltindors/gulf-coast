@@ -1,6 +1,6 @@
 <script setup>
 import { useRoute } from 'vue-router'
-import { ref, computed, onMounted } from 'vue'
+import { ref, computed } from 'vue'
 import packagesData from '@/data/packages.json'
 import SectionHeader from '@/components/ui/SectionHeader.vue'
 import BaseButton from '@/components/ui/BaseButton.vue'
@@ -14,8 +14,8 @@ const { packages, addons } = packagesData
  * Pulls from URL query params (passed by BookingWidget or PackageCards)
  */
 const selectedPackageName = ref(route.query.service || '')
-const selectedTierName = ref(route.query.tier || 'Gold') // Default to Gold if only package is picked
-const isFirstTime = ref(null) 
+const selectedTierName = ref(route.query.tier || '') 
+const patientStatus = ref(null) // 'new', 'changed', 'returning'
 
 const selections = ref({
   vitamins: [],
@@ -25,42 +25,84 @@ const selections = ref({
 
 /**
  * SERVICE DETAILS DATA
- * Pre-filled using route.query from the Booking Widget
  */
 const formData = ref({
   firstName: '',
   lastName: '',
   email: '',
   phone: '',
-  location: route.query.location || '', // Sync with widget 'location'
-  serviceType: '',                      // Home, Hotel, or Yacht
-  date: route.query.date || '',         // Sync with widget 'date'
-  time: route.query.time || '',         // Sync with widget 'time'
-  message: ''
+  address: '',       
+  notes: '',         
+  location: route.query.location || '',
+  serviceType: '',                      
+  date: route.query.date || '',         
+  time: route.query.time || '',         
 })
 
 const updateAddons = (newSelections) => {
   selections.value = newSelections
 }
+
 const today = new Date().toISOString().split('T')[0]
+
+// Time options for the dropdown
+const timeOptions = [
+  { label: 'ASAP', value: 'ASAP' },
+  { label: '6:00 am', value: '06:00' },
+  { label: '7:00 am', value: '07:00' },
+  { label: '8:00 am', value: '08:00' },
+  { label: '9:00 am', value: '09:00' },
+  { label: '10:00 am', value: '10:00' },
+  { label: '11:00 am', value: '11:00' },
+  { label: '12:00 pm', value: '12:00' },
+  { label: '1:00 pm', value: '13:00' },
+  { label: '2:00 pm', value: '14:00' },
+  { label: '3:00 pm', value: '15:00' },
+  { label: '4:00 pm', value: '16:00' },
+  { label: '5:00 pm', value: '17:00' },
+  { label: '6:00 pm', value: '18:00' },
+  { label: '7:00 pm', value: '19:00' },
+  { label: '8:00 pm', value: '20:00' },
+  { label: '9:00 pm', value: '21:00' },
+  { label: '10:00 pm', value: '22:00' },
+  { label: '11:00 pm', value: '23:00' },
+]
+
+/**
+ * DYNAMIC SELECTION LOGIC
+ */
+const availableTiers = computed(() => {
+  const pkg = packages.find(p => p.name === selectedPackageName.value || p.id === selectedPackageName.value)
+  return pkg ? pkg.tiers : []
+})
+
+/**
+ * AFTER HOURS LOGIC ($120 fee)
+ * Triggers if time is 8:00 PM (20:00) or later, or before 8:00 AM
+ */
+const isAfterHours = computed(() => {
+  if (formData.value.time === 'ASAP' || !formData.value.time) return false
+  const hour = parseInt(formData.value.time.split(':')[0])
+  return hour >= 20 || hour < 8
+})
 
 /**
  * PRICING CALCULATION
  */
 const basePrice = computed(() => {
   if (!selectedPackageName.value) return 0
-  // Find package by ID (widget) or Name (card)
   const pkg = packages.find(p => p.id === selectedPackageName.value || p.name === selectedPackageName.value)
   if (!pkg) return 0
-  
-  // Find tier by level
   const tier = pkg.tiers.find(t => t.level === selectedTierName.value)
-  return tier?.price || pkg.tiers[0].price // Fallback to first tier if not found
+  return tier?.price || pkg.tiers[0].price
 })
+
+const requiresGFE = computed(() => patientStatus.value === 'new' || patientStatus.value === 'changed')
 
 const totalPrice = computed(() => {
   let total = basePrice.value
-  if (isFirstTime.value === 'yes') total += 30 // Good Faith Exam Fee
+  if (requiresGFE.value) total += 30 
+  if (isAfterHours.value) total += 120 
   selections.value.vitamins.forEach(v => total += v.price)
   if (selections.value.glutathione) total += selections.value.glutathione.price
   selections.value.medications.forEach(m => total += m.price)
@@ -80,18 +122,36 @@ const totalPrice = computed(() => {
             <div class="absolute top-0 left-0 w-1 h-full bg-gold"></div>
             <h4 class="font-serif text-2xl text-navy mb-2">Patient Status</h4>
             <p class="text-xs text-slate mb-6">
-              A one-time good faith exam with a provider is required ($30) for new patients booking for the first time.
+              A Good Faith Exam ($30) is required for new patients or if your medical history has changed.
             </p>
             
-            <div class="flex flex-col md:flex-row gap-4">
-              <button @click="isFirstTime = 'yes'" :class="['flex-1 p-4 border rounded-sm text-left transition-all', isFirstTime === 'yes' ? 'border-gold bg-gold/5' : 'border-line']">
+            <div class="flex flex-col gap-4">
+              <button @click="patientStatus = 'new'" :class="['p-4 border rounded-sm text-left transition-all', patientStatus === 'new' ? 'border-gold bg-gold/5' : 'border-line']">
                 <span class="block font-bold text-navy text-[11px] uppercase tracking-widest">New Patient</span>
-                <span class="text-xs text-slate">First-time booking + $30 exam fee</span>
+                <span class="text-xs text-slate">First-time booking (Initial $30 GFE required)</span>
               </button>
-              <button @click="isFirstTime = 'no'" :class="['flex-1 p-4 border rounded-sm text-left transition-all', isFirstTime === 'no' ? 'border-gold bg-gold/5' : 'border-line']">
-                <span class="block font-bold text-navy text-[11px] uppercase tracking-widest">Returning Patient</span>
-                <span class="text-xs text-slate">Exam already completed</span>
+              <button @click="patientStatus = 'changed'" :class="['p-4 border rounded-sm text-left transition-all', patientStatus === 'changed' ? 'border-gold bg-gold/5' : 'border-line']">
+                <span class="block font-bold text-navy text-[11px] uppercase tracking-widest">Returning Patient - Health Changes</span>
+                <span class="text-xs text-slate">My medical condition or medications have changed (Updated $30 GFE required)</span>
               </button>
+              <button @click="patientStatus = 'returning'" :class="['p-4 border rounded-sm text-left transition-all', patientStatus === 'returning' ? 'border-gold bg-gold/5' : 'border-line']">
+                <span class="block font-bold text-navy text-[11px] uppercase tracking-widest">Returning Patient - No Changes</span>
+                <span class="text-xs text-slate">No health changes since my last successful GFE</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="bg-white p-8 rounded border border-gold/20 shadow-sm">
+            <h4 class="font-serif text-2xl text-navy mb-6">Select Treatment</h4>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <select v-model="selectedPackageName" class="border-b border-line py-3 outline-none focus:border-gold text-sm bg-transparent">
+                <option value="">Choose a Package</option>
+                <option v-for="pkg in packages" :key="pkg.id" :value="pkg.name">{{ pkg.name }}</option>
+              </select>
+              <select v-model="selectedTierName" :disabled="!selectedPackageName" class="border-b border-line py-3 outline-none focus:border-gold text-sm bg-transparent">
+                <option value="">Choose a Tier</option>
+                <option v-for="tier in availableTiers" :key="tier.level" :value="tier.level">{{ tier.level }}</option>
+              </select>
             </div>
           </div>
 
@@ -105,6 +165,8 @@ const totalPrice = computed(() => {
               <input type="email" v-model="formData.email" placeholder="Email Address *" class="border-b border-line py-3 outline-none focus:border-gold text-sm" />
               <input type="tel" v-model="formData.phone" placeholder="Phone Number *" class="border-b border-line py-3 outline-none focus:border-gold text-sm" />
               
+              <input type="text" v-model="formData.address" placeholder="Service Address (Street, City, Zip) *" class="md:col-span-2 border-b border-line py-3 outline-none focus:border-gold text-sm" />
+
               <select v-model="formData.serviceType" class="border-b border-line py-3 outline-none focus:border-gold text-sm bg-transparent">
                 <option value="">Setting: Home, Hotel, or Yacht?</option>
                 <option value="Home">Private Residence</option>
@@ -121,15 +183,16 @@ const totalPrice = computed(() => {
               </select>
 
               <input type="date" v-model="formData.date" :min="today" class="border-b border-line py-3 outline-none focus:border-gold text-sm text-slate" />              
+              
               <select v-model="formData.time" class="border-b border-line py-3 outline-none focus:border-gold text-sm bg-transparent">
                 <option value="">Preferred Time</option>
-                <option value="morning">Morning (8am-12pm)</option>
-                <option value="afternoon">Afternoon (12pm-4pm)</option>
-                <option value="evening">Evening (4pm-8pm)</option>
+                <option v-for="t in timeOptions" :key="t.value" :value="t.value">{{ t.label }}</option>
               </select>
+
+              <textarea v-model="formData.notes" placeholder="Additional Notes (Gate codes, specific symptoms, etc.)" class="md:col-span-2 border-b border-line py-3 outline-none focus:border-gold text-sm h-24"></textarea>
             </div>
             <p class="text-[10px] text-slate mt-6 italic">
-              * Note: A $120 after-hours fee applies for services scheduled after 8:00 PM.
+              * Note: A $120 after-hours fee applies for services scheduled at or after 8:00 PM.
             </p>
           </div>
         </div>
@@ -143,9 +206,15 @@ const totalPrice = computed(() => {
                 <span class="capitalize">{{ selectedPackageName }} ({{ selectedTierName }})</span>
                 <span class="font-medium">${{ basePrice }}</span>
               </div>
-              <div v-if="isFirstTime === 'yes'" class="flex justify-between text-xs text-gold-light italic">
-                <span>Good Faith Exam</span>
+              
+              <div v-if="requiresGFE" class="flex justify-between text-xs text-gold-light italic">
+                <span>Good Faith Exam Fee</span>
                 <span>+$30</span>
+              </div>
+
+              <div v-if="isAfterHours" class="flex justify-between text-xs text-gold-light italic">
+                <span>After-Hours Service Fee</span>
+                <span>+$120</span>
               </div>
 
               <div v-for="v in selections.vitamins" :key="v.name" class="flex justify-between text-[11px] opacity-70">
@@ -176,4 +245,4 @@ const totalPrice = computed(() => {
       </div>
     </div>
   </div>
-</template> 
+</template>

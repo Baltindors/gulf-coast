@@ -55,21 +55,32 @@ watch([selectedVitamins, selectedGlutathione, selectedMedications, showAddons], 
         </div>
 
         <div>
-          <h5 class="text-[10px] font-bold text-gold uppercase tracking-widest mb-4 border-b border-gold/10 pb-2">Glutathione (Select Dose)</h5>
+          <h5 class="text-[10px] font-bold text-gold uppercase tracking-widest mb-4 border-b border-gold/10 pb-2">
+            Glutathione (Select Dose)
+          </h5>
           <div class="space-y-3">
-            <label v-for="g in addons.glutathione" :key="g.amount" class="flex items-center group cursor-pointer">
-              <input type="radio" name="glut-dose" :value="g" v-model="selectedGlutathione" class="accent-gold h-4 w-4" />
-              <span class="ml-3 text-xs text-navy group-hover:text-gold transition-colors">{{ g.amount }} (+${{ g.price }})</span>
+            <label class="flex items-center group cursor-pointer">
+              <input 
+                type="radio" 
+                name="glut-dose" 
+                :value="null" 
+                v-model="selectedGlutathione" 
+                class="accent-gold h-4 w-4" 
+              />
+              <span class="ml-3 text-xs text-navy group-hover:text-gold transition-colors italic">None / No Add-on</span>
             </label>
-          </div>
-        </div>
 
-        <div class="md:col-span-2">
-          <h5 class="text-[10px] font-bold text-gold uppercase tracking-widest mb-4 border-b border-gold/10 pb-2">Supportive Medications</h5>
-          <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <label v-for="m in addons.medications" :key="m.name" class="flex items-center group cursor-pointer">
-              <input type="checkbox" :value="m" v-model="selectedMedications" class="accent-gold h-4 w-4" />
-              <span class="ml-3 text-xs text-navy group-hover:text-gold transition-colors">{{ m.name }} (+${{ m.price }})</span>
+            <label v-for="g in addons.glutathione" :key="g.amount" class="flex items-center group cursor-pointer">
+              <input 
+                type="radio" 
+                name="glut-dose" 
+                :value="g" 
+                v-model="selectedGlutathione" 
+                class="accent-gold h-4 w-4" 
+              />
+              <span class="ml-3 text-xs text-navy group-hover:text-gold transition-colors">
+                {{ g.amount }} (+${{ g.price }})
+              </span>
             </label>
           </div>
         </div>
