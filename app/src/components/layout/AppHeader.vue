@@ -1,9 +1,10 @@
 <script setup>
-import { ref } from 'vue'
+import { computed } from 'vue'
 import BaseButton from '@/components/ui/BaseButton.vue'
 import { useRoute } from 'vue-router'
 
 const route = useRoute()
+const isHomePage = computed(() => route.path === '/')
 
 const links = [
   { name: 'Home', path: '/' },
@@ -36,7 +37,15 @@ const links = [
 </nav>
 
     <div class="flex items-center gap-4">
-      <BaseButton to="/contact" variant="ghost">Book Now</BaseButton>
-    </div>
+<BaseButton 
+        to="/contact" 
+        :variant="isHomePage ? 'primary' : 'ghost'"
+        :class="[
+          'shadow-sm transition-all duration-300',
+          isHomePage ? '!bg-gold !text-white border-gold scale-105' : ''
+        ]"
+      >
+        Book Now
+      </BaseButton>    </div>
   </header>
 </template>
