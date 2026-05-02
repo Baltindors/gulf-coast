@@ -20,7 +20,7 @@ const features = [
 
 <template>
   <div class="grid grid-cols-1 md:grid-cols-3 gap-12 max-w-[1080px] mx-auto">
-    <div v-for="feature in features" :key="feature.title" class="text-center flex flex-col items-center group">
+    <div v-for="(feature, index) in features" :key="feature.title" class="text-center flex flex-col items-center group" data-aos="fade-up" :data-aos-delay="index * 200">
       <div class="w-20 h-20 bg-ivory-warm rounded-full flex items-center justify-center mb-6 group-hover:bg-gold/10 transition-colors duration-300 border border-gold/20">
         <svg class="w-9 h-9 text-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor" v-html="feature.icon"></svg>
       </div>
