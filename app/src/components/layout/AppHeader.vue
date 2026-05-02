@@ -22,7 +22,7 @@ const links = [
       <img 
         src="/images/logo_v2.png" 
         alt="Gulf Coast IV Concierge Logo" 
-        class="h-[220px] md:h-[220px] w-auto object-contain transition-all duration-300 -my-8 md:-my-12 translate-y-2 md:translate-y-4"
+        class="h-[180px] md:h-[220px] w-auto object-contain transition-all duration-300 -my-8 md:-my-12 translate-y-2 md:translate-y-4"
       />
     </router-link>
   </div>
@@ -43,7 +43,7 @@ const links = [
       to="/contact" 
       :variant="isHomePage ? 'primary' : 'ghost'"
       :class="[
-        'shadow-sm transition-all duration-300 whitespace-nowrap !px-4 md:!px-8 !py-2 md:!py-3.5 !text-[11px] md:!text-[11px]',
+        'shadow-sm transition-all duration-300 whitespace-nowrap !px-4 md:!px-8 !py-2 md:!py-3.5 !text-[10px] md:!text-[11px]',
         isHomePage ? '!bg-gold !text-white border-gold' : ''
       ]"
     >
