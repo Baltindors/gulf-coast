@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, computed, onUnmounted } from 'vue'
 import BaseButton from '@/components/ui/BaseButton.vue'
 import { useRoute } from 'vue-router'
 
@@ -17,7 +17,6 @@ const links = [
 
 const toggleMenu = () => {
   isMenuOpen.value = !isMenuOpen.value
-  // Prevent scrolling when menu is open
   document.body.style.overflow = isMenuOpen.value ? 'hidden' : ''
 }
 
@@ -25,47 +24,51 @@ const closeMenu = () => {
   isMenuOpen.value = false
   document.body.style.overflow = ''
 }
+
+// Clean up scroll lock if component unmounts
+onUnmounted(() => {
+  document.body.style.overflow = ''
+})
 </script>
 
 <template>
-  <header class="absolute top-0 left-0 right-0 z-50 flex items-center justify-between px-6 md:px-16 py-4 md:py-7">
-    
-    <div class="hidden lg:flex flex-1"></div>
+<header class="absolute top-0 left-0 right-0 z-50 flex items-center justify-between px-6 md:px-16 py-0 md:py-7">
+  
+  <div class="flex-1 lg:flex-none flex items-center justify-center lg:justify-start">
+    <router-link to="/" @click="closeMenu" class="shrink-0">
+      <img 
+        src="/images/logo_v2.png" 
+        alt="Gulf Coast IV Concierge Logo" 
 
-    <div class="flex-1 lg:flex-none flex items-center justify-center">
-      <router-link to="/" @click="closeMenu" class="shrink-0">
-        <img 
-          src="/images/logo_v2.png" 
-          alt="Gulf Coast IV Concierge Logo" 
-          class="h-[180px] md:h-[220px] w-auto object-contain transition-all duration-300 -my-10 md:-my-12 translate-y-2 md:translate-y-4"
-        />
-      </router-link>
-    </div>
+        class="h-[240px] lg:h-[140px] w-auto object-contain transition-all duration-300 -mt-8 lg:-mt-4 -mb-16 lg:-mb-4 translate-y-0"
+      />
+    </router-link>
+  </div>
 
-    <nav class="hidden lg:flex flex-1 items-center justify-center gap-10">
-      <router-link 
-        v-for="link in links" 
-        :key="link.path" 
-        :to="link.path"
-        class="text-[10px] font-bold tracking-[0.25em] uppercase text-navy/70 hover:text-gold transition-colors duration-300"
-      >
-        {{ link.name }}
-      </router-link>
-    </nav>
+  <nav class="hidden lg:flex flex-1 items-center justify-center gap-8 xl:gap-12">
+    <router-link 
+      v-for="link in links" 
+      :key="link.path" 
+      :to="link.path"
+      class="text-[10px] font-bold tracking-[0.25em] uppercase text-navy/70 hover:text-gold transition-colors duration-300 whitespace-nowrap"
+    >
+      {{ link.name }}
+    </router-link>
+  </nav>
 
-    <div class="hidden lg:flex flex-1 items-center justify-end gap-4">
-      <BaseButton 
-        to="/contact" 
-        :variant="isHomePage ? 'primary' : 'ghost'"
-        :class="[
-          'shadow-sm transition-all duration-300 whitespace-nowrap',
-          isHomePage ? '!bg-gold !text-white border-gold' : ''
-        ]"
-      >
-        Book Now
-      </BaseButton>
-    </div>
-  </header>
+  <div class="hidden lg:flex flex-1 items-center justify-end">
+    <BaseButton 
+      to="/contact" 
+      :variant="isHomePage ? 'primary' : 'ghost'"
+      :class="[
+        'shadow-sm transition-all duration-300 whitespace-nowrap',
+        isHomePage ? '!bg-gold !text-white border-gold' : ''
+      ]"
+    >
+      Book Now
+    </BaseButton>
+  </div>
+</header>
 
   <button 
     @click="toggleMenu"
@@ -78,7 +81,7 @@ const closeMenu = () => {
       :class="isMenuOpen ? 'rotate-180' : 'rotate-0'"
       fill="none" viewBox="0 0 24 24" stroke="currentColor"
     >
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7" />
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
     </svg>
   </button>
 
