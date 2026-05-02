@@ -33,42 +33,41 @@ onUnmounted(() => {
 
 <template>
 <header class="absolute top-0 left-0 right-0 z-50 flex items-center justify-between px-6 md:px-16 py-0 md:py-7">
-  
-  <div class="flex-1 lg:flex-none flex items-center justify-center lg:justify-start">
-    <router-link to="/" @click="closeMenu" class="shrink-0">
-      <img 
-        src="/images/logo_v2.png" 
-        alt="Gulf Coast IV Concierge Logo" 
+    
+    <div class="flex-1 lg:flex-none lg:w-[250px] flex items-center justify-center lg:justify-start">
+      <router-link to="/" @click="closeMenu" class="shrink-0">
+        <img 
+          src="/images/logo_v2.png" 
+          alt="Gulf Coast IV Concierge Logo" 
+          class="h-[280px] lg:h-[140px] w-auto object-contain transition-all duration-300 -mt-8 lg:-mt-4 -mb-16 lg:-mb-4 translate-y-0"
+        />
+      </router-link>
+    </div>
 
-        class="h-[240px] lg:h-[140px] w-auto object-contain transition-all duration-300 -mt-8 lg:-mt-4 -mb-16 lg:-mb-4 translate-y-0"
-      />
-    </router-link>
-  </div>
+    <nav class="hidden lg:flex flex-1 items-center justify-center gap-8 xl:gap-12">
+      <router-link 
+        v-for="link in links" 
+        :key="link.path" 
+        :to="link.path"
+        class="text-[10px] font-bold tracking-[0.25em] uppercase text-navy/70 hover:text-gold transition-colors duration-300 whitespace-nowrap"
+      >
+        {{ link.name }}
+      </router-link>
+    </nav>
 
-  <nav class="hidden lg:flex flex-1 items-center justify-center gap-8 xl:gap-12">
-    <router-link 
-      v-for="link in links" 
-      :key="link.path" 
-      :to="link.path"
-      class="text-[10px] font-bold tracking-[0.25em] uppercase text-navy/70 hover:text-gold transition-colors duration-300 whitespace-nowrap"
-    >
-      {{ link.name }}
-    </router-link>
-  </nav>
-
-  <div class="hidden lg:flex flex-1 items-center justify-end">
-    <BaseButton 
-      to="/contact" 
-      :variant="isHomePage ? 'primary' : 'ghost'"
-      :class="[
-        'shadow-sm transition-all duration-300 whitespace-nowrap',
-        isHomePage ? '!bg-gold !text-white border-gold' : ''
-      ]"
-    >
-      Book Now
-    </BaseButton>
-  </div>
-</header>
+    <div class="hidden lg:flex lg:w-[250px] items-center justify-end">
+      <BaseButton 
+        to="/contact" 
+        :variant="isHomePage ? 'primary' : 'ghost'"
+        :class="[
+          'shadow-sm transition-all duration-300 whitespace-nowrap',
+          isHomePage ? '!bg-gold !text-white border-gold' : ''
+        ]"
+      >
+        Book Now
+      </BaseButton>
+    </div>
+  </header>
 
   <button 
     @click="toggleMenu"
