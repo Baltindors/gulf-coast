@@ -37,7 +37,7 @@ const closeMenu = () => {
         <img 
           src="/images/logo_v2.png" 
           alt="Gulf Coast IV Concierge Logo" 
-          class="h-[140px] md:h-[220px] w-auto object-contain transition-all duration-300 -my-10 md:-my-12 translate-y-2 md:translate-y-4"
+          class="h-[180px] md:h-[220px] w-auto object-contain transition-all duration-300 -my-10 md:-my-12 translate-y-2 md:translate-y-4"
         />
       </router-link>
     </div>
