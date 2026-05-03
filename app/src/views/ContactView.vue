@@ -144,11 +144,11 @@ const totalPrice = computed(() => {
           <div class="bg-white p-8 rounded border border-gold/20 shadow-sm">
             <h4 class="font-serif text-2xl text-navy mb-6">Select Treatment</h4>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <select v-model="selectedPackageName" class="border-b border-line py-3 outline-none focus:border-gold text-sm bg-transparent">
+              <select v-model="selectedPackageName" class="appearance-none border-b border-line py-4 h-14 outline-none focus:border-gold text-base md:text-sm bg-transparent">
                 <option value="">Choose a Package</option>
                 <option v-for="pkg in packages" :key="pkg.id" :value="pkg.name">{{ pkg.name }}</option>
               </select>
-              <select v-model="selectedTierName" :disabled="!selectedPackageName" class="border-b border-line py-3 outline-none focus:border-gold text-sm bg-transparent">
+              <select v-model="selectedTierName" :disabled="!selectedPackageName" class="appearance-none border-b border-line py-4 h-14 outline-none focus:border-gold text-base md:text-sm bg-transparent">
                 <option value="">Choose a Tier</option>
                 <option v-for="tier in availableTiers" :key="tier.level" :value="tier.level">{{ tier.level }}</option>
               </select>
@@ -167,27 +167,19 @@ const totalPrice = computed(() => {
               
               <input type="text" v-model="formData.address" placeholder="Service Address (Street, City, Zip) *" class="md:col-span-2 border-b border-line py-3 outline-none focus:border-gold text-sm" />
 
-              <select v-model="formData.serviceType" class="border-b border-line py-3 outline-none focus:border-gold text-sm bg-transparent">
+              <select v-model="formData.serviceType" class="appearance-none border-b border-line py-4 h-14 outline-none focus:border-gold text-base md:text-sm bg-transparent">
                 <option value="">Setting: Home, Hotel, or Yacht?</option>
-                <option value="Home">Private Residence</option>
-                <option value="Hotel">Hotel / Resort</option>
-                <option value="Yacht">Private Yacht</option>
-              </select>
+                </select>
 
-              <select v-model="formData.location" class="border-b border-line py-3 outline-none focus:border-gold text-sm bg-transparent">
+              <select v-model="formData.location" class="appearance-none border-b border-line py-4 h-14 outline-none focus:border-gold text-base md:text-sm bg-transparent">
                 <option value="">Select Service Area</option>
-                <option value="Naples">Naples</option>
-                <option value="Marco Island">Marco Island</option>
-                <option value="Sanibel & Captiva">Sanibel & Captiva</option>
-                <option value="Bonita Springs">Bonita Springs</option>
-              </select>
+                </select>
 
-              <input type="date" v-model="formData.date" :min="today" class="border-b border-line py-3 outline-none focus:border-gold text-sm text-slate" />              
-              
-              <select v-model="formData.time" class="border-b border-line py-3 outline-none focus:border-gold text-sm bg-transparent">
+              <input type="date" v-model="formData.date" :min="today" class="appearance-none border-b border-line py-4 h-14 outline-none focus:border-gold text-base md:text-sm text-navy bg-transparent" />              
+
+              <select v-model="formData.time" class="appearance-none border-b border-line py-4 h-14 outline-none focus:border-gold text-base md:text-sm bg-transparent">
                 <option value="">Preferred Time</option>
-                <option v-for="t in timeOptions" :key="t.value" :value="t.value">{{ t.label }}</option>
-              </select>
+                </select>
 
               <textarea v-model="formData.notes" placeholder="Additional Notes (Gate codes, specific symptoms, etc.)" class="md:col-span-2 border-b border-line py-3 outline-none focus:border-gold text-sm h-24"></textarea>
             </div>
