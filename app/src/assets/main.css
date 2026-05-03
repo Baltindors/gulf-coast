@@ -22,4 +22,22 @@
   body {
     @apply bg-ivory text-navy/90 font-sans antialiased;
   }
+
+  /* Fix for iOS Select and Input styling */
+  input, 
+  select, 
+  textarea {
+    @apply appearance-none rounded-none;
+    /* This removes the iOS inner shadow and default gradient */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+  }
+
+  /* Ensure date inputs have a consistent height on iOS */
+  input[type="date"] {
+    min-height: 2.5rem; 
+    display: flex;
+    align-items: center;
+  }
 }
