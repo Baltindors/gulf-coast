@@ -107,7 +107,7 @@
           "level": "Gold",
           "name": "Gold",
           "price": 589,
-          "mostPopular": true,
+          "mostPopular": false,
           "features": ["1L NS or LR", "B Complex", "Magnesium", "B12", "Taurine"]
         },
         {
@@ -130,7 +130,7 @@
           "level": "Gold",
           "name": "Gold",
           "price": 589,
-          "mostPopular": true,
+          "mostPopular": false,
           "features": ["1L NS", "Glutathione 2000 mg", "Vitamin C 2000 mg"]
         },
         {
