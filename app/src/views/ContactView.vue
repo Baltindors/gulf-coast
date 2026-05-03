@@ -147,12 +147,50 @@ const submitForm = async () => {
 
   isSubmitting.value = true
 
+// Helper to convert military time to AM/PM for the email
+  const formatTime = (timeStr) => {
+    if (!timeStr || timeStr === 'ASAP') return timeStr
+    const [hours, minutes] = timeStr.split(':')
+    const hour = parseInt(hours)
+    const ampm = hour >= 12 ? 'PM' : 'AM'
+    const formattedHour = hour % 12 || 12
+    return `${formattedHour}:${minutes} ${ampm}`
+  }
+
+// Helper to create the Google Calendar Link
+  const generateCalLink = () => {
+    const baseUrl = 'https://calendar.google.com/calendar/render?action=TEMPLATE'
+    const title = encodeURIComponent(`IV Booking: ${formData.value.firstName} (${selectedPackageName.value})`)
+    
+    // Format date for Google (YYYYMMDD) - removing hyphens
+    const dateStamp = formData.value.date.replace(/-/g, '')
+    
+    // Use the 24h time for the link start (assuming 1 hour duration)
+    const startTime = formData.value.time === 'ASAP' ? '080000' : formData.value.time.replace(':', '') + '00'
+    const endHour = formData.value.time === 'ASAP' ? '09' : (parseInt(formData.value.time.split(':')[0]) + 1).toString().padStart(2, '0')
+    const endTime = formData.value.time === 'ASAP' ? '090000' : endHour + formData.value.time.split(':')[1] + '00'
+    
+    const details = encodeURIComponent(
+      `Client: ${formData.value.firstName} ${formData.value.lastName}\n` +
+      `Phone: ${formData.value.phone}\n` +
+      `Package: ${selectedPackageName.value} (${selectedTierName.value})\n` +
+      `Add-ons: ${selections.value.vitamins.map(v => v.name).join(', ')}\n` +
+      `Total: $${totalPrice.value}\n` +
+      `Notes: ${formData.value.notes}`
+    )
+    const location = encodeURIComponent(formData.value.address)
+    
+    return `${baseUrl}&text=${title}&dates=${dateStamp}T${startTime}/${dateStamp}T${endTime}&details=${details}&location=${location}`
+  }
+
   const bookingSummary = {
+    "_subject": `New Booking: ${formData.value.date} @ ${formatTime(formData.value.time)} - ${formData.value.firstName} ${formData.value.lastName}`,
+    "--- CALENDAR ---": generateCalLink(), // Formspree will make this a clickable link
     "Full Name": `${formData.value.firstName} ${formData.value.lastName}`,
     "Email": formData.value.email,
     "Phone": formData.value.phone,
     "Date": formData.value.date,
-    "Time": formData.value.time,
+    "Time": formatTime(formData.value.time),
     "Location": formData.value.location,
     "Address": formData.value.address,
     "Setting": formData.value.serviceType,
