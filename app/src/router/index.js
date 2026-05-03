@@ -45,7 +45,12 @@ const router = createRouter({
       name: 'terms',
       component: () => import('../views/LegalView.vue'),
       props: { type: 'terms' }
-    }    
+    },
+    {
+      path: '/admin',
+      name: 'admin',
+      component: () => import('../views/AdminView.vue')
+    }
   ],
   scrollBehavior(to, from, savedPosition) {
     if (savedPosition) {
