@@ -17,9 +17,8 @@
         return s.replace(/~and~/g, '&')
       }).join('?');
       
-      // This ensures the URL becomes /gulf-coast/packages instead of just /packages
-      // Fixed for custom domain root
-      window.history.replaceState(null, null, l.pathname + decoded + l.hash);
+      // Fixed for custom domain: Ensure decoded path is appended correctly to the root
+      window.history.replaceState(null, null, l.pathname.slice(0, -1) + decoded + l.hash);
     }
   }(window.location))
 </script>
