@@ -17,8 +17,10 @@
         return s.replace(/~and~/g, '&')
       }).join('?');
       
-      // Fixed for custom domain: Ensure decoded path is appended correctly to the root
-      window.history.replaceState(null, null, l.pathname.slice(0, -1) + decoded + l.hash);
+      // FIX: Strip the trailing slash from pathname if it exists to avoid // in URL
+      // This reconstructs the URL without the "?" visible to the user
+      var basePath = l.pathname.slice(0, l.pathname.endsWith('/') ? -1 : undefined);
+      window.history.replaceState(null, null, basePath + decoded + l.hash);
     }
   }(window.location))
 </script>
