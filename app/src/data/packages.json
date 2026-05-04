@@ -11,21 +11,36 @@
           "name": "Coastal Silver",
           "price": 289,
           "mostPopular": false,
-          "features": ["1L NS or LR", "B Complex"]
+          "features": [
+            "1L NS or LR",
+            "B Complex"
+          ]
         },
         {
           "level": "Gold",
           "name": "Coastal Gold",
           "price": 489,
           "mostPopular": true,
-          "features": ["1L NS or LR", "B Complex", "Magnesium", "B12"]
+          "features": [
+            "1L NS or LR",
+            "B Complex",
+            "Magnesium",
+            "B12"
+          ]
         },
         {
           "level": "Platinum",
           "name": "Coastal Platinum",
           "price": 589,
           "mostPopular": false,
-          "features": ["1L NS or LR", "B Complex", "Magnesium", "B12", "Zinc", "Vitamin C"]
+          "features": [
+            "1L NS or LR",
+            "B Complex",
+            "Magnesium",
+            "B12",
+            "Zinc",
+            "Vitamin C"
+          ]
         }
       ]
     },
@@ -41,21 +56,33 @@
           "name": "Silver",
           "price": 389,
           "mostPopular": false,
-          "features": ["1L NS or LR", "1 Medication"]
+          "features": [
+            "1L NS or LR",
+            "1 Medication"
+          ]
         },
         {
           "level": "Gold",
           "name": "Gold",
           "price": 589,
           "mostPopular": true,
-          "features": ["1L NS or LR", "2 Medications", "B Complex"]
+          "features": [
+            "1L NS or LR",
+            "2 Medications",
+            "B Complex"
+          ]
         },
         {
           "level": "Platinum",
           "name": "Platinum",
           "price": 689,
           "mostPopular": false,
-          "features": ["1L NS or LR", "3 Medications", "B Complex", "Magnesium"]
+          "features": [
+            "1L NS or LR",
+            "3 Medications",
+            "B Complex",
+            "Magnesium"
+          ]
         }
       ]
     },
@@ -71,21 +98,38 @@
           "name": "Silver",
           "price": 389,
           "mostPopular": false,
-          "features": ["1L NS or LR", "B Complex", "Glutathione 400 mg"]
+          "features": [
+            "1L NS or LR",
+            "B Complex",
+            "Glutathione 400 mg"
+          ]
         },
         {
           "level": "Gold",
           "name": "Gold",
           "price": 589,
           "mostPopular": true,
-          "features": ["1L NS or LR", "B Complex", "Magnesium", "B12", "Glutathione 600 mg"]
+          "features": [
+            "1L NS or LR",
+            "B Complex",
+            "Magnesium",
+            "B12",
+            "Glutathione 600 mg"
+          ]
         },
         {
           "level": "Platinum",
           "name": "Platinum",
           "price": 689,
           "mostPopular": false,
-          "features": ["1L NS or LR", "B Complex", "Magnesium", "B12", "Zinc", "Glutathione 800 mg"]
+          "features": [
+            "1L NS or LR",
+            "B Complex",
+            "Magnesium",
+            "B12",
+            "Zinc",
+            "Glutathione 800 mg"
+          ]
         }
       ]
     },
@@ -101,21 +145,39 @@
           "name": "Silver",
           "price": 389,
           "mostPopular": false,
-          "features": ["1L NS or LR", "B Complex", "B12", "Taurine"]
+          "features": [
+            "1L NS or LR",
+            "B Complex",
+            "B12",
+            "Taurine"
+          ]
         },
         {
           "level": "Gold",
           "name": "Gold",
           "price": 589,
           "mostPopular": false,
-          "features": ["1L NS or LR", "B Complex", "Magnesium", "B12", "Taurine"]
+          "features": [
+            "1L NS or LR",
+            "B Complex",
+            "Magnesium",
+            "B12",
+            "Taurine"
+          ]
         },
         {
           "level": "Platinum",
           "name": "Platinum",
           "price": 689,
           "mostPopular": false,
-          "features": ["1L NS or LR", "B Complex", "Magnesium", "B12", "Zinc", "Taurine"]
+          "features": [
+            "1L NS or LR",
+            "B Complex",
+            "Magnesium",
+            "B12",
+            "Zinc",
+            "Taurine"
+          ]
         }
       ]
     },
@@ -131,14 +193,22 @@
           "name": "Gold",
           "price": 589,
           "mostPopular": false,
-          "features": ["1L NS", "Glutathione 2000 mg", "Vitamin C 2000 mg"]
+          "features": [
+            "1L NS",
+            "Glutathione 2000 mg",
+            "Vitamin C 2000 mg"
+          ]
         },
         {
           "level": "Platinum",
           "name": "Platinum",
           "price": 689,
           "mostPopular": false,
-          "features": ["1L NS", "Glutathione 3000 mg", "Vitamin C 3000 mg"]
+          "features": [
+            "1L NS",
+            "Glutathione 3000 mg",
+            "Vitamin C 3000 mg"
+          ]
         }
       ]
     }
@@ -151,34 +221,100 @@
   },
   "addons": {
     "vitamins": [
-      { "name": "B12", "price": 45 },
-      { "name": "B Complex", "price": 45 },
-      { "name": "Zinc", "price": 45 },
-      { "name": "Magnesium", "price": 45 },
-      { "name": "Amino Blend", "price": 65 },
-      { "name": "Taurine", "price": 65 },
-      { "name": "Biotin", "price": 55 },
-      { "name": "Vitamin C (Standard)", "price": 50 },
-      { "name": "Vitamin C (High Dose)", "price": 75 }
+      {
+        "name": "B12",
+        "price": 45
+      },
+      {
+        "name": "B Complex",
+        "price": 45
+      },
+      {
+        "name": "Zinc",
+        "price": 45
+      },
+      {
+        "name": "Magnesium",
+        "price": 45
+      },
+      {
+        "name": "Amino Blend",
+        "price": 65
+      },
+      {
+        "name": "Taurine",
+        "price": 65
+      },
+      {
+        "name": "Biotin",
+        "price": 55
+      },
+      {
+        "name": "Vitamin C (Standard)",
+        "price": 50
+      },
+      {
+        "name": "Vitamin C (High Dose)",
+        "price": 75
+      }
     ],
     "glutathione": [
-      { "amount": "400 mg", "price": 60 },
-      { "amount": "600 mg", "price": 80 },
-      { "amount": "800 mg", "price": 100 },
-      { "amount": "1200 mg", "price": 130 },
-      { "amount": "2000 mg", "price": 160 },
-      { "amount": "3000 mg", "price": 200 }
+      {
+        "amount": "400 mg",
+        "price": 60
+      },
+      {
+        "amount": "600 mg",
+        "price": 80
+      },
+      {
+        "amount": "800 mg",
+        "price": 100
+      },
+      {
+        "amount": "1200 mg",
+        "price": 130
+      },
+      {
+        "amount": "2000 mg",
+        "price": 160
+      },
+      {
+        "amount": "3000 mg",
+        "price": 200
+      }
     ],
     "injections": [
-      { "name": "B12 Shot", "price": 45 },
-      { "name": "NAD+ Injection 50 mg", "price": 75 },
-      { "name": "NAD+ Injection 100 mg", "price": 120 }
+      {
+        "name": "B12 Shot",
+        "price": 45
+      },
+      {
+        "name": "NAD+ Injection 50 mg",
+        "price": 75
+      },
+      {
+        "name": "NAD+ Injection 100 mg",
+        "price": 120
+      }
     ],
     "medications": [
-      { "name": "Zofran", "price": 50 },
-      { "name": "Toradol", "price": 50 },
-      { "name": "Pepcid", "price": 50 },
-      { "name": "Benadryl", "price": 50 }
+      {
+        "name": "Zofran",
+        "price": 50
+      },
+      {
+        "name": "Toradol",
+        "price": 50
+      },
+      {
+        "name": "Pepcid",
+        "price": 50
+      },
+      {
+        "name": "Benadryl",
+        "price": 50
+      }
     ]
   }
 }
