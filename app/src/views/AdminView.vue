@@ -46,27 +46,27 @@
       </div>
 
       <!-- Main Dashboard -->
-      <div v-else>
-        <div class="flex justify-between items-center mb-8 border-b border-gray-200 pb-6">
+      <div v-else class="pt-24 lg:pt-32"> <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 border-b border-gold/20 pb-6 gap-6">
           <div>
-            <h1 class="text-4xl font-serif text-[#021E36]">Admin Dashboard</h1>
-            <p class="text-sm text-gray-500 mt-1">Logged in as {{ user.email }}</p>
+            <h1 class="text-4xl font-serif text-navy">Admin Dashboard</h1>
+            <p class="text-xs uppercase tracking-widest text-slate mt-1">Logged in as {{ user.email }}</p>
           </div>
-          <div class="flex items-center space-x-4">
+          
+          <div class="flex items-center gap-4 w-full md:w-auto">
             <button 
               @click="saveChanges" 
               :disabled="isSaving"
-              class="bg-[#C1A172] hover:bg-[#a88b60] disabled:bg-opacity-50 disabled:cursor-not-allowed text-white font-medium py-2 px-6 rounded transition duration-300 shadow">
+              class="flex-1 md:flex-none bg-gold hover:bg-gold-dark disabled:bg-slate/30 disabled:cursor-not-allowed text-white text-[11px] font-bold tracking-[0.2em] uppercase py-3 px-8 rounded-sm transition-all shadow-sm">
               {{ isSaving ? 'Saving...' : 'Save Changes' }}
             </button>
             <button 
               @click="logout" 
-              class="border border-[#021E36] text-[#021E36] hover:bg-gray-100 font-medium py-2 px-6 rounded transition duration-300">
+              class="flex-1 md:flex-none border border-navy text-navy hover:bg-navy hover:text-ivory text-[11px] font-bold tracking-[0.2em] uppercase py-3 px-8 rounded-sm transition-all">
               Sign out
             </button>
           </div>
         </div>
-
+  
         <!-- Deployment Notification -->
         <div v-if="deployNotification" class="bg-green-100 border-l-4 border-green-500 text-green-700 p-4 mb-8" role="alert">
           <p class="font-bold">Success!</p>
@@ -328,7 +328,7 @@ const saveChanges = async () => {
       auth: patInput.value
     });
 
-    const owner = 'Baltindors';
+    const owner = 'baltindors';
     const repo = 'gulf-coast';
     const path = 'app/src/data/packages.json';
 
