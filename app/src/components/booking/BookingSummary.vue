@@ -41,6 +41,11 @@ defineEmits(['submit'])
         <span>${{ v.price }}</span>
       </div>
 
+      <div v-for="i in selections.injections" :key="i.name" class="flex justify-between text-[11px] opacity-70">
+        <span>+ {{ i.name }}</span>
+        <span>${{ i.price }}</span>
+      </div>
+
       <div v-if="selections.glutathione" class="flex justify-between text-[11px] opacity-70">
         <span>+ Glutathione ({{ selections.glutathione.amount }})</span>
         <span>${{ selections.glutathione.price }}</span>

@@ -10,17 +10,19 @@ const emit = defineEmits(['update:selections'])
 const showAddons = ref(null) // null, 'yes', 'no'
 const selectedVitamins = ref([])
 const selectedGlutathione = ref(null)
-const selectedMedications = ref([]) // Added back state tracking
+const selectedMedications = ref([])
+const selectedInjections = ref([])
 
 // Watch for any changes and emit them to the parent
-watch([selectedVitamins, selectedGlutathione, selectedMedications, showAddons], () => {
+watch([selectedVitamins, selectedGlutathione, selectedMedications, selectedInjections, showAddons], () => {
   if (showAddons.value === 'no') {
-    emit('update:selections', { vitamins: [], glutathione: null, medications: [] })
+    emit('update:selections', { vitamins: [], glutathione: null, medications: [], injections: [] })
   } else {
     emit('update:selections', {
       vitamins: selectedVitamins.value,
       glutathione: selectedGlutathione.value,
-      medications: selectedMedications.value
+      medications: selectedMedications.value,
+      injections: selectedInjections.value
     })
   }
 }, { deep: true })
@@ -66,6 +68,16 @@ watch([selectedVitamins, selectedGlutathione, selectedMedications, showAddons], 
             <label v-for="g in addons.glutathione" :key="g.amount" class="flex items-center group cursor-pointer">
               <input type="radio" name="glut-dose" :value="g" v-model="selectedGlutathione" class="accent-gold h-4 w-4" />
               <span class="ml-3 text-xs text-navy group-hover:text-gold transition-colors">{{ g.amount }} (+${{ g.price }})</span>
+            </label>
+          </div>
+        </div>
+
+<div>
+          <h5 class="text-[10px] font-bold text-gold uppercase tracking-widest mb-4 border-b border-gold/10 pb-2">Injections (Multiple)</h5>
+          <div class="space-y-3">
+            <label v-for="i in addons.injections" :key="i.name" class="flex items-center group cursor-pointer">
+              <input type="checkbox" :value="i" v-model="selectedInjections" class="accent-gold h-4 w-4" />
+              <span class="ml-3 text-xs text-navy group-hover:text-gold transition-colors">{{ i.name }} (+${{ i.price }})</span>
             </label>
           </div>
         </div>

@@ -31,7 +31,8 @@ const patientStatus = ref(null)
 const selections = ref({
   vitamins: [],
   glutathione: null,
-  medications: []
+  medications: [],
+  injections: []
 })
 
 /**
@@ -107,6 +108,7 @@ const totalPrice = computed(() => {
   if (requiresGFE.value) total += 30 
   if (isAfterHours.value) total += 120 
   selections.value.vitamins.forEach(v => total += v.price)
+  selections.value.injections.forEach(i => total += i.price) 
   if (selections.value.glutathione) total += selections.value.glutathione.price
   selections.value.medications.forEach(m => total += m.price)
   return total
@@ -205,6 +207,7 @@ const submitForm = async () => {
     "Needs GFE": requiresGFE.value ? 'Yes (+$30)' : 'No',
     "Vitamins": selections.value.vitamins.map(v => v.name).join(', ') || 'None',
     "Glutathione": selections.value.glutathione?.amount || 'None',
+    "Injections": selections.value.injections.map(i => i.name).join(', ') || 'None',
     "Medications": selections.value.medications.map(m => m.name).join(', ') || 'None',
     "After Hours": isAfterHours.value ? 'Yes (+$120)' : 'No',
     "Estimated Total": `$${totalPrice.value}`,
