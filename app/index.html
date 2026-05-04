@@ -18,6 +18,7 @@
       }).join('?');
       
       // This ensures the URL becomes /gulf-coast/packages instead of just /packages
+      // Fixed for custom domain root
       window.history.replaceState(null, null, l.pathname + decoded + l.hash);
     }
   }(window.location))
