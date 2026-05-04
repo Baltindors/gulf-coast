@@ -52,7 +52,7 @@
           </li>
           <li class="text-[13px] text-ivory/75 mt-2">
             <span class="block text-gold/60 text-[10px] uppercase tracking-wider mb-0.5">Email</span>
-            info@gulfcoastiv.com
+            info@gulfcoastivconcierge.com
           </li>
           <li class="text-[13px] text-ivory/75 mt-2">
             <span class="block text-gold/60 text-[10px] uppercase tracking-wider mb-0.5">Hours</span>
