@@ -18,9 +18,7 @@
       }).join('?');
       
       // This ensures the URL becomes /gulf-coast/packages instead of just /packages
-      window.history.replaceState(null, null,
-          l.pathname.slice(0, -1) + decoded + l.hash
-      );
+      window.history.replaceState(null, null, l.pathname + decoded + l.hash);
     }
   }(window.location))
 </script>
