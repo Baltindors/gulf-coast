@@ -38,6 +38,7 @@ jobs:
         working-directory: app
         run: |
           echo "${{ secrets.ENV_FILE }}" > .env
+          echo "VITE_COUPON_DATA='${{ secrets.COUPON_DATA }}'" >> .env
           npm run build
 
       - name: Setup Pages
