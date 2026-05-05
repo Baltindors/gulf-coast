@@ -1,7 +1,9 @@
 <script setup>
 import BaseButton from '@/components/ui/BaseButton.vue'
 
-defineProps({
+import { ref, computed } from 'vue'
+
+const props = defineProps({
   selectedPackage: String,
   selectedTier: String,
   basePrice: Number,
@@ -13,7 +15,35 @@ defineProps({
   error: String
 })
 
-defineEmits(['submit'])
+const emit = defineEmits(['submit', 'apply-coupon'])
+
+const couponInput = ref('')
+const appliedDiscount = ref(0)
+const couponError = ref('')
+const appliedCode = ref('')
+
+const handleApplyCoupon = () => {
+  couponError.value = ''
+  try {
+    // This pulls the data injected by the GitHub Action
+    const validCoupons = JSON.parse(import.meta.env.VITE_COUPON_DATA || '{}')
+    const code = couponInput.value.toUpperCase().trim()
+
+    if (validCoupons[code]) {
+      appliedDiscount.value = validCoupons[code]
+      appliedCode.value = code
+      emit('apply-coupon', { code: appliedCode.value, discount: appliedDiscount.value })
+    } else {
+      couponError.value = 'Invalid code'
+      appliedDiscount.value = 0
+      appliedCode.value = ''
+    }
+  } catch (e) {
+    couponError.value = 'Error processing coupon'
+  }
+}
+
+const finalTotal = computed(() => Math.max(0, props.totalPrice - appliedDiscount.value))
 </script>
 
 <template>
@@ -57,9 +87,30 @@ defineEmits(['submit'])
       </div>
     </div>
 
+<div class="mt-6 mb-6 pt-6 border-t border-gold/10">
+      <label class="text-[10px] uppercase tracking-widest text-ivory/50 block mb-2">Coupon Code</label>
+      <div class="flex gap-2">
+        <input 
+          v-model="couponInput" 
+          type="text" 
+          class="bg-white/5 border border-gold/20 rounded-sm px-3 py-2 text-sm flex-grow focus:border-gold outline-none text-ivory"
+          placeholder="Enter code"
+        />
+        <button 
+          type="button"
+          @click="handleApplyCoupon"
+          class="bg-gold/20 hover:bg-gold/40 text-gold text-[10px] font-bold px-4 py-2 rounded-sm uppercase transition-colors border border-gold/30"
+        >
+          Apply
+        </button>
+      </div>
+      <p v-if="couponError" class="text-red-400 text-[10px] mt-1 uppercase font-bold">{{ couponError }}</p>
+      <p v-if="appliedCode" class="text-green-400 text-[10px] mt-1 uppercase font-bold">Applied: -${{ appliedDiscount }}</p>
+    </div>
+
     <div class="border-t border-gold pb-6 pt-6 flex justify-between items-center mb-8">
       <span class="text-xs uppercase tracking-widest font-bold">Estimated Total</span>
-      <span class="text-3xl font-serif text-gold-light">${{ totalPrice }}</span>
+      <span class="text-3xl font-serif text-gold-light">${{ finalTotal }}</span>
     </div>
 
     <div class="space-y-3">

@@ -26,7 +26,11 @@ const errors = ref({}) // Tracks field-level validation errors
 const selectedPackageName = ref(route.query.service || '')
 const selectedTierName = ref(route.query.tier || '') 
 const patientStatus = ref(null)
+const appliedCoupon = ref({ code: 'None', discount: 0 })
 
+const handleCouponApplied = (data) => {
+  appliedCoupon.value = data
+}
 
 const selections = ref({
   vitamins: [],
@@ -210,7 +214,9 @@ const submitForm = async () => {
     "Injections": selections.value.injections.map(i => i.name).join(', ') || 'None',
     "Medications": selections.value.medications.map(m => m.name).join(', ') || 'None',
     "After Hours": isAfterHours.value ? 'Yes (+$120)' : 'No',
-    "Estimated Total": `$${totalPrice.value}`,
+    "Coupon Used": appliedCoupon.value.code,
+    "Discount": `-$${appliedCoupon.value.discount}`,
+    "Final Total": `$${totalPrice.value - appliedCoupon.value.discount}`,
     "Notes": formData.value.notes
   }
 
@@ -288,6 +294,7 @@ const submitForm = async () => {
               :is-submitting="isSubmitting"
               :error="errors.form"
               @submit="submitForm"
+              @apply-coupon="handleCouponApplied"
             />
           </div>
         </div>
