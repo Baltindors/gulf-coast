@@ -37,9 +37,14 @@ jobs:
       - name: Build
         working-directory: app
         run: |
+          # Create the base .env file
           echo "${{ secrets.ENV_FILE }}" > .env
-          echo "VITE_COUPON_DATA='${{ secrets.COUPON_DATA }}'" >> .env
+          
+          # Run the build
           npm run build
+        env:
+          # This safely injects the JSON string directly into the environment
+          VITE_COUPON_DATA: ${{ secrets.COUPON_DATA }}
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
