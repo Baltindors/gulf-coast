@@ -42,8 +42,8 @@ onUnmounted(() => {
       :class="[
         'w-auto object-contain transition-all duration-500 ease-in-out transform',
         isHomePage 
-          ? 'h-[210px] md:h-[230px] translate-y-11' 
-          : 'h-[210px] md:h-[230px] translate-y-11'
+          ? 'h-[210px] md:h-[230px] translate-y-11 md:translate-y-11' 
+          : 'h-[210px] md:h-[230px] translate-y-16 md:translate-y-11'
       ]"
     />
   </router-link>
