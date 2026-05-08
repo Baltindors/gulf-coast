@@ -18,24 +18,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&family=Pinyon+Script&display=swap" rel="stylesheet">
 
-<script type="text/javascript">
-  // GitHub Pages SPA Hack - Part 2
-  (function(l) {
-    if (l.search[1] === '/' ) {
-      var decoded = l.search.slice(1).split('&').map(function(s) { 
-        return s.replace(/~and~/g, '&')
-      }).join('?');
-      
-      // FIX: Strip the trailing slash from pathname if it exists to avoid // in URL
-      // This reconstructs the URL without the "?" visible to the user
-      var basePath = l.pathname.slice(0, l.pathname.endsWith('/') ? -1 : undefined);
-      window.history.replaceState(null, null, basePath + decoded + l.hash);
-    }
-  }(window.location))
-</script>
-  </head>
-  <body>
+</head>
+<body>
     <div id="app"></div>
     <script type="module" src="/src/main.js"></script>
-  </body>
+</body>
 </html>
