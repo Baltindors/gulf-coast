@@ -2,12 +2,13 @@
 import { ref, watch } from 'vue'
 
 const props = defineProps({
-  addons: { type: Object, required: true }
+  addons: { type: Object, required: true },
+  preselectCustomize: { type: Boolean, default: false }
 })
 
 const emit = defineEmits(['update:selections'])
 
-const showAddons = ref(null) // null, 'yes', 'no'
+const showAddons = ref(props.preselectCustomize ? 'yes' : null)
 const selectedVitamins = ref([])
 const selectedGlutathione = ref(null)
 const selectedMedications = ref([])

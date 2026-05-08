@@ -86,8 +86,20 @@ const timeOptions = [
 /**
  * DYNAMIC SELECTION & PRICING LOGIC
  */
+/**
+ * DYNAMIC SELECTION & PRICING LOGIC
+ */
+const allPackages = computed(() => [
+  ...packages,
+  {
+    id: 'custom-hydration',
+    name: packagesData.custom_hydration.name,
+    tiers: [{ level: 'Base', price: packagesData.custom_hydration.starting_price }]
+  }
+])
+
 const availableTiers = computed(() => {
-  const pkg = packages.find(p => p.name === selectedPackageName.value || p.id === selectedPackageName.value)
+  const pkg = allPackages.value.find(p => p.name === selectedPackageName.value || p.id === selectedPackageName.value)
   return pkg ? pkg.tiers : []
 })
 
@@ -99,7 +111,7 @@ const isAfterHours = computed(() => {
 
 const basePrice = computed(() => {
   if (!selectedPackageName.value) return 0
-  const pkg = packages.find(p => p.id === selectedPackageName.value || p.name === selectedPackageName.value)
+  const pkg = allPackages.value.find(p => p.id === selectedPackageName.value || p.name === selectedPackageName.value)
   if (!pkg) return 0
   const tier = pkg.tiers.find(t => t.level === selectedTierName.value)
   return tier?.price || pkg.tiers[0].price
@@ -262,7 +274,7 @@ const submitForm = async () => {
             <PatientStatusStep v-model="patientStatus" :error="errors.status" />
 
             <TreatmentStep 
-              :packages="packages" 
+              :packages="allPackages" 
               :available-tiers="availableTiers"
               :selected-package="selectedPackageName"
               :selected-tier="selectedTierName"
@@ -271,7 +283,11 @@ const submitForm = async () => {
               @update:tier="val => selectedTierName = val"
             />
 
-            <AddonSelector :addons="addons" @update:selections="val => selections = val" />
+            <AddonSelector 
+              :addons="addons" 
+              :preselect-customize="route.query.service === 'Custom Hydration'"              
+              @update:selections="val => selections = val" 
+            />
 
             <ServiceDetailsStep 
               v-model="formData" 
