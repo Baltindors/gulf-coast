@@ -55,6 +55,9 @@ export const routes = [
     path: '/admin',
     name: 'admin',
     component: () => import('../views/AdminView.vue'),
-    meta: { title: 'Admin Portal | Gulf Coast IV Concierge' }
+    meta: {
+      title: 'Admin Portal | Gulf Coast IV Concierge',
+      robots: 'noindex, nofollow'
+    }
   }
 ]

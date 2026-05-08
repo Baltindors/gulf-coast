@@ -21,6 +21,19 @@ export const createApp = ViteSSG(
     router.afterEach((to) => {
       if (isClient) {
         document.title = to.meta.title || 'Gulf Coast IV Concierge'
+        
+        let robotsMeta = document.querySelector('meta[name="robots"]')
+        
+        if (to.meta.robots) {
+          if (!robotsMeta) {
+            robotsMeta = document.createElement('meta')
+            robotsMeta.setAttribute('name', 'robots')
+            document.head.appendChild(robotsMeta)
+          }
+          robotsMeta.setAttribute('content', to.meta.robots)
+        } else if (robotsMeta) {
+          robotsMeta.remove()
+        }
       }
     })
   }
