@@ -140,7 +140,7 @@ const featuredPackages = computed(() => {
             </ul>
             
             <div data-aos="fade-up" data-aos-delay="700">
-              <BaseButton to="/how-it-works" variant="primary">Learn More</BaseButton>
+              <BaseButton to="/how-it-works" variant="primary">Learn How It Works</BaseButton>
             </div>
           </div>
         </div>
