@@ -76,8 +76,8 @@ const timeOptions = [
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
           </svg>
           <div class="flex-grow min-w-0">
-            <label class="block text-[8px] uppercase tracking-[0.25em] text-slate/60 mb-0.5 font-bold">Location</label>
-            <select v-model="location" class="w-full bg-transparent text-navy font-serif text-[15px] focus:outline-none appearance-none cursor-pointer truncate">
+            <label for="booking-location" class="block text-[8px] uppercase tracking-[0.25em] text-slate/60 mb-0.5 font-bold">Location</label>
+            <select id="booking-location" v-model="location" class="w-full bg-transparent text-navy font-serif text-[15px] focus:outline-none appearance-none cursor-pointer truncate">
               <option v-for="area in serviceAreas" :key="area" :value="area">{{ area }}</option>
             </select>
           </div>
@@ -88,8 +88,8 @@ const timeOptions = [
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
           </svg>
           <div class="flex-grow min-w-0">
-            <label class="block text-[8px] uppercase tracking-[0.25em] text-slate/60 mb-0.5 font-bold">Date</label>
-            <input type="date" v-model="date" :min="today" class="w-full bg-transparent text-navy font-serif text-[15px] focus:outline-none cursor-pointer" />
+            <label for="booking-date" class="block text-[8px] uppercase tracking-[0.25em] text-slate/60 mb-0.5 font-bold">Date</label>
+            <input id="booking-date" type="date" v-model="date" :min="today" class="w-full bg-transparent text-navy font-serif text-[15px] focus:outline-none cursor-pointer" />
           </div>
         </div>
 
@@ -98,8 +98,8 @@ const timeOptions = [
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
           </svg>
           <div class="flex-grow min-w-0">
-            <label class="block text-[8px] uppercase tracking-[0.25em] text-slate/60 mb-0.5 font-bold">Time</label>
-            <select v-model="time" class="w-full bg-transparent text-navy font-serif text-[15px] focus:outline-none appearance-none cursor-pointer">
+            <label for="booking-time" class="block text-[8px] uppercase tracking-[0.25em] text-slate/60 mb-0.5 font-bold">Time</label>
+            <select id="booking-time" v-model="time" class="w-full bg-transparent text-navy font-serif text-[15px] focus:outline-none appearance-none cursor-pointer">
               <option value="" disabled>Select Time</option>
               <option v-for="t in timeOptions" :key="t.value" :value="t.value">{{ t.label }}</option>
             </select>
@@ -111,8 +111,8 @@ const timeOptions = [
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
           </svg>
           <div class="flex-grow min-w-0">
-            <label class="block text-[8px] uppercase tracking-[0.25em] text-slate/60 mb-0.5 font-bold">Service</label>
-            <select v-model="serviceId" class="w-full bg-transparent text-navy font-serif text-[15px] focus:outline-none appearance-none cursor-pointer truncate">
+            <label for="booking-service" class="block text-[8px] uppercase tracking-[0.25em] text-slate/60 mb-0.5 font-bold">Service</label>
+            <select id="booking-service" v-model="serviceId" class="w-full bg-transparent text-navy font-serif text-[15px] focus:outline-none appearance-none cursor-pointer truncate">
               <option value="" disabled>Select Package</option>
               <option v-for="pkg in packagesData.packages" :key="pkg.id" :value="pkg.id">
                 {{ pkg.name }}
@@ -126,8 +126,9 @@ const timeOptions = [
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
           </svg>
           <div class="flex-grow min-w-0">
-            <label class="block text-[8px] uppercase tracking-[0.25em] text-slate/60 mb-0.5 font-bold">Tier</label>
+            <label for="booking-tier" class="block text-[8px] uppercase tracking-[0.25em] text-slate/60 mb-0.5 font-bold">Tier</label>
             <select 
+              id="booking-tier"
               v-model="tierLevel" 
               :disabled="!serviceId"
               class="w-full bg-transparent text-navy font-serif text-[15px] focus:outline-none appearance-none cursor-pointer"
