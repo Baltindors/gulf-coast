@@ -11,7 +11,7 @@ const isHome = computed(() => route.path === '/')
 
 <template>
   <div class="min-h-screen flex flex-col font-sans text-ink bg-ivory relative">
-    <AppHeader />
+    <AppHeader v-if="!route.meta.hideNav" />
     <main 
       class="flex-grow transition-all duration-300"
       :class="[

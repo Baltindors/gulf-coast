@@ -57,7 +57,18 @@ export const routes = [
     component: () => import('../views/AdminView.vue'),
     meta: {
       title: 'Admin Portal | Gulf Coast IV Concierge',
-      robots: 'noindex, nofollow'
+      robots: 'noindex, nofollow',
+      hideNav: true
+    }
+  },
+  {
+    path: '/onboarding',
+    name: 'onboarding',
+    component: () => import('../views/OnboardingView.vue'),
+    meta: {
+      title: 'Employee Portal | Gulf Coast IV Concierge',
+      robots: 'noindex, nofollow',
+      hideNav: true
     }
   }
 ]
