@@ -1,0 +1,38 @@
+{
+  "modules": [
+    {
+      "id": "module_1",
+      "title": "Welcome to Gulf Coast IV",
+      "videoId": "MapBJJvjhoI",
+      "instructions": "Please watch the video to understand our core values and the premium standard of care we provide to every client.",
+      "quiz": {
+        "question": "What is our primary focus when delivering IV therapy?",
+        "options": ["Maximum speed", "Luxury Client Experience", "Cost savings", "Minimal interaction"],
+        "correctAnswer": 1
+      }
+    },
+    {
+      "id": "module_2",
+      "title": "Safety & Protocols",
+      "videoId": "HcGNqrAtsgg",
+      "instructions": "This module covers our strict safety guidelines and infection control protocols. Your adherence ensures client safety.",
+      "quiz": {
+        "question": "When must you sanitize your hands during an appointment?",
+        "options": ["Only upon arrival", "Before and after every client interaction", "Only if visible dirt is present", "At the end of the shift"],
+        "correctAnswer": 1
+      },
+      "resources": [
+        {
+          "title": "Infection Control Guidelines (PDF)",
+          "url": "#"
+        }
+      ]
+    },
+    {
+      "id": "module_3",
+      "title": "Client Communication",
+      "videoId": "EqsgLxuMhLE",
+      "instructions": "Learn the Gulf Coast IV standard for communicating with our high-end clientele."
+    }
+  ]
+}
