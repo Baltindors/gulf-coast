@@ -44,31 +44,35 @@
               </li>
             </ul>
           </div>
-          <div class="lg:col-span-3">
+<div class="lg:col-span-3">
             <div v-if="activeModule" class="bg-white rounded-lg shadow-sm border border-gold/20 p-6 lg:p-8">
               <h2 class="text-3xl font-serif mb-6">{{ activeModule.title }}</h2>
+              
               <div v-show="!showQuiz || isModuleCompleted(activeModule.id) || !activeModule.quiz">
-                <VideoLesson 
-                  :video-id="activeModule.videoId" 
-                  @video-ended="handleVideoEnded" 
-                />
+                <VideoLesson :video-id="activeModule.videoId" @video-ended="handleVideoEnded" />
                 
                 <div v-if="activeModule.instructions" class="prose max-w-none text-slate mb-6">
                   <p>{{ activeModule.instructions }}</p>
                 </div>
+              </div>
 
-                <div v-if="isModuleCompleted(activeModule.id)" class="mt-8 p-6 bg-green-50 border border-green-200 rounded-md flex flex-col sm:flex-row items-center justify-between gap-4 animate-in fade-in">
-                  <div class="flex items-center text-green-800">
-                    <svg class="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              <div v-if="activeModule.resources && activeModule.resources.length > 0" 
+                   v-show="!showQuiz || isModuleCompleted(activeModule.id)"
+                   class="mt-8 border-t border-gold/10 pt-6">
+                <h3 class="text-xl font-serif text-navy mb-4">Downloadable Resources</h3>
+                <div class="grid grid-cols-1 gap-3">
+                  <a 
+                    v-for="(res, idx) in activeModule.resources" 
+                    :key="idx"
+                    :href="res.url"
+                    target="_blank"
+                    class="flex items-center p-4 bg-ivory-warm/30 border border-gold/10 rounded-sm hover:border-gold/40 hover:bg-ivory-warm/50 transition-all group"
+                  >
+                    <svg class="h-5 w-5 text-gold mr-3 group-hover:scale-110 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                     </svg>
-                    <span class="font-bold uppercase tracking-widest text-xs">Module Completed</span>
-                  </div>
-                  <button 
-                    @click="activeIndex < modules.length - 1 ? selectModule(activeIndex + 1) : currentState = 3"
-                    class="bg-navy text-ivory px-6 py-2 rounded-sm text-xs font-bold uppercase tracking-widest hover:bg-navy/90 transition-all">
-                    {{ activeIndex < modules.length - 1 ? 'Next Module' : 'Finish Training' }}
-                  </button>
+                    <span class="text-sm font-sans text-navy uppercase tracking-wider font-medium">{{ res.title }}</span>
+                  </a>
                 </div>
               </div>
 
@@ -77,6 +81,20 @@
                 :quiz="activeModule.quiz" 
                 @passed="completeModule" 
               />
+
+              <div v-if="isModuleCompleted(activeModule.id)" class="mt-8 p-6 bg-green-50 border border-green-200 rounded-md flex flex-col sm:flex-row items-center justify-between gap-4 animate-in fade-in">
+                <div class="flex items-center text-green-800">
+                  <svg class="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  <span class="font-bold uppercase tracking-widest text-xs">Module Completed</span>
+                </div>
+                <button 
+                  @click="activeIndex < modules.length - 1 ? selectModule(activeIndex + 1) : currentState = 3"
+                  class="bg-navy text-ivory px-6 py-2 rounded-sm text-xs font-bold uppercase tracking-widest hover:bg-navy/90 transition-all">
+                  {{ activeIndex < modules.length - 1 ? 'Next Module' : 'Finish Training' }}
+                </button>
+              </div>
             </div>
           </div>
         </div>
