@@ -93,13 +93,13 @@ const finalTotal = computed(() => Math.max(0, props.totalPrice - appliedDiscount
         <input 
           v-model="couponInput" 
           type="text" 
-          class="bg-white/5 border border-gold/20 rounded-sm px-3 py-2 text-sm flex-grow focus:border-gold outline-none text-ivory"
+          class="bg-white/5 border border-gold/20 rounded-sm px-3 py-2 text-sm flex-grow min-w-0 focus:border-gold outline-none text-ivory"
           placeholder="Enter code"
         />
         <button 
           type="button"
           @click="handleApplyCoupon"
-          class="bg-gold/20 hover:bg-gold/40 text-gold text-[10px] font-bold px-4 py-2 rounded-sm uppercase transition-colors border border-gold/30"
+          class="bg-gold/20 hover:bg-gold/40 text-gold text-[10px] font-bold px-4 py-2 rounded-sm uppercase transition-colors border border-gold/30 shrink-0"
         >
           Apply
         </button>
