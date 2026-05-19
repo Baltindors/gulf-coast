@@ -34,16 +34,14 @@ onUnmounted(() => {
 <template>
 <header class="absolute top-0 left-0 right-0 z-50 flex items-center justify-between px-6 md:px-16 py-0 md:py-7">
     
-<div class="flex-1 lg:flex-none lg:w-[250px] flex items-center justify-center lg:justify-start h-16 md:h-24">
-  <router-link to="/" @click="closeMenu" class="relative shrink-0">
+<div class="flex-1 lg:flex-none flex items-center justify-center lg:justify-start h-16 md:h-24">
+  <router-link to="/" @click="closeMenu" class="relative shrink-0 flex items-center">
     <img 
       src="/images/logo_v2.png" 
       alt="Gulf Coast IV Concierge Logo" 
       :class="[
-        'w-auto object-contain transition-all duration-500 ease-in-out transform',
-        isHomePage 
-          ? 'h-[210px] md:h-[200px] translate-y-11 md:translate-y-11' 
-          : 'h-[210px] md:h-[200px] translate-y-16 md:translate-y-11'
+        'w-auto object-contain transition-all duration-300 ease-in-out',
+        isHomePage ? 'h-24 md:h-28' : 'h-16 md:h-20'
       ]"
     />
   </router-link>

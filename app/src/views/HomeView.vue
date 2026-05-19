@@ -46,13 +46,13 @@ const featuredPackages = computed(() => {
       </div>
     </Transition>
 
-    <section class="relative h-[70vh] min-h-[50vh] flex items-center pt-24">
+    <section class="relative min-h-[70vh] flex items-center pt-32 pb-24">
       <div class="absolute inset-0 z-0">
         <img src="/images/banner_desktop.png" alt="Luxury IV Therapy" class="w-full h-full object-cover" />
       </div>
       
       <div class="container relative z-10 mx-auto px-6 md:px-16 text-center">
-        <p class="font-sans text-[11px] font-medium tracking-[0.2em] uppercase text-gold-dark mb-6 translate-y-2 md:translate-y-0'">Naples &bull; Marco Island &bull; SWFL</p>
+        <p class="font-sans text-[11px] font-medium tracking-[0.2em] uppercase text-gold-dark mb-6">Naples &bull; Marco Island &bull; SWFL</p>
         <h1 class="font-serif text-5xl md:text-7xl lg:text-[84px] text-navy font-normal leading-[1.05] mb-8 max-w-[900px] mx-auto">
           Elevated Wellness.<br/>
           <span class="font-script text-gold-dark italic text-[1.1em] block mt-4">Delivered.</span>
