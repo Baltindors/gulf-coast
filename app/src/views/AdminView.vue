@@ -96,9 +96,20 @@
           
           <!-- Packages -->
           <section>
-            <h2 class="text-3xl font-serif text-[#021E36] mb-6">IV Packages</h2>
+            <div class="flex justify-between items-center mb-6">
+              <h2 class="text-3xl font-serif text-[#021E36]">IV Packages</h2>
+              <button @click="triggerAddPackage" class="bg-[#C1A172] hover:bg-[#a88b60] text-white text-xs font-bold uppercase tracking-wider py-2.5 px-5 rounded shadow-sm transition" type="button">
+                + Add Package
+              </button>
+            </div>
             <div class="space-y-8">
               <div v-for="(pkg, pkgIndex) in data.packages" :key="pkg.id" class="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+                <div class="flex justify-between items-center mb-6 pb-4 border-b border-gray-100">
+                  <h3 class="text-xl font-serif text-[#021E36]">Package: {{ pkg.name || pkg.id }}</h3>
+                  <button @click="triggerDeletePackage(pkgIndex)" class="text-xs text-red-600 hover:text-red-800 font-bold uppercase tracking-wider transition" type="button">
+                    Delete Package
+                  </button>
+                </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6 pb-6 border-b border-gray-100">
                   <div>
                     <label class="block text-sm font-medium text-gray-700 mb-1">Package Name</label>
@@ -118,8 +129,13 @@
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                   <div v-for="(tier, tierIndex) in pkg.tiers" :key="tier.level" class="bg-gray-50 p-4 rounded border border-gray-200">
                     <div class="font-semibold text-[#021E36] mb-3 pb-2 border-b border-gray-200 flex justify-between items-center">
-                      {{ tier.level }}
-                      <span class="text-xs font-normal text-gray-500">Tier</span>
+                      <div class="flex items-center gap-2">
+                        <span>{{ tier.level }}</span>
+                        <span class="text-xs font-normal text-gray-500">Tier</span>
+                      </div>
+                      <button @click="triggerDeleteTier(pkgIndex, tierIndex)" class="text-red-500 hover:text-red-700 text-xs font-bold uppercase tracking-wider transition" type="button" title="Delete Tier">
+                        Delete
+                      </button>
                     </div>
                     <div class="mb-3">
                       <label class="block text-xs text-gray-500 mb-1">Name</label>
@@ -133,8 +149,34 @@
                       <input type="checkbox" :name="'pop-'+pkg.id" :checked="tier.mostPopular" @change="setMostPopular(pkgIndex, tierIndex)" class="h-3 w-3 text-[#C1A172] focus:ring-[#C1A172] border-gray-300 rounded" />
                       <label class="ml-2 block text-xs text-gray-700">Most Popular</label>
                     </div>
+                    <div class="mt-4 pt-4 border-t border-gray-200">
+                      <label class="block text-xs font-semibold text-gray-500 mb-2">Features</label>
+                      <div class="space-y-2">
+                        <div v-for="(feature, fIndex) in tier.features" :key="fIndex" class="flex gap-2 items-center">
+                          <input v-model="tier.features[fIndex]" class="flex-grow px-2 py-1 text-sm border border-gray-300 rounded focus:ring-[#C1A172]" />
+                          <button @click="removeTierFeature(pkgIndex, tierIndex, fIndex)" class="text-red-500 hover:text-red-700 text-lg leading-none" type="button">&times;</button>
+                        </div>
+                        <button @click="addTierFeature(pkgIndex, tierIndex)" class="text-xs text-[#C1A172] hover:text-[#a88b60] font-medium" type="button">+ Add Feature</button>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Add Tier Card -->
+                  <div @click="triggerAddTier(pkgIndex)" class="bg-gray-50 border-2 border-dashed border-gray-300 rounded p-6 flex flex-col items-center justify-center min-h-[220px] hover:border-[#C1A172] hover:bg-[#C1A172]/5 transition group cursor-pointer">
+                    <button class="text-sm font-semibold text-gray-500 group-hover:text-[#C1A172] transition flex flex-col items-center gap-2" type="button">
+                      <span class="text-3xl">+</span>
+                      <span>Add Tier</span>
+                    </button>
                   </div>
                 </div>
+              </div>
+
+              <!-- Add Package Dashed Card -->
+              <div @click="triggerAddPackage" class="border-2 border-dashed border-gray-300 rounded-lg p-8 flex flex-col items-center justify-center hover:border-[#C1A172] hover:bg-[#C1A172]/5 transition group cursor-pointer">
+                <button class="font-serif text-lg text-gray-500 group-hover:text-[#C1A172] transition flex items-center gap-2" type="button">
+                  <span class="text-2xl font-sans">+</span>
+                  <span>Add New IV Package</span>
+                </button>
               </div>
             </div>
           </section>
@@ -318,14 +360,67 @@
 
         </div>
       </div>
+    </div>
+  </div>
 
+  <!-- Confirmation Modal -->
+  <div v-if="modal.show" class="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4 animate-fade-in">
+    <div class="bg-white rounded-lg max-w-md w-full p-6 shadow-2xl border border-gray-100 transform transition-all duration-300">
+      <h3 class="text-2xl font-serif text-[#021E36] mb-3">{{ modal.title }}</h3>
+      <p class="text-gray-600 text-sm mb-6">{{ modal.message }}</p>
+      
+      <!-- Add Package Inputs -->
+      <div v-if="modal.type === 'add-package'" class="space-y-4 mb-6">
+        <div>
+          <label class="block text-xs font-semibold uppercase text-gray-500 mb-1">Package ID (unique, lowercase, kebab-case)</label>
+          <input v-model="modal.data.id" placeholder="e.g. customized-recovery" class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-[#C1A172] focus:border-[#C1A172] text-sm" />
+        </div>
+        <div>
+          <label class="block text-xs font-semibold uppercase text-gray-500 mb-1">Package Name</label>
+          <input v-model="modal.data.name" placeholder="e.g. Customized Recovery" class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-[#C1A172] focus:border-[#C1A172] text-sm" />
+        </div>
+        <div>
+          <label class="block text-xs font-semibold uppercase text-gray-500 mb-1">Subtitle</label>
+          <input v-model="modal.data.subtitle" placeholder="e.g. Optimized hangover recovery" class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-[#C1A172] focus:border-[#C1A172] text-sm" />
+        </div>
+      </div>
+      
+      <!-- Add Tier Inputs -->
+      <div v-if="modal.type === 'add-tier'" class="space-y-4 mb-6">
+        <div>
+          <label class="block text-xs font-semibold uppercase text-gray-500 mb-1">Tier Level (e.g. Silver, Gold, Platinum)</label>
+          <input v-model="modal.data.level" placeholder="e.g. Bronze" class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-[#C1A172] focus:border-[#C1A172] text-sm" />
+        </div>
+        <div>
+          <label class="block text-xs font-semibold uppercase text-gray-500 mb-1">Tier Name (display name)</label>
+          <input v-model="modal.data.name" placeholder="e.g. Coastal Bronze" class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-[#C1A172] focus:border-[#C1A172] text-sm" />
+        </div>
+        <div>
+          <label class="block text-xs font-semibold uppercase text-gray-500 mb-1">Price ($)</label>
+          <input type="number" v-model.number="modal.data.price" placeholder="199" class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-[#C1A172] focus:border-[#C1A172] text-sm" />
+        </div>
+      </div>
+
+      <!-- Error Message if invalid -->
+      <div v-if="modal.error" class="mb-4 text-xs text-red-600 font-semibold bg-red-50 p-2.5 rounded border border-red-200">
+        {{ modal.error }}
+      </div>
+
+      <div class="flex justify-end gap-3">
+        <button @click="cancelModal" class="px-4 py-2 border border-gray-300 rounded text-sm text-gray-700 hover:bg-gray-50 transition" type="button">
+          Cancel
+        </button>
+        <button @click="confirmModal" class="px-5 py-2 bg-[#021E36] hover:bg-[#011424] text-white rounded text-sm font-semibold transition" type="button">
+          Confirm
+        </button>
+      </div>
     </div>
   </div>
 </template>
 
 <script setup>
 import { ref, onMounted } from 'vue';
-import { app, auth, db } from '../firebase/config';
+import { auth, db } from '../firebase/config';
 import { GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged } from 'firebase/auth';
 import { collection, getDocs, doc, setDoc } from 'firebase/firestore';
 import { Octokit } from '@octokit/rest';
@@ -478,6 +573,155 @@ const addItem = (category, isAmount = false) => {
   } else {
     data.value.addons[category].push({ name: '', price: 0 });
   }
+};
+
+const removeTierFeature = (pkgIndex, tierIndex, fIndex) => {
+  data.value.packages[pkgIndex].tiers[tierIndex].features.splice(fIndex, 1);
+};
+
+const addTierFeature = (pkgIndex, tierIndex) => {
+  if (!data.value.packages[pkgIndex].tiers[tierIndex].features) {
+    data.value.packages[pkgIndex].tiers[tierIndex].features = [];
+  }
+  data.value.packages[pkgIndex].tiers[tierIndex].features.push('');
+};
+
+// Modal State & Trigger Handlers
+const modal = ref({
+  show: false,
+  type: '',
+  title: '',
+  message: '',
+  error: '',
+  data: {},
+  onConfirm: null
+});
+
+const openModal = (type, title, message, dataInit, onConfirm) => {
+  modal.value = {
+    show: true,
+    type,
+    title,
+    message,
+    error: '',
+    data: { ...dataInit },
+    onConfirm
+  };
+};
+
+const cancelModal = () => {
+  modal.value.show = false;
+};
+
+const confirmModal = () => {
+  modal.value.error = '';
+
+  if (modal.value.type === 'add-package') {
+    const id = modal.value.data.id.trim();
+    const name = modal.value.data.name.trim();
+    if (!id || !name) {
+      modal.value.error = 'Package ID and Name are required.';
+      return;
+    }
+    if (!/^[a-z0-9]+(-[a-z0-9]+)*$/.test(id)) {
+      modal.value.error = 'ID must be lowercase alphanumeric with hyphens (kebab-case), e.g. custom-recovery.';
+      return;
+    }
+    const exists = data.value.packages.some(pkg => pkg.id === id);
+    if (exists) {
+      modal.value.error = 'A package with this ID already exists.';
+      return;
+    }
+  }
+
+  if (modal.value.type === 'add-tier') {
+    const level = modal.value.data.level.trim();
+    const name = modal.value.data.name.trim();
+    const price = modal.value.data.price;
+    if (!level || !name) {
+      modal.value.error = 'Tier Level and Name are required.';
+      return;
+    }
+    if (typeof price !== 'number' || isNaN(price) || price < 0) {
+      modal.value.error = 'Price must be a valid non-negative number.';
+      return;
+    }
+    const pkgIndex = modal.value.data.pkgIndex;
+    const exists = data.value.packages[pkgIndex].tiers.some(t => t.level.toLowerCase() === level.toLowerCase());
+    if (exists) {
+      modal.value.error = `A tier with level "${level}" already exists in this package.`;
+      return;
+    }
+  }
+
+  if (modal.value.onConfirm) {
+    modal.value.onConfirm(modal.value.data);
+  }
+  modal.value.show = false;
+};
+
+const triggerAddPackage = () => {
+  openModal(
+    'add-package',
+    'Add New Package',
+    'Enter the details to create a new package. It will start with an empty list of tiers.',
+    { id: '', name: '', subtitle: '', image: '/images/packages/default.jpg', featured: false, tiers: [] },
+    (dataVal) => {
+      data.value.packages.push({
+        id: dataVal.id.trim(),
+        name: dataVal.name.trim(),
+        subtitle: dataVal.subtitle.trim(),
+        image: dataVal.image,
+        featured: dataVal.featured,
+        tiers: dataVal.tiers
+      });
+    }
+  );
+};
+
+const triggerDeletePackage = (pkgIndex) => {
+  const pkg = data.value.packages[pkgIndex];
+  openModal(
+    'delete-package',
+    'Delete Package',
+    `Are you sure you want to delete the package "${pkg.name || pkg.id}"? This will permanently remove all of its tiers.`,
+    {},
+    () => {
+      data.value.packages.splice(pkgIndex, 1);
+    }
+  );
+};
+
+const triggerAddTier = (pkgIndex) => {
+  openModal(
+    'add-tier',
+    'Add New Tier',
+    'Specify the details for the new tier of this package.',
+    { pkgIndex, level: '', name: '', price: 0, mostPopular: false, features: [] },
+    (dataVal) => {
+      data.value.packages[pkgIndex].tiers.push({
+        level: dataVal.level.trim(),
+        name: dataVal.name.trim(),
+        price: dataVal.price,
+        mostPopular: dataVal.mostPopular,
+        features: dataVal.features
+      });
+    }
+  );
+};
+
+const triggerDeleteTier = (pkgIndex, tierIndex) => {
+  const pkg = data.value.packages[pkgIndex];
+  const tier = pkg.tiers[tierIndex];
+  openModal(
+    'delete-tier',
+    'Delete Tier',
+    `Are you sure you want to delete the tier "${tier.level}" (${tier.name}) from the package "${pkg.name}"?`,
+    {},
+    () => {
+      pkg.tiers.splice(tierIndex, 1);
+    }
+  );
 };
 
 const saveChanges = async () => {

@@ -17,7 +17,7 @@ export const createApp = ViteSSG(
       }
     }
   },
-  ({ app, router, isClient }) => {
+  ({ app: _app, router, isClient }) => {
     router.afterEach((to) => {
       if (isClient) {
         document.title = to.meta.title || 'Gulf Coast IV Concierge'
