@@ -1,23 +1,22 @@
 <script setup>
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import { ref, computed } from 'vue'
 import packagesData from '@/data/packages.json'
 import SectionHeader from '@/components/ui/SectionHeader.vue'
 import AddonSelector from '@/components/booking/AddonSelector.vue'
-import BookingSuccess from '@/components/booking/BookingSuccess.vue'
 import PatientStatusStep from '@/components/booking/PatientStatusStep.vue'
 import BookingSummary from '@/components/booking/BookingSummary.vue'
 import TreatmentStep from '@/components/booking/TreatmentStep.vue'
 import ServiceDetailsStep from '@/components/booking/ServiceDetailsStep.vue'
 
 const route = useRoute()
+const router = useRouter()
 const { packages, addons } = packagesData
 
 /**
  * UI & SUBMISSION STATE
  */
 const isSubmitting = ref(false)
-const isSuccess = ref(false)
 const errors = ref({}) // Tracks field-level validation errors
 
 /**
@@ -243,8 +242,7 @@ const submitForm = async () => {
     })
 
     if (response.ok) {
-      isSuccess.value = true
-      window.scrollTo({ top: 0, behavior: 'smooth' })
+      router.push('/success')
     } else {
       // Handle server-side errors
       const data = await response.json()
@@ -262,57 +260,51 @@ const submitForm = async () => {
   <div class="bg-ivory pt-32 pb-24 min-h-screen">
     <div class="container mx-auto px-6 md:px-16">
       
-      <Transition enter-active-class="transition duration-700 ease-out" enter-from-class="opacity-0 translate-y-8" enter-to-class="opacity-100 translate-y-0">
-        <BookingSuccess v-if="isSuccess" />
-      </Transition>
+      <SectionHeader title="Finalize Your" accent="Reservation" />
 
-      <div v-if="!isSuccess" class="animate-in fade-in duration-500">
-        <SectionHeader title="Finalize Your" accent="Reservation" />
+      <div class="max-w-7xl mx-auto flex flex-col lg:flex-row gap-12 mt-12">
+        <div class="lg:w-2/3 space-y-8">
+          <PatientStatusStep v-model="patientStatus" :error="errors.status" />
 
-        <div class="max-w-7xl mx-auto flex flex-col lg:flex-row gap-12 mt-12">
-          <div class="lg:w-2/3 space-y-8">
-            <PatientStatusStep v-model="patientStatus" :error="errors.status" />
+          <TreatmentStep 
+            :packages="allPackages" 
+            :available-tiers="availableTiers"
+            :selected-package="selectedPackageName"
+            :selected-tier="selectedTierName"
+            :errors="errors"
+            @update:package="val => selectedPackageName = val"
+            @update:tier="val => selectedTierName = val"
+          />
 
-            <TreatmentStep 
-              :packages="allPackages" 
-              :available-tiers="availableTiers"
-              :selected-package="selectedPackageName"
-              :selected-tier="selectedTierName"
-              :errors="errors"
-              @update:package="val => selectedPackageName = val"
-              @update:tier="val => selectedTierName = val"
-            />
+          <AddonSelector 
+            :addons="addons" 
+            :preselect-customize="route.query.service === 'Custom Hydration'"              
+            @update:selections="val => selections = val" 
+          />
 
-            <AddonSelector 
-              :addons="addons" 
-              :preselect-customize="route.query.service === 'Custom Hydration'"              
-              @update:selections="val => selections = val" 
-            />
+          <ServiceDetailsStep 
+            v-model="formData" 
+            :errors="errors" 
+            :time-options="timeOptions" 
+            :today="today" 
+          />
+          
+        </div>
 
-            <ServiceDetailsStep 
-              v-model="formData" 
-              :errors="errors" 
-              :time-options="timeOptions" 
-              :today="today" 
-            />
-            
-          </div>
-
-          <div class="lg:w-1/3">
-            <BookingSummary 
-              :selected-package="selectedPackageName"
-              :selected-tier="selectedTierName"
-              :base-price="basePrice"
-              :requires-GFE="requiresGFE"
-              :is-after-hours="isAfterHours"
-              :selections="selections"
-              :total-price="totalPrice"
-              :is-submitting="isSubmitting"
-              :error="errors.form"
-              @submit="submitForm"
-              @apply-coupon="handleCouponApplied"
-            />
-          </div>
+        <div class="lg:w-1/3">
+          <BookingSummary 
+            :selected-package="selectedPackageName"
+            :selected-tier="selectedTierName"
+            :base-price="basePrice"
+            :requires-GFE="requiresGFE"
+            :is-after-hours="isAfterHours"
+            :selections="selections"
+            :total-price="totalPrice"
+            :is-submitting="isSubmitting"
+            :error="errors.form"
+            @submit="submitForm"
+            @apply-coupon="handleCouponApplied"
+          />
         </div>
       </div>
     </div>

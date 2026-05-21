@@ -38,6 +38,12 @@ export const routes = [
     meta: { title: 'Book Your IV Therapy | Gulf Coast IV Concierge' }
   },
   {
+    path: '/success',
+    name: 'success',
+    component: () => import('../views/SuccessView.vue'),
+    meta: { title: 'Request Received | Gulf Coast IV Concierge' }
+  },
+  {
     path: '/privacy',
     name: 'privacy',
     component: () => import('../views/LegalView.vue'),
