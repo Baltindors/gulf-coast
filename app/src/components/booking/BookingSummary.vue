@@ -24,10 +24,10 @@ const couponError = ref('')
 const calculatedDiscount = computed(() => {
   if (!activeCoupon.value) return 0
   if (activeCoupon.value.type === 'percentage') {
-    return props.totalPrice * (activeCoupon.value.value / 100)
+    return props.totalPrice * (Number(activeCoupon.value.value) / 100)
   }
   if (activeCoupon.value.type === 'fixed') {
-    return activeCoupon.value.value
+    return Number(activeCoupon.value.value)
   }
   return 0
 })

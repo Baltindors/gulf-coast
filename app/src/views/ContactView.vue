@@ -226,8 +226,8 @@ const submitForm = async () => {
     "Medications": selections.value.medications.map(m => m.name).join(', ') || 'None',
     "After Hours": isAfterHours.value ? 'Yes (+$120)' : 'No',
     "Coupon Used": appliedCoupon.value.code,
-    "Discount": `-$${appliedCoupon.value.discount.toFixed(2)}`,
-    "Final Total": `$${(totalPrice.value - appliedCoupon.value.discount).toFixed(2)}`,
+    "Discount": `-$${Number(appliedCoupon.value.discount || 0).toFixed(2)}`,
+    "Final Total": `$${(totalPrice.value - Number(appliedCoupon.value.discount || 0)).toFixed(2)}`,
     "Notes": formData.value.notes
   }
 
