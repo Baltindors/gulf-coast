@@ -1,7 +1,7 @@
 <script setup>
 import BaseButton from '@/components/ui/BaseButton.vue'
 
-import { ref, computed } from 'vue'
+import { ref, computed, watch } from 'vue'
 
 const props = defineProps({
   selectedPackage: String,
@@ -18,32 +18,60 @@ const props = defineProps({
 const emit = defineEmits(['submit', 'apply-coupon'])
 
 const couponInput = ref('')
-const appliedDiscount = ref(0)
+const activeCoupon = ref(null)
 const couponError = ref('')
-const appliedCode = ref('')
+
+const calculatedDiscount = computed(() => {
+  if (!activeCoupon.value) return 0
+  if (activeCoupon.value.type === 'percentage') {
+    return props.totalPrice * (activeCoupon.value.value / 100)
+  }
+  if (activeCoupon.value.type === 'fixed') {
+    return activeCoupon.value.value
+  }
+  return 0
+})
 
 const handleApplyCoupon = () => {
   couponError.value = ''
   try {
     // This pulls the data injected by the GitHub Action
     const validCoupons = JSON.parse(import.meta.env.VITE_COUPON_DATA || '{}')
-    const code = couponInput.value.toUpperCase().trim()
+    
+    // Normalize validCoupons keys to uppercase for case-insensitive lookup
+    const normalizedCoupons = {}
+    for (const key in validCoupons) {
+      normalizedCoupons[key.toUpperCase()] = validCoupons[key]
+    }
 
-    if (validCoupons[code]) {
-      appliedDiscount.value = validCoupons[code]
-      appliedCode.value = code
-      emit('apply-coupon', { code: appliedCode.value, discount: appliedDiscount.value })
+    const code = couponInput.value.toUpperCase().trim()
+    const coupon = normalizedCoupons[code]
+
+    if (coupon) {
+      if (coupon.expires && new Date() > new Date(coupon.expires)) {
+        couponError.value = 'Coupon has expired'
+        activeCoupon.value = null
+        return
+      }
+      activeCoupon.value = { code, ...coupon }
     } else {
       couponError.value = 'Invalid code'
-      appliedDiscount.value = 0
-      appliedCode.value = ''
+      activeCoupon.value = null
     }
-  } catch (e) {
+  } catch {
     couponError.value = 'Error processing coupon'
+    activeCoupon.value = null
   }
 }
 
-const finalTotal = computed(() => Math.max(0, props.totalPrice - appliedDiscount.value))
+const finalTotal = computed(() => Math.max(0, props.totalPrice - calculatedDiscount.value))
+
+watch([calculatedDiscount, activeCoupon], () => {
+  emit('apply-coupon', {
+    code: activeCoupon.value?.code || 'None',
+    discount: calculatedDiscount.value
+  })
+})
 </script>
 
 <template>
@@ -105,12 +133,12 @@ const finalTotal = computed(() => Math.max(0, props.totalPrice - appliedDiscount
         </button>
       </div>
       <p v-if="couponError" class="text-red-400 text-[10px] mt-1 uppercase font-bold">{{ couponError }}</p>
-      <p v-if="appliedCode" class="text-green-400 text-[10px] mt-1 uppercase font-bold">Applied: -${{ appliedDiscount }}</p>
+      <p v-if="activeCoupon" class="text-green-400 text-[10px] mt-1 uppercase font-bold">Applied: -${{ calculatedDiscount.toFixed(2) }}</p>
     </div>
 
     <div class="border-t border-gold pb-6 pt-6 flex justify-between items-center mb-8">
       <span class="text-xs uppercase tracking-widest font-bold">Estimated Total</span>
-      <span class="text-3xl font-serif text-gold-light">${{ finalTotal }}</span>
+      <span class="text-3xl font-serif text-gold-light">${{ finalTotal.toFixed(2) }}</span>
     </div>
 
     <div class="space-y-3">

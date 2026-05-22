@@ -226,8 +226,8 @@ const submitForm = async () => {
     "Medications": selections.value.medications.map(m => m.name).join(', ') || 'None',
     "After Hours": isAfterHours.value ? 'Yes (+$120)' : 'No',
     "Coupon Used": appliedCoupon.value.code,
-    "Discount": `-$${appliedCoupon.value.discount}`,
-    "Final Total": `$${totalPrice.value - appliedCoupon.value.discount}`,
+    "Discount": `-$${appliedCoupon.value.discount.toFixed(2)}`,
+    "Final Total": `$${(totalPrice.value - appliedCoupon.value.discount).toFixed(2)}`,
     "Notes": formData.value.notes
   }
 
@@ -248,7 +248,7 @@ const submitForm = async () => {
       const data = await response.json()
       errors.value = { form: data.error || 'There was a problem sending your request.' }
     }
-  } catch (error) {
+  } catch {
     errors.value = { form: 'Network error. Please check your connection.' }
   } finally {
     isSubmitting.value = false
