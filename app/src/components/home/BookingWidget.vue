@@ -141,10 +141,10 @@ const timeOptions = [
           </div>
         </div>
 
-        <div class="px-4 py-2">
+<div class="px-4 py-2">
           <button 
             @click="handleBooking"
-            class="w-full bg-navy text-ivory text-[9px] font-bold tracking-[0.2em] py-5 rounded-md uppercase flex items-center justify-center gap-2 hover:bg-navy/90 transition-all duration-300"
+            class="w-full bg-navy text-ivory text-[9px] font-bold tracking-[0.2em] py-5 rounded-md uppercase flex items-center justify-center gap-2 hover:bg-navy/90 transition-all duration-300 cursor-pointer"
           >
             Book Now
             <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">

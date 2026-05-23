@@ -72,9 +72,9 @@ onUnmounted(() => {
     </div>
   </header>
 
-  <button 
+<button 
     @click="toggleMenu"
-    class="lg:hidden fixed bottom-8 right-8 z-[100] w-14 h-14 bg-navy text-gold rounded-full shadow-2xl flex items-center justify-center transition-transform active:scale-95 border border-gold/30"
+    class="lg:hidden fixed bottom-8 right-8 z-[100] w-14 h-14 bg-navy text-gold rounded-full shadow-2xl flex items-center justify-center transition-transform active:scale-95 border border-gold/30 cursor-pointer"
     aria-label="Toggle Menu"
   >
     <svg 
