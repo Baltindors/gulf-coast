@@ -177,10 +177,12 @@ const featuredPackages = computed(() => {
 .splash-enter-active,
 .splash-leave-active {
   transition: opacity 1.5s ease-in-out;
+  pointer-events: none;
 }
 
 .splash-enter-from,
 .splash-leave-to {
   opacity: 0;
+  pointer-events: none;
 }
 </style>
