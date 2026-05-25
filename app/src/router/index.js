@@ -38,6 +38,24 @@ export const routes = [
     meta: { title: 'Book Your IV Therapy | Gulf Coast IV Concierge' }
   },
   {
+    path: '/weddings',
+    name: 'weddings',
+    component: () => import('../views/BridalLandingView.vue'),
+    meta: { title: 'Bridal & Wedding Party IV Therapy | Gulf Coast IV Concierge' }
+  },
+  {
+    path: '/clubhouse',
+    name: 'clubhouse',
+    component: () => import('../views/ClubhouseLandingView.vue'),
+    meta: { title: 'Golf & Tennis IV Performance | Gulf Coast IV Concierge' }
+  },
+  {
+    path: '/inquire',
+    name: 'inquire',
+    component: () => import('../views/InquireView.vue'),
+    meta: { title: 'Contact Us | Gulf Coast IV Concierge' }
+  },
+  {
     path: '/success',
     name: 'success',
     component: () => import('../views/SuccessView.vue'),

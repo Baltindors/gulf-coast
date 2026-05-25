@@ -36,7 +36,8 @@
           <li><router-link to="/packages" class="text-[13px] text-ivory/75 hover:text-gold-light transition-colors">Our Packages</router-link></li>
           <li><router-link to="/how-it-works" class="text-[13px] text-ivory/75 hover:text-gold-light transition-colors">How It Works</router-link></li>
           <li><router-link to="/faqs" class="text-[13px] text-ivory/75 hover:text-gold-light transition-colors">FAQs</router-link></li>
-          <li><router-link to="/contact" class="text-[13px] text-ivory/75 hover:text-gold-light transition-colors">Contact & Booking</router-link></li>
+          <li><router-link to="/contact" class="text-[13px] text-ivory/75 hover:text-gold-light transition-colors">Book an Appointment</router-link></li>
+<li><router-link to="/inquire" class="text-[13px] text-ivory/75 hover:text-gold-light transition-colors">General Inquiries</router-link></li>
         </ul>
       </div>
 
