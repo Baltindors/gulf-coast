@@ -94,5 +94,26 @@ export const routes = [
       robots: 'noindex, nofollow',
       hideNav: true
     }
+  },
+  // B2B Partnership Hub
+  {
+    path: '/partnerships',
+    name: 'partnerships',
+    component: () => import('../views/PartnershipsHubView.vue'),
+    meta: {
+      title: 'Partner with Us | Gulf Coast IV Concierge',
+      robots: 'index, follow' // SEO Strategy: Indexed for organic search
+    }
+  },
+  // B2B Partnership Spokes (Dynamic)
+  {
+    path: '/partnerships/:industry',
+    name: 'partnership-spoke',
+    component: () => import('../views/PartnershipsSpokeView.vue'),
+    meta: {
+      // The title and robots tag will be updated dynamically in the component 
+      // or via the router afterEach hook based on if it's a private deal
+      robots: 'index, follow'
+    }
   }
 ]

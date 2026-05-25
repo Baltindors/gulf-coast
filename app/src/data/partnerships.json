@@ -1,0 +1,52 @@
+{
+    "hub": {
+        "title": "Elevate Your Guest Experience",
+        "description": "Partner with Gulf Coast IV Concierge to offer premium, on-demand wellness services to your clientele. Zero overhead. Generous revenue share. Effortless integration."
+    },
+    "industries": {
+        "yachts": {
+            "title": "Private Yacht Charters",
+            "accent": "Exclusive Wellness",
+            "description": "Provide your charter guests with the ultimate luxury amenity. Our licensed nurses board directly at the marina to deliver hydration and recovery, ensuring your guests maximize their time on the water.",
+            "benefits": [
+                "Dockside or on-water boarding",
+                "Discreet, white-glove service",
+                "Custom hangover & sun-recovery blends"
+            ],
+            "private": false
+        },
+        "weddings": {
+            "title": "Wedding Planners & Venues",
+            "accent": "Bridal Radiance",
+            "description": "Add a high-ticket wellness amenity to your wedding packages. We offer bridal prep for glowing skin and next-day recovery for the entire wedding party.",
+            "benefits": [
+                "Bridal suite dispatch",
+                "Group recovery discounts",
+                "Seamless coordination with your itinerary"
+            ],
+            "private": false
+        },
+        "hotels": {
+            "title": "Luxury Hotels & Resorts",
+            "accent": "In-Room Wellness",
+            "description": "Transform your room service menu. Offer on-demand IV therapy directly to your guests' suites without staffing a full-time medical facility.",
+            "benefits": [
+                "Zero medical overhead or liability",
+                "Automated revenue share",
+                "Premium co-branded marketing materials"
+            ],
+            "private": false
+        },
+        "private-exclusive": {
+            "title": "Exclusive Partnership",
+            "accent": "Private Deal",
+            "description": "A custom negotiated wellness program tailored exclusively for your VIP members.",
+            "benefits": [
+                "Custom pricing tiers",
+                "Dedicated concierge hotline",
+                "Priority dispatch"
+            ],
+            "private": true
+        }
+    }
+}
