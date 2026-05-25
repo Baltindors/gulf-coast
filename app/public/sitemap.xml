@@ -40,4 +40,8 @@
     <loc>https://gulfcoastivconcierge.com/partnerships/hotels</loc>
     <priority>0.7</priority>
   </url>
+  <url>
+    <loc>https://gulfcoastivconcierge.com/partnerships/golf-clubs</loc>
+    <priority>0.7</priority>
+  </url>
 </urlset>
