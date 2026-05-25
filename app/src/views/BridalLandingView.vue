@@ -28,7 +28,7 @@ import BaseButton from '@/components/ui/BaseButton.vue'
           <BaseButton :to="{ path: '/contact', query: { service: 'Coastal Radiance IV' } }" variant="primary">
             Book Bridal Prep
           </BaseButton>
-          <BaseButton :to="{ path: '/contact', query: { service: 'Coastal Reset IV' } }" variant="outline-gold">
+          <BaseButton :to="{ path: '/inquire', query: { type: 'Group Booking' } }" variant="outline-gold">
             Book Party Recovery
           </BaseButton>
         </div>
@@ -80,8 +80,8 @@ import BaseButton from '@/components/ui/BaseButton.vue'
     <p class="text-slate leading-relaxed mb-6">
       A curated menu for bridesmaids and groomsmen. Hydrate and recover together after the bachelorette party or rehearsal dinner. Fast relief from long nights with group discounts available.
     </p>
-    <BaseButton :to="{ path: '/contact', query: { service: 'Coastal Reset IV', tier: 'Gold' } }" variant="ghost" class="!px-0 !justify-start">
-      Explore Party Recovery &rarr;
+    <BaseButton :to="{ path: '/inquire', query: { type: 'Group Booking' } }" variant="ghost" class="!px-0 !justify-start">
+      Inquire About Party Recovery &rarr;
     </BaseButton>
   </div>
 </div>
