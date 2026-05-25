@@ -69,7 +69,7 @@ import BaseButton from '@/components/ui/BaseButton.vue'
 <div class="flex flex-col gap-6 group">
             <div class="aspect-[4/3] rounded-lg relative overflow-hidden shadow-sm group/img">
                <img 
-                 src="/images/post-game.jpg" 
+                 src="/images/post-game2.jpg" 
                  alt="Post-Game Rapid Recovery" 
                  class="w-full h-full object-cover object-center transition-transform duration-700 group-hover/img:scale-105"
                />
