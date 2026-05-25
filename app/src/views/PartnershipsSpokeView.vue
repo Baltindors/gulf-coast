@@ -1,7 +1,6 @@
 <script setup>
 import { computed, onMounted } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
-import SectionHeader from '@/components/ui/SectionHeader.vue'
 import BaseButton from '@/components/ui/BaseButton.vue'
 import partnershipsData from '@/data/partnerships.json'
 
@@ -38,25 +37,43 @@ onMounted(() => {
   <div class="bg-ivory pt-32 pb-24 min-h-screen" v-if="industryData">
     <div class="container mx-auto px-6 md:px-16">
       
-<div class="mb-12 relative z-[60]">
-  <button 
-    @click="router.push({ name: 'partnerships' })" 
-    class="inline-flex items-center p-3 -ml-3 text-[10px] font-bold uppercase tracking-[0.2em] text-gold hover:text-navy transition-all duration-200 cursor-pointer"
-  >
-    <span class="mr-2 text-lg leading-none transform -translate-y-[1px]">&larr;</span> 
-    Back to Partnerships Hub
-  </button>
-</div>
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-20">
+        
+        <div>
+          <div class="mb-12 relative z-[60]">
+            <button 
+              @click="router.push({ name: 'partnerships' })" 
+              class="inline-flex items-center p-3 -ml-3 text-[10px] font-bold uppercase tracking-[0.2em] text-gold hover:text-navy transition-all duration-200 cursor-pointer"
+            >
+              <span class="mr-2 text-lg leading-none transform -translate-y-[1px]">&larr;</span> 
+              Back to Partnerships Hub
+            </button>
+          </div>
 
-      <SectionHeader 
-        tag="PARTNER PROGRAM"
-        :title="industryData.title"
-        :accent="industryData.accent"
-        :description="industryData.description"
-      />
+          <p class="font-sans uppercase tracking-[0.18em] text-[11px] font-medium text-gold-dark mb-3">
+            PARTNER PROGRAM
+          </p>
+          <h1 class="font-serif text-5xl font-normal text-navy leading-[1.1] mb-6">
+            {{ industryData.title }}
+            <span class="font-script text-[40px] text-gold block mt-2">{{ industryData.accent }}</span>
+          </h1>
+          <p class="text-slate text-lg leading-relaxed">
+            {{ industryData.description }}
+          </p>
+        </div>
 
-      <div class="max-w-4xl mx-auto mt-16 bg-white border border-line p-10 md:p-16 shadow-sm">
+        <div class="relative aspect-[4/3] rounded-sm overflow-hidden shadow-md">
+          <img 
+            :src="industryData.image" 
+            :alt="industryData.title" 
+            class="w-full h-full object-cover"
+          />
+          <div class="absolute inset-4 border border-gold/40 pointer-events-none"></div>
+        </div>
+        
+      </div> <div class="max-w-4xl mx-auto bg-white border border-line p-10 md:p-16 shadow-sm">
         <h3 class="font-serif text-3xl text-navy mb-8 border-b border-gold/20 pb-4">Program Benefits</h3>
+        
         <ul class="space-y-6 mb-12">
           <li v-for="(benefit, index) in industryData.benefits" :key="index" class="flex items-start">
             <svg class="w-6 h-6 text-gold mr-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">

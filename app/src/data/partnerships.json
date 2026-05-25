@@ -8,6 +8,7 @@
             "title": "Private Yacht Charters",
             "accent": "Exclusive Wellness",
             "description": "Provide your charter guests with the ultimate luxury amenity. Our licensed nurses board directly at the marina to deliver hydration and recovery, ensuring your guests maximize their time on the water.",
+            "image": "/images/Receive_Concierge_Service.jpg",
             "benefits": [
                 "Dockside or on-water boarding",
                 "Discreet, white-glove service",
@@ -19,6 +20,7 @@
             "title": "Wedding Planners & Venues",
             "accent": "Bridal Radiance",
             "description": "Add a high-ticket wellness amenity to your wedding packages. We offer bridal prep for glowing skin and next-day recovery for the entire wedding party.",
+            "image": "/images/bride.jpg",
             "benefits": [
                 "Bridal suite dispatch",
                 "Group recovery discounts",
@@ -30,10 +32,22 @@
             "title": "Luxury Hotels & Resorts",
             "accent": "In-Room Wellness",
             "description": "Transform your room service menu. Offer on-demand IV therapy directly to your guests' suites without staffing a full-time medical facility.",
+            "image": "/images/hotel-iv.jpg",
             "benefits": [
                 "Zero medical overhead or liability",
                 "Automated revenue share",
                 "Premium co-branded marketing materials"
+            ],
+            "private": false
+        },
+        "golf-clubs": {
+            "title": "Country Clubs & Golf Courses",
+            "accent": "Peak Performance",
+            "description": "Keep your members hydrated and recovering rapidly with luxury mobile IV hydration and performance protocols delivered directly to the clubhouse, the tennis court, or between holes.",
+            "image": "/images/post-game.jpg",
+            "benefits": [
+                "Tournament pop-ups",
+                "Clubhouse dispatch"
             ],
             "private": false
         },
