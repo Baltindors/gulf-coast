@@ -9,7 +9,7 @@
         {
           "level": "Silver",
           "name": "Coastal Silver",
-          "price": 289,
+          "price": 225,
           "mostPopular": false,
           "features": [
             "1L NS or LR",
@@ -19,7 +19,7 @@
         {
           "level": "Gold",
           "name": "Coastal Gold",
-          "price": 489,
+          "price": 275,
           "mostPopular": true,
           "features": [
             "1L NS or LR",
@@ -31,7 +31,7 @@
         {
           "level": "Platinum",
           "name": "Coastal Platinum",
-          "price": 589,
+          "price": 325,
           "mostPopular": false,
           "features": [
             "1L NS or LR",
@@ -54,7 +54,7 @@
         {
           "level": "Silver",
           "name": "Silver",
-          "price": 389,
+          "price": 249,
           "mostPopular": false,
           "features": [
             "1L NS or LR",
@@ -64,7 +64,7 @@
         {
           "level": "Gold",
           "name": "Gold",
-          "price": 589,
+          "price": 299,
           "mostPopular": true,
           "features": [
             "1L NS or LR",
@@ -75,7 +75,7 @@
         {
           "level": "Platinum",
           "name": "Platinum",
-          "price": 689,
+          "price": 348,
           "mostPopular": false,
           "features": [
             "1L NS or LR",
@@ -96,7 +96,7 @@
         {
           "level": "Silver",
           "name": "Silver",
-          "price": 389,
+          "price": 299,
           "mostPopular": false,
           "features": [
             "1L NS or LR",
@@ -107,7 +107,7 @@
         {
           "level": "Gold",
           "name": "Gold",
-          "price": 589,
+          "price": 349,
           "mostPopular": true,
           "features": [
             "1L NS or LR",
@@ -120,7 +120,7 @@
         {
           "level": "Platinum",
           "name": "Platinum",
-          "price": 689,
+          "price": 399,
           "mostPopular": false,
           "features": [
             "1L NS or LR",
@@ -143,7 +143,7 @@
         {
           "level": "Silver",
           "name": "Silver",
-          "price": 389,
+          "price": 275,
           "mostPopular": false,
           "features": [
             "1L NS or LR",
@@ -155,8 +155,8 @@
         {
           "level": "Gold",
           "name": "Gold",
-          "price": 589,
-          "mostPopular": false,
+          "price": 299,
+          "mostPopular": true,
           "features": [
             "1L NS or LR",
             "B Complex",
@@ -168,7 +168,7 @@
         {
           "level": "Platinum",
           "name": "Platinum",
-          "price": 689,
+          "price": 349,
           "mostPopular": false,
           "features": [
             "1L NS or LR",
@@ -191,12 +191,12 @@
         {
           "level": "Gold",
           "name": "Gold",
-          "price": 589,
+          "price": 449,
           "mostPopular": false,
           "features": [
             "1L NS",
             "Glutathione 2000 mg",
-            "Vitamin C 2000 mg"
+            "Vitamin C 5G"
           ]
         },
         {
@@ -207,7 +207,8 @@
           "features": [
             "1L NS",
             "Glutathione 3000 mg",
-            "Vitamin C 3000 mg"
+            "Vitamin C 10G",
+            "Biotin "
           ]
         }
       ]
@@ -215,7 +216,7 @@
   ],
   "custom_hydration": {
     "name": "Custom Hydration",
-    "starting_price": 250,
+    "starting_price": 199,
     "base": "1L NS or LR base",
     "description": "Fully customizable with vitamins and medications"
   },
@@ -223,31 +224,31 @@
     "vitamins": [
       {
         "name": "B12",
-        "price": 45
+        "price": 40
       },
       {
         "name": "B Complex",
-        "price": 45
+        "price": 40
       },
       {
         "name": "Zinc",
-        "price": 45
+        "price": 40
       },
       {
         "name": "Magnesium",
-        "price": 45
+        "price": 40
       },
       {
         "name": "Amino Blend",
-        "price": 65
+        "price": 50
       },
       {
         "name": "Taurine",
-        "price": 65
+        "price": 50
       },
       {
         "name": "Biotin",
-        "price": 55
+        "price": 50
       },
       {
         "name": "Vitamin C (Standard)",
@@ -260,7 +261,11 @@
     ],
     "glutathione": [
       {
-        "amount": "400 mg",
+        "amount": "200 mg",
+        "price": 40
+      },
+      {
+        "amount": "400 mg ",
         "price": 60
       },
       {
@@ -272,44 +277,40 @@
         "price": 100
       },
       {
-        "amount": "1200 mg",
-        "price": 130
-      },
-      {
-        "amount": "2000 mg",
-        "price": 160
+        "amount": "1000 mg",
+        "price": 120
       }
     ],
     "injections": [
       {
         "name": "B12 Shot",
-        "price": 45
+        "price": 40
       },
       {
         "name": "NAD+ Injection 50 mg",
-        "price": 75
+        "price": 60
       },
       {
         "name": "NAD+ Injection 100 mg",
-        "price": 120
+        "price": 100
       }
     ],
     "medications": [
       {
         "name": "Zofran",
-        "price": 50
+        "price": 45
       },
       {
         "name": "Toradol",
-        "price": 50
+        "price": 45
       },
       {
         "name": "Pepcid",
-        "price": 50
+        "price": 45
       },
       {
         "name": "Benadryl",
-        "price": 50
+        "price": 45
       }
     ]
   }
