@@ -1,5 +1,14 @@
 <script setup>
 import BookingSuccess from '@/components/booking/BookingSuccess.vue'
+import { onMounted } from 'vue';
+
+onMounted(() => {
+  
+  // Fire Meta Pixel 'Schedule' event safely
+  if (typeof window.fbq === 'function') {
+    window.fbq('track', 'Schedule');
+  }
+});
 </script>
 
 <template>
