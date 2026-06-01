@@ -35,8 +35,14 @@ const calculatedDiscount = computed(() => {
 const handleApplyCoupon = () => {
   couponError.value = ''
   try {
+    // --- DEBUGGING LOGS ---
+    console.log("=== COUPON DEBUG ===")
+    console.log("Raw VITE_COUPON_DATA type:", typeof import.meta.env.VITE_COUPON_DATA)
+    console.log("Raw VITE_COUPON_DATA value:", import.meta.env.VITE_COUPON_DATA)
+    
     // This pulls the data injected by the GitHub Action
-    const validCoupons = JSON.parse(import.meta.env.VITE_COUPON_DATA || '{}')
+    const rawData = import.meta.env.VITE_COUPON_DATA || '{}'
+    const validCoupons = JSON.parse(rawData)
     
     // Normalize validCoupons keys to uppercase for case-insensitive lookup
     const normalizedCoupons = {}
@@ -58,7 +64,9 @@ const handleApplyCoupon = () => {
       couponError.value = 'Invalid code'
       activeCoupon.value = null
     }
-  } catch {
+  } catch (err) {
+    // --- CAPTURE AND LOG THE EXACT ERROR ---
+    console.error("Coupon parsing failed with error:", err)
     couponError.value = 'Error processing coupon'
     activeCoupon.value = null
   }

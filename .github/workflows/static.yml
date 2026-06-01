@@ -46,6 +46,11 @@ jobs:
           # 3. Safely append the flattened JSON wrapped in single quotes
           echo "VITE_COUPON_DATA='${{ secrets.COUPON_DATA }}'" >> .env
           
+          # --- DEBUGGING LOGS ---
+          echo "=== DEBUG: .env content for COUPON_DATA ==="
+          grep "VITE_COUPON_DATA" .env
+          echo "==========================================="
+          
           # 4. Run the SSG build
           npm run build
 
