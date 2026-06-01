@@ -46,6 +46,14 @@ jobs:
           # Because the secret is a single line, this works perfectly!
           VITE_COUPON_DATA: ${{ secrets.COUPON_DATA }}
 
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: app/dist
+
   deploy:
     needs: build
     runs-on: ubuntu-latest
