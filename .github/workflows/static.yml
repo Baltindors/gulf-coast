@@ -39,6 +39,9 @@ jobs:
         run: |
           # Create the base .env file
           echo "${{ secrets.ENV_FILE }}" > .env
+
+          # Force a newline to prevent variables from squashing together
+          echo "" >> .env
           
           # Replicate local behavior by appending the JSON string to .env
           echo "VITE_COUPON_DATA='${{ secrets.COUPON_DATA }}'" >> .env
