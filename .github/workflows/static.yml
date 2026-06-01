@@ -38,14 +38,14 @@ jobs:
         working-directory: app
         run: |
           # Create the base .env file
-          echo "${{ secrets.ENV_FILE }}" > .env
+          printf '%s\n' "${{ secrets.ENV_FILE }}" > .env
 
-          # Force a newline to prevent variables from squashing together
-          echo "" >> .env
-          
-          # Replicate local behavior by appending the JSON string to .env
-          echo "VITE_COUPON_DATA='${{ secrets.COUPON_DATA }}'" >> .env
-          
+          # Append coupon JSON as a Vite env variable
+          printf '\nVITE_COUPON_DATA=%s\n' '${{ secrets.COUPON_DATA }}' >> .env
+
+          # Validate that the coupon JSON exists and parses correctly
+          node -e "const fs=require('fs'); const env=fs.readFileSync('.env','utf8'); const m=env.match(/^VITE_COUPON_DATA=(.*)$/m); console.log('Coupon env present:', !!m, 'length:', m ? m[1].length : 0); if (!m) process.exit(1); JSON.parse(m[1]); console.log('Coupon JSON parses OK');"
+
           # Run the build
           npm run build
 
