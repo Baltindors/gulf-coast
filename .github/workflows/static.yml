@@ -37,14 +37,17 @@ jobs:
       - name: Build
         working-directory: app
         run: |
-          # Create the base .env file
+          # 1. Create the base .env file with Firebase keys
           echo "${{ secrets.ENV_FILE }}" > .env
           
-          # Run the build
+          # 2. Force a newline to prevent squashing on the same line
+          echo "" >> .env
+          
+          # 3. Safely append the flattened JSON wrapped in single quotes
+          echo "VITE_COUPON_DATA='${{ secrets.COUPON_DATA }}'" >> .env
+          
+          # 4. Run the SSG build
           npm run build
-        env:
-          # This safely injects the JSON string directly into the environment
-          VITE_COUPON_DATA: ${{ secrets.COUPON_DATA }}
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
