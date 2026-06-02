@@ -7,14 +7,21 @@ const router = useRouter()
 const today = new Date().toISOString().split('T')[0]
 
 // Selection state
-const location = ref('Naples')
+const location = ref('Collier County')
 const date = ref('')
 const time = ref('')
 const serviceId = ref('')
 const tierLevel = ref('Gold') // Default to Gold
 
-const serviceAreas = [
-  'Naples', 'Marco Island', 'Sanibel & Captiva', 'Bonita Springs', 'Private Yachts'
+const locationGroups = [
+  {
+    label: 'Gulf Coast',
+    areas: ['Sarasota County', 'Charlotte County', 'Lee County', 'Collier County']
+  },
+  {
+    label: 'East Coast (NEW!)',
+    areas: ['Martin County', 'Palm Beach County', 'Broward County', 'Miami-Dade County']
+  }
 ]
 
 // Find the selected package to determine which tiers are available
@@ -78,7 +85,11 @@ const timeOptions = [
           <div class="flex-grow min-w-0">
             <label for="booking-location" class="block text-[8px] uppercase tracking-[0.25em] text-slate/60 mb-0.5 font-bold">Location</label>
             <select id="booking-location" v-model="location" class="w-full bg-transparent text-navy font-serif text-[15px] focus:outline-none appearance-none cursor-pointer truncate">
-              <option v-for="area in serviceAreas" :key="area" :value="area">{{ area }}</option>
+              <optgroup v-for="group in locationGroups" :key="group.label" :label="group.label" class="font-sans text-xs font-bold text-gold-dark">
+                <option v-for="area in group.areas" :key="area" :value="area" class="font-serif text-navy text-base font-normal">
+                  {{ area }}
+                </option>
+              </optgroup>
             </select>
           </div>
         </div>

@@ -1,32 +1,54 @@
 [
   {
-    "id": "naples",
-    "name": "Naples",
-    "description": "Serving Port Royal, Pelican Bay, and Greater Naples.",
-    "isPrimary": true
-  },
-  {
-    "id": "marco-island",
-    "name": "Marco Island",
-    "description": "Luxury concierge service to resorts and private residences.",
-    "isPrimary": true
-  },
-  {
-    "id": "sanibel-captiva",
-    "name": "Sanibel & Captiva",
-    "description": "Exclusive island service available by appointment.",
+    "id": "sarasota",
+    "name": "Sarasota County",
+    "description": "Serving Sarasota, Venice, Siesta Key, and surrounding areas.",
     "isPrimary": false
   },
   {
-    "id": "bonita-springs",
-    "name": "Bonita Springs",
-    "description": "Serving Bonita Bay, Pelican Landing, and surrounding areas.",
+    "id": "charlotte",
+    "name": "Charlotte County",
+    "description": "Serving Punta Gorda, Port Charlotte, and surrounding areas.",
     "isPrimary": false
   },
   {
-    "id": "yachts",
-    "name": "Private Yachts",
-    "description": "Discreet, dockside or on-water service across SWFL marinas.",
+    "id": "lee",
+    "name": "Lee County",
+    "description": "Serving Fort Myers, Cape Coral, Sanibel, and Captiva.",
     "isPrimary": true
+  },
+  {
+    "id": "collier",
+    "name": "Collier County",
+    "description": "Serving Naples, Marco Island, and surrounding areas.",
+    "isPrimary": true
+  },
+  {
+    "id": "martin",
+    "name": "Martin County",
+    "description": "Serving Stuart, Jupiter Island, and surrounding areas.",
+    "isPrimary": false,
+    "isNew": true
+  },
+  {
+    "id": "palm-beach",
+    "name": "Palm Beach County",
+    "description": "Serving West Palm Beach, Boca Raton, Delray Beach, and surrounding areas.",
+    "isPrimary": true,
+    "isNew": true
+  },
+  {
+    "id": "broward",
+    "name": "Broward County",
+    "description": "Serving Fort Lauderdale, Hollywood, Pompano Beach, and surrounding areas.",
+    "isPrimary": true,
+    "isNew": true
+  },
+  {
+    "id": "miami-dade",
+    "name": "Miami-Dade County",
+    "description": "Serving Miami, Miami Beach, Coral Gables, and surrounding areas.",
+    "isPrimary": true,
+    "isNew": true
   }
 ]

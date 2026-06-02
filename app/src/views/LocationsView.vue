@@ -11,13 +11,13 @@ import locationsData from '@/data/locations.json'
         tag="Where We Travel"
         title="Service"
         accent="Areas"
-        description="Gulf Coast IV Concierge is a fully mobile service, bringing luxury wellness directly to you across Southwest Florida."
+        description="Gulf Coast IV Concierge is a fully mobile service, bringing luxury wellness directly to you across the Gulf Coast and East Coast of Florida."
       />
       
       <!-- Map Placeholder -->
       <div class="max-w-3xl mx-auto w-full mb-20 relative overflow-hidden rounded-lg border border-gold/20 shadow-md bg-white">
         <img 
-          src="/images/Service_Map.jpg" 
+          src="/images/service_map.png" 
           alt="Gulf Coast IV Concierge Service Area Map" 
           class="w-full h-auto block"
         />

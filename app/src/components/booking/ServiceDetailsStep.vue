@@ -35,13 +35,21 @@ defineEmits(['update:modelValue'])
         <option value="Yacht">Private Yacht</option>
       </select>
 
-      <div class="flex flex-col">
+<div class="flex flex-col">
         <select v-model="modelValue.location" :class="['appearance-none border-b py-4 h-14 outline-none focus:border-gold text-base md:text-sm bg-transparent transition-colors', errors.location ? 'border-red-400' : 'border-line']">
           <option value="">Select Service Area *</option>
-          <option value="Naples">Naples</option>
-          <option value="Marco Island">Marco Island</option>
-          <option value="Sanibel & Captiva">Sanibel & Captiva</option>
-          <option value="Bonita Springs">Bonita Springs</option>
+          <optgroup label="Gulf Coast" class="font-sans text-xs font-bold text-gold-dark">
+            <option value="Sarasota County" class="font-serif text-navy text-base font-normal">Sarasota County</option>
+            <option value="Charlotte County" class="font-serif text-navy text-base font-normal">Charlotte County</option>
+            <option value="Lee County" class="font-serif text-navy text-base font-normal">Lee County</option>
+            <option value="Collier County" class="font-serif text-navy text-base font-normal">Collier County</option>
+          </optgroup>
+          <optgroup label="East Coast (NEW!)" class="font-sans text-xs font-bold text-gold-dark">
+            <option value="Martin County" class="font-serif text-navy text-base font-normal">Martin County</option>
+            <option value="Palm Beach County" class="font-serif text-navy text-base font-normal">Palm Beach County</option>
+            <option value="Broward County" class="font-serif text-navy text-base font-normal">Broward County</option>
+            <option value="Miami-Dade County" class="font-serif text-navy text-base font-normal">Miami-Dade County</option>
+          </optgroup>
         </select>
         <span v-if="errors.location" class="text-[10px] text-red-500 mt-1 uppercase tracking-widest font-bold">Required</span>
       </div>

@@ -8,7 +8,12 @@ defineProps({
 </script>
 
 <template>
-  <div class="bg-white p-8 rounded border border-line shadow-sm hover:shadow-md transition-all duration-300 group cursor-pointer text-center flex flex-col items-center">
+  <div class="bg-white p-8 rounded border border-line shadow-sm hover:shadow-md transition-all duration-300 group cursor-pointer text-center flex flex-col items-center relative overflow-hidden">
+    
+    <div v-if="location.isNew" class="absolute top-4 right-4 bg-gold text-white text-[9px] font-bold tracking-[0.2em] px-2.5 py-1 uppercase rounded-sm shadow-sm z-10">
+      New
+    </div>
+
     <div class="w-16 h-16 rounded-full bg-ivory-warm border border-gold/30 flex items-center justify-center mb-6 group-hover:scale-105 transition-transform">
       <svg class="w-7 h-7 text-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />

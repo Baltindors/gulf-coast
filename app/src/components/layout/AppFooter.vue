@@ -42,14 +42,14 @@
         </ul>
       </div>
 
-      <!-- Service Areas -->
+<!-- Service Areas -->
       <div>
         <h4 class="font-serif text-[18px] font-medium text-gold-light mb-5 tracking-[0.04em]">Service Areas</h4>
         <ul class="flex flex-col gap-2.5">
-          <li><router-link to="/locations" class="text-[13px] text-ivory/75 hover:text-gold-light transition-colors">Naples</router-link></li>
-          <li><router-link to="/locations" class="text-[13px] text-ivory/75 hover:text-gold-light transition-colors">Marco Island</router-link></li>
-          <li><router-link to="/locations" class="text-[13px] text-ivory/75 hover:text-gold-light transition-colors">Sanibel & Captiva</router-link></li>
-          <li><router-link to="/locations" class="text-[13px] text-ivory/75 hover:text-gold-light transition-colors">Private Yachts</router-link></li>
+          <li><router-link to="/locations" class="text-[13px] text-ivory/75 hover:text-gold-light transition-colors">Collier & Lee Counties</router-link></li>
+          <li><router-link to="/locations" class="text-[13px] text-ivory/75 hover:text-gold-light transition-colors">Sarasota & Charlotte Counties</router-link></li>
+          <li><router-link to="/locations" class="text-[13px] text-ivory/75 hover:text-gold-light transition-colors">Miami-Dade & Broward Counties</router-link></li>
+          <li><router-link to="/locations" class="text-[13px] text-ivory/75 hover:text-gold-light transition-colors">Palm Beach & Martin Counties</router-link></li>
         </ul>
       </div>
 
