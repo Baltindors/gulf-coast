@@ -55,25 +55,34 @@ const featuredPackages = computed(() => {
         <p class="font-sans text-[11px] font-medium tracking-[0.2em] uppercase text-gold-dark mb-6">Naples &bull; SWFL &bull; Miami &bull; Palm Beach </p>
         <h1 class="font-serif text-5xl md:text-7xl lg:text-[84px] text-navy font-normal leading-[1.05] mb-8 max-w-[900px] mx-auto">
           Elevated Wellness.<br/>
-          <span class="font-script text-gold-dark italic text-[1.1em] block mt-4">Delivered.</span>
+          <span class="font-script text-gold-dark italic text-[1.1em] block mt-4">Delivered.</span> 
         </h1>
         <p class="text-[16px] text-navy max-w-[600px] mx-auto mb-10 leading-[1.6]">
-          Luxury IV therapy, delivered directly to you. hotel, or yacht by licensed medical professionals.
+          Feel better faster. Mobile IV therapy delivered to your home, hotel, or yacht by licensed medical professionals.
         </p>
       </div>
     </section>
 
-    <BookingWidget />
+<BookingWidget />
 
-    <section class="py-32 px-6 md:px-16 bg-ivory">
+<!-- Trust / Benefits / Indications -->
+    <section class="pt-24 pb-20 px-6 md:px-16 bg-ivory border-b border-line">
       <div class="container mx-auto">
-        <SectionHeader 
-          tag="Curated For You"
+        <TrustIcons />
+      </div>
+    </section>
+
+<section class="py-32 px-6 md:px-16 bg-white">
+      <div class="container mx-auto">
+        <SectionHeader
+           tag="Curated For You"
           title="Most Popular"
           accent="Treatments"
           description="Discover our most requested concierge IV infusions, expertly formulated to restore your vitality."
           data-aos="fade-up"
         />
+
+
         
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
           <PackageCard 
@@ -147,12 +156,7 @@ const featuredPackages = computed(() => {
       </div>
     </section>
 
-    <!-- Trust / Benefits -->
-    <section class="py-32 px-6 md:px-16 bg-white border-y border-line">
-      <div class="container mx-auto">
-        <TrustIcons />
-      </div>
-    </section>
+
 
     <!-- Final CTA -->
     <section class="py-40 px-6 md:px-16 bg-navy relative text-center overflow-hidden">
