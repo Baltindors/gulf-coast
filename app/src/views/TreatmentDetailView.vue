@@ -2,45 +2,49 @@
   <div class="bg-ivory pt-32 pb-24 min-h-screen" v-if="treatment">
     <div class="container mx-auto px-6 md:px-16 max-w-6xl">
       
-      <!-- Back Link -->
-      <router-link to="/packages" class="inline-flex items-center text-xs font-bold tracking-[0.2em] text-slate/80 hover:text-gold uppercase mb-10 transition-colors">
+      <router-link to="/packages" class="inline-flex items-center text-xs font-bold tracking-[0.2em] text-slate/80 hover:text-gold uppercase mb-8 transition-colors relative z-10">
         <svg class="w-4 h-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
           <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
         </svg>
         Back to Treatments Menu
       </router-link>
 
-      <!-- Hero Section: Clinical title, relief benefit, and basic metadata -->
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-16">
-        <div class="lg:col-span-8">
-          <span class="text-xs font-bold tracking-[0.25em] text-gold uppercase block mb-3">Clinical Treatment Profile</span>
-          <h1 class="text-4xl md:text-5xl font-serif text-navy font-semibold mb-4 leading-tight">
-            {{ treatment.name }}
-          </h1>
-          <p class="text-lg font-serif text-gold-dark italic mb-6">
-            Primary Indication: {{ treatmentMeta.benefit }}
-          </p>
-          <p class="text-slate text-sm leading-relaxed max-w-2xl">
-            Administered intravenously by our licensed Registered Nurses under strict medical director protocol. Designed for 100% bioavailability and immediate cellular action.
-          </p>
-        </div>
-        <div class="lg:col-span-4 bg-white border border-line p-6 rounded-xl text-center shadow-sm">
-          <span class="text-[9px] font-bold tracking-[0.2em] text-slate/50 uppercase block mb-1">Pricing Tiers</span>
-          <p class="text-3xl font-serif text-navy font-bold mb-4">
-  
-          </p>
-          <div class="space-y-2">
-            <button 
-              @click="scrollToTiers"
-              class="w-full bg-navy hover:bg-navy-soft text-ivory text-[10px] font-bold tracking-[0.2em] py-3.5 rounded-md uppercase transition-colors"
-            >
-              Configure & Book
-            </button>
+<!-- Hero Banner Section -->
+<div class="relative rounded-[2rem] overflow-hidden shadow-2xl mb-16 bg-navy border border-line/20">
+        <img 
+          :src="bannerImagePath" 
+          alt="Clinical Formulation Banner" 
+          class="absolute z-0 inset-0 w-full h-full object-cover"
+        />
+        <div class="absolute z-10 inset-0 bg-gradient-to-r from-navy/95 from-30% via-navy/60 via-55% to-transparent to-75% pointer-events-none"></div>
+
+        <div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center p-8 md:p-12 lg:p-16">
+          <div class="lg:col-span-8 animate-fade-in-up">
+            <span class="text-xs font-bold tracking-[0.25em] text-gold uppercase block mb-3 drop-shadow-sm">Clinical Treatment Profile</span>
+            <h1 class="text-4xl md:text-5xl font-serif text-ivory font-semibold mb-4 leading-tight drop-shadow-md">
+              {{ treatment.name }}
+            </h1>
+            <p class="text-lg font-serif text-gold italic mb-6">
+              Primary Indication: {{ treatmentMeta.benefit }}
+            </p>
+            <p class="text-ivory/90 text-sm leading-relaxed max-w-2xl font-light">
+              Administered intravenously by our licensed Registered Nurses under strict medical director protocol. Designed for 100% bioavailability and immediate cellular action.
+            </p>
+          </div>
+          
+          <div class="lg:col-span-4 bg-white/95 backdrop-blur-md border border-white/30 p-6 sm:p-8 rounded-xl text-center shadow-xl animate-fade-in-up" style="animation-delay: 0.15s;">
+            <div class="py-2">
+              <button 
+                @click="scrollToTiers"
+                class="w-full bg-navy hover:bg-navy-soft text-ivory text-xs font-bold tracking-[0.2em] py-4 rounded-md uppercase transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5"
+              >
+                Configure & Book
+              </button>
+            </div>
           </div>
         </div>
       </div>
 
-      <!-- Formulation Details: Ingredients grid -->
       <div class="bg-white border border-line rounded-xl p-8 md:p-12 mb-16 shadow-sm">
         <div class="border-b border-line pb-6 mb-8 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
           <div>
@@ -69,10 +73,8 @@
         </div>
       </div>
 
-      <!-- Targeted Relief & Clinical Symptoms -->
       <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mb-16">
         
-        <!-- Symptom Targets -->
         <div class="bg-white border border-line rounded-xl p-8 shadow-sm">
           <h3 class="text-xl font-serif text-navy font-semibold mb-6 pb-3 border-b border-line">Targeted Relief Areas</h3>
           <p class="text-slate text-xs mb-6">This specific treatment protocol is clinically indicated for the management and relief of the following symptoms:</p>
@@ -88,7 +90,6 @@
           </div>
         </div>
 
-        <!-- Safety & Quality Protocols -->
         <div class="bg-white border border-line rounded-xl p-8 shadow-sm flex flex-col justify-between">
           <div>
             <h3 class="text-xl font-serif text-navy font-semibold mb-6 pb-3 border-b border-line">Safety & Administration</h3>
@@ -114,7 +115,6 @@
 
       </div>
 
-      <!-- Upgrade Path: Comparison of tiers -->
       <div id="tiers-section" class="bg-white border border-line rounded-xl p-8 md:p-12 mb-16 shadow-sm">
         <div class="text-center mb-12">
           <span class="text-[9px] font-bold tracking-[0.2em] text-gold uppercase block mb-1">Therapeutic Scaling</span>
@@ -161,7 +161,6 @@
           </div>
         </div>
 
-        <!-- Upsell Explanation -->
         <div class="mt-12 pt-8 border-t border-line bg-ivory/30 p-6 rounded-lg">
           <h4 class="font-serif text-sm text-navy font-bold mb-2">Upgrade Guidance:</h4>
           <p class="text-slate text-xs leading-relaxed">
@@ -200,6 +199,22 @@ const lowestPrice = computed(() => {
 const highestPrice = computed(() => {
   if (!treatment.value) return 0
   return Math.max(...treatment.value.tiers.map(t => t.price))
+})
+
+// Explicit Map: Matches your 5 JSON package IDs directly to your images.
+const bannerImagePath = computed(() => {
+  if (!treatment.value) return '/images/treatment-banner-1.png'
+  
+  const imageMap = {
+    'hydration-immunity': '/images/treatment-banner-1.png',
+    'coastal-reset': '/images/treatment-banner-2.png',
+    'coastal-restore': '/images/treatment-banner-3.png',
+    'coastal-vitality': '/images/treatment-banner-4.png',
+    'coastal-radiance': '/images/treatment-banner-5.png'
+  }
+  
+  // Returns the exact image mapped above, or defaults to the 6th image if a new package is added later.
+  return imageMap[treatment.value.id] || '/images/treatment-banner-6.jpg'
 })
 
 const scrollToTiers = () => {
@@ -291,6 +306,15 @@ const treatmentMeta = computed(() => {
   animation: fadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
+.animate-fade-in-up {
+  opacity: 0;
+  animation: fadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-ken-burns {
+  animation: kenBurns 20s ease-out infinite alternate;
+}
+
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -299,6 +323,15 @@ const treatmentMeta = computed(() => {
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes kenBurns {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.15);
   }
 }
 </style>
