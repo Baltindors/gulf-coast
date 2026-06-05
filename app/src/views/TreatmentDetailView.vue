@@ -206,11 +206,11 @@ const bannerImagePath = computed(() => {
   if (!treatment.value) return '/images/treatment-banner-1.png'
   
   const imageMap = {
-    'hydration-immunity': '/images/treatment-banner-1.png',
-    'coastal-reset': '/images/treatment-banner-2.png',
+    'hydration-immunity': '/images/treatment-banner-3.png',
+    'coastal-reset': '/images/treatment-banner-5.png',
     'coastal-restore': '/images/treatment-banner-3.png',
-    'coastal-vitality': '/images/treatment-banner-4.png',
-    'coastal-radiance': '/images/treatment-banner-5.png'
+    'coastal-vitality': '/images/treatment-banner-2.png',
+    'coastal-radiance': '/images/treatment-banner-1.png'
   }
   
   // Returns the exact image mapped above, or defaults to the 6th image if a new package is added later.
