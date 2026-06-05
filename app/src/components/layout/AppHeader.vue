@@ -56,16 +56,16 @@ onUnmounted(() => {
       </div>
     </Transition>
 
-    <header class="relative flex items-center justify-between px-6 md:px-16 py-0 md:py-7">
-        
-      <div class="flex-1 lg:flex-none flex items-center justify-center lg:justify-start h-16 md:h-24">
+<header class="relative flex items-center justify-between px-6 md:px-16 py-3 md:py-3 bg-transparent lg:bg-white/40 lg:backdrop-blur-sm lg:border-b lg:border-white/10 lg:shadow-sm">
+  
+    <div class="flex-1 lg:flex-none flex items-center justify-center lg:justify-start h-16 md:h-24">
         <router-link to="/" @click="closeMenu" class="relative shrink-0 flex items-center">
           <img 
-            src="/images/logo_v2.png" 
+            src="/images/logo-alpha.png"  
             alt="GC IV Concierge Logo" 
             :class="[
               'w-auto object-contain transition-all duration-300 ease-in-out',
-              isHomePage ? 'h-24 md:h-28' : 'h-16 md:h-20'
+              isHomePage ? 'h-20 md:h-20' : 'h-20 md:h-20'
             ]"
           />
         </router-link>

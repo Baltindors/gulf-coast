@@ -48,7 +48,7 @@ const featuredPackages = computed(() => {
 
     <section class="relative min-h-[70vh] flex items-center pt-32 pb-24">
       <div class="absolute inset-0 z-0">
-        <img src="/images/banner_desktop.png" alt="Luxury IV Therapy" class="w-full h-full object-cover" />
+        <img src="/images/main-banner-blue.png" alt="Luxury IV Therapy" class="w-full h-full object-cover" />
       </div>
       
       <div class="container relative z-10 mx-auto px-6 md:px-16 text-center">
@@ -57,7 +57,7 @@ const featuredPackages = computed(() => {
           Feel better <br/>
           <span class="font-script text-gold-dark italic text-[1.1em] block mt-4">faster.</span> 
         </h1>
-        <p class="text-[16px] text-navy max-w-[600px] mx-auto mb-10 leading-[1.6]">
+<p class="text-[16px] text-navy max-w-[600px] mx-auto mb-10 leading-[1.6] bg-white/25 backdrop-blur-md px-6 py-3 rounded-lg shadow-sm inline-block">
           Mobile IV therapy delivered to your home, hotel, or yacht by licensed medical professionals.
         </p>
       </div>
