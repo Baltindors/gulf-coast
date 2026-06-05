@@ -70,11 +70,11 @@
 const patientCases = [
   {
     demographic: 'Active Athlete / SWFL Resident',
-    symptom: 'Severe Dehydration',
+    symptom: 'Dehydration & Immunity Depletion',
     presentation: 'Presents with fatigue, dry mouth, muscle cramping, and heat exhaustion following outdoor activity or prolonged sun exposure.',
     treatment: 'Hydration & Immunity Protocol',
     treatmentId: 'hydration-immunity',
-    treatmentDetails: '1L Normal Saline or Lactated Ringer’s base infused with high-dose Vitamin C and Zinc to quickly restore fluid volumes and cellular electrolytes.',
+    treatmentDetails: '1L Normal Saline or Lactated Ringer’s base infused with Vitamin C and Zinc to quickly restore fluid volumes and cellular electrolytes.',
     avatarSvg: `
       <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="0.5" fill="rgba(193, 161, 114, 0.1)"/>
       <path d="M12 11c1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3 1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5z"/>
@@ -83,10 +83,10 @@ const patientCases = [
   {
     demographic: 'Executive / Event Attendee',
     symptom: 'Acute Alcohol Hangover',
-    presentation: 'Presents with severe headache, nausea, photosensitivity, and brain fog resulting from alcohol consumption and toxin accumulation.',
-    treatment: 'Coastal Reset Recovery Drip',
+    presentation: 'Presents with headache, nausea, photosensitivity, and brain fog resulting from alcohol consumption and toxin accumulation.',
+    treatment: 'Coastal Reset IV',
     treatmentId: 'coastal-reset',
-    treatmentDetails: 'Targeted formulation with IV anti-nausea (Zofran) and anti-inflammatory (Toradol) medications to flush toxins and relieve headaches.',
+    treatmentDetails: 'Targeted formulation with IV anti-nausea (Zofran) and anti-inflammatory medications to flush toxins and relieve headaches.',
     avatarSvg: `
       <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="0.5" fill="rgba(193, 161, 114, 0.1)"/>
       <path d="M12 11c1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3 1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5z"/>
@@ -108,11 +108,11 @@ const patientCases = [
   },
   {
     demographic: 'Chronic Sufferer / Professional',
-    symptom: 'Severe Migraines',
-    presentation: 'Presents with debilitating head pain, sensory sensitivity, and nausea. Demands rapid relief without standard hospital ER wait times.',
-    treatment: 'Coastal Reset IV (Magnesium Fortified)',
-    treatmentId: 'coastal-reset',
-    treatmentDetails: 'Infused with high-dose Magnesium and anti-inflammatory compounds to relax vascular tone and reduce neurologic inflammation.',
+    symptom: 'Systemic Inflammation & Recovery',
+    presentation: 'Presents with prolonged recovery times, debilitating aches, oxidative stress, and demands deep cellular repair and replenishment.',
+    treatment: 'Coastal Restore IV',
+    treatmentId: 'coastal-restore',
+    treatmentDetails: 'Infused with high-dose Glutathione, Magnesium, and B-Complex to reduce inflammation, detoxify the liver, and restore baseline wellness.',
     avatarSvg: `
       <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="0.5" fill="rgba(193, 161, 114, 0.1)"/>
       <path d="M12 11c1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3 1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5z"/>
@@ -120,10 +120,10 @@ const patientCases = [
     `
   },
   {
-    demographic: 'Frequent Traveler / Shift Professional',
+    demographic: 'Frequent Traveler / Shift Worker',
     symptom: 'Chronic Fatigue & Jet Lag',
     presentation: 'Presents with low physical energy, disrupted sleep cycles, brain fog, and lagging cognitive focus due to travel or high stress.',
-    treatment: 'Coastal Vitality Energy Blend',
+    treatment: 'Coastal Vitality IV',
     treatmentId: 'coastal-vitality',
     treatmentDetails: 'Formulated with active B-Complex vitamins, B12, and Taurine to recharge cellular mitochondria and naturally boost systemic energy.',
     avatarSvg: `
@@ -133,12 +133,12 @@ const patientCases = [
     `
   },
   {
-    demographic: 'Wellness Enthusiast / Immune Defense',
-    symptom: 'Immune Depletion & Cold Symptoms',
-    presentation: 'Presents with early cold/flu symptoms, seasonal allergies, or seeking proactive viral defense prior to travel or large gatherings.',
-    treatment: 'Hydration & Immunity Drip',
-    treatmentId: 'hydration-immunity',
-    treatmentDetails: 'A high-dose blend of Vitamin C, Zinc, and core vitamins that support immediate antibody production and bolster cellular immunity.',
+    demographic: 'Bridal / Wellness Enthusiast',
+    symptom: 'Dull Complexion & Aging',
+    presentation: 'Presents with dull skin, loss of elasticity, or simply desires a vibrant, youthful glow for an upcoming special event or routine maintenance.',
+    treatment: 'Coastal Radiance IV',
+    treatmentId: 'coastal-radiance',
+    treatmentDetails: 'A powerful "Glow Therapy" blend featuring 2000mg+ of Glutathione, High-Dose Vitamin C, and Biotin to brighten skin and boost collagen.',
     avatarSvg: `
       <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="0.5" fill="rgba(193, 161, 114, 0.1)"/>
       <path d="M12 11c1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3 1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5z"/>

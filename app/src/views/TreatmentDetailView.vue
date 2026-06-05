@@ -224,7 +224,7 @@ const treatmentMetaMap = {
   },
   'coastal-reset': {
     benefit: 'Rapid Symptom Alleviation & Acute Hangover / Food Poisoning Recovery',
-    symptomText: 'Nausea, severe headache, stomach viruses, food poisoning, photosensitivity, vomiting',
+    symptomText: 'Nausea, headache, stomach viruses, food poisoning, photosensitivity, vomiting',
     symptoms: ['Acute Alcohol Hangover', 'Food Poisoning Symptoms', 'Stomach Flu / Gastroenteritis', 'Debilitating Head Migraines', 'Vomiting & Fluid Loss'],
     ingredients: {
       'Normal Saline or LR': '1000mL fluid volume to flush out toxins, alcohol metabolites, and quickly re-establish vascular hydration.',
@@ -251,7 +251,7 @@ const treatmentMetaMap = {
   'coastal-vitality': {
     benefit: 'Mitochondrial ATP Energy Optimization & Physical Stamina Support',
     symptomText: 'Chronic fatigue, jet lag, brain fog, post-travel exhaustion, low stamina',
-    symptoms: ['Mitochondrial Energy Depletion', 'Severe Travel Jet Lag', 'Brain Fog & Focus Loss', 'Physical Stamina Decline', 'Adrenal Fatigue Symptoms'],
+    symptoms: ['Mitochondrial Energy Depletion', 'Travel Jet Lag', 'Brain Fog & Focus Loss', 'Physical Stamina Decline', 'Adrenal Fatigue Symptoms'],
     ingredients: {
       'Normal Saline or LR': 'Restores circulating blood volume to improve tissue perfusion and oxygen delivery to vital organs.',
       'Taurine': 'Conditional amino acid that supports cardiovascular function, skeletal muscle performance, and cellular osmoregulation.',
