@@ -34,8 +34,8 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div class="absolute top-0 left-0 right-0 z-50">
-    
+  <div class="relative z-50 flex flex-col">
+         
     <Transition
       enter-active-class="transition-all duration-500 ease-out"
       enter-from-class="-translate-y-full opacity-0"
@@ -54,10 +54,11 @@ onUnmounted(() => {
           </svg>
         </button>
       </div>
-    </Transition>
+</Transition>
 
-<header class="relative flex items-center justify-between px-6 md:px-16 py-3 md:py-3 bg-transparent lg:bg-white/40 lg:backdrop-blur-sm lg:border-b lg:border-white/10 lg:shadow-sm">
-  
+    <div class="absolute top-full left-0 right-0 w-full">
+      <header class="relative flex items-center justify-between px-6 md:px-16 py-3 md:py-3 bg-transparent lg:bg-white/40 lg:backdrop-blur-sm lg:border-b lg:border-white/10 lg:shadow-sm">
+
     <div class="flex-1 lg:flex-none flex items-center justify-center lg:justify-start h-16 md:h-24">
         <router-link to="/" @click="closeMenu" class="relative shrink-0 flex items-center">
           <img 
@@ -93,11 +94,12 @@ onUnmounted(() => {
         >
           Book Now
         </BaseButton>
-      </div>
+    </div>
     </header>
+    </div>
   </div>
 
-  <button 
+  <button
     @click="toggleMenu"
     class="lg:hidden fixed bottom-8 right-8 z-[100] w-14 h-14 bg-navy text-gold rounded-full shadow-2xl flex items-center justify-center transition-transform active:scale-95 border border-gold/30 cursor-pointer"
     aria-label="Toggle Menu"
