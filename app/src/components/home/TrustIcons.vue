@@ -56,7 +56,7 @@
             {{ caseItem.treatmentDetails }}
           </p>
           <router-link 
-            :to="`/treatments/${caseItem.treatmentId}`" 
+            :to="{ path: `/treatments/${caseItem.treatmentId}`, query: caseItem.context ? { context: caseItem.context } : undefined }" 
             class="inline-flex items-center text-[10px] font-bold tracking-[0.15em] text-navy uppercase group-hover:text-gold transition-colors"
           >
             View Clinical Profile
@@ -78,6 +78,7 @@ const patientCases = [
     presentation: 'Presents with fatigue, dry mouth, muscle cramping, and heat exhaustion following outdoor activity or prolonged sun exposure.',
     treatment: 'Hydration & Immunity Protocol',
     treatmentId: 'hydration-immunity',
+    context: 'Hydration',
     treatmentDetails: '1L Normal Saline or Lactated Ringer’s base infused with Vitamin C and Zinc to quickly restore fluid volumes and cellular electrolytes.',
     image: '/images/hydration-imunity.png'
   },
@@ -87,6 +88,7 @@ const patientCases = [
     presentation: 'Presents with headache, nausea, photosensitivity, and brain fog resulting from alcohol consumption and toxin accumulation.',
     treatment: 'Coastal Reset IV',
     treatmentId: 'coastal-reset',
+    context: 'Hangover',
     treatmentDetails: 'Targeted formulation with IV anti-nausea (Zofran) and anti-inflammatory medications to flush toxins and relieve headaches.',
     image: '/images/coastal-reset-1.png'
   },
@@ -96,6 +98,7 @@ const patientCases = [
     presentation: 'Presents with acute gastrointestinal distress, vomiting, diarrhea, and inability to retain fluids orally, leading to fast-onset dehydration.',
     treatment: 'Coastal Reset IV',
     treatmentId: 'coastal-reset',
+    context: 'Virus',
     treatmentDetails: 'Direct IV hydration that bypasses a compromised digestive system, supplying immediate anti-nausea meds and core hydration.',
     image: '/images/coastal-reset-2.png'
   },
@@ -105,6 +108,7 @@ const patientCases = [
     presentation: 'Presents with intense muscle soreness, physical exhaustion, and dehydration following heavy training, marathons, or intense athletic competition.',
     treatment: 'Coastal Restore IV',
     treatmentId: 'coastal-restore',
+    context: 'Recovery',
     treatmentDetails: 'Infused with high-dose Glutathione to clear oxidative stress, plus Magnesium and B-Complex to soothe muscle aches and accelerate cellular repair.',
     image: '/images/costal-restore.png'
   },
@@ -114,6 +118,7 @@ const patientCases = [
     presentation: 'Presents with low physical energy, disrupted sleep cycles, brain fog, and lagging cognitive focus due to travel or high stress.',
     treatment: 'Coastal Vitality IV',
     treatmentId: 'coastal-vitality',
+    context: 'Fatigue',
     treatmentDetails: 'Formulated with active B-Complex vitamins, B12, and Taurine to recharge cellular mitochondria and naturally boost systemic energy.',
     image: '/images/coastal-vitality.png'
   },
@@ -123,6 +128,7 @@ const patientCases = [
     presentation: 'Presents with dull skin, loss of elasticity, or simply desires a vibrant, youthful glow for an upcoming special event or routine maintenance.',
     treatment: 'Coastal Radiance IV',
     treatmentId: 'coastal-radiance',
+    context: 'Complexion',
     treatmentDetails: 'A powerful "Glow Therapy" blend featuring 2000mg+ of Glutathione, High-Dose Vitamin C, and Biotin to brighten skin and boost collagen.',
     image: '/images/costal-radiance.png'
   }

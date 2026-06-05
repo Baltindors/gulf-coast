@@ -190,24 +190,21 @@ const treatment = computed(() => {
   return packagesData.packages.find(p => p.id === route.params.id)
 })
 
-// Calculate prices
-const lowestPrice = computed(() => {
-  if (!treatment.value) return 0
-  return Math.min(...treatment.value.tiers.map(t => t.price))
-})
-
-const highestPrice = computed(() => {
-  if (!treatment.value) return 0
-  return Math.max(...treatment.value.tiers.map(t => t.price))
-})
-
 // Explicit Map: Matches your 5 JSON package IDs directly to your images.
 const bannerImagePath = computed(() => {
   if (!treatment.value) return '/images/treatment-banner-1.png'
   
+  // INTERCEPT: Check for context queries on the Coastal Reset package
+  if (treatment.value.id === 'coastal-reset') {
+    if (route.query.context === 'Virus') {
+      return '/images/treatment-banner-4.png' // Stomach virus context
+    }
+    // Default / Hangover context
+    return '/images/treatment-banner-5.png'
+  }
+
   const imageMap = {
     'hydration-immunity': '/images/treatment-banner-3.png',
-    'coastal-reset': '/images/treatment-banner-5.png',
     'coastal-restore': '/images/treatment-banner-3.png',
     'coastal-vitality': '/images/treatment-banner-2.png',
     'coastal-radiance': '/images/treatment-banner-1.png'
