@@ -33,7 +33,7 @@ import BaseButton from '@/components/ui/BaseButton.vue'
       <div class="max-w-2xl mx-auto mt-20 text-center bg-ivory-warm p-10 rounded border border-line">
         <h4 class="font-serif text-2xl text-navy mb-3">Still have questions?</h4>
         <p class="text-slate text-sm mb-6">Our concierge team is available to assist you with any inquiries.</p>
-        <BaseButton to="/contact" variant="outline-gold">Contact Us</BaseButton>
+        <BaseButton to="/inquire" variant="outline-gold">Contact Us</BaseButton>
       </div>
     </div>
   </div>
