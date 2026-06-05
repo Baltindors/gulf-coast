@@ -57,7 +57,7 @@ onUnmounted(() => {
 </Transition>
 
     <div class="absolute top-full left-0 right-0 w-full">
-      <header class="relative flex items-center justify-between px-6 md:px-16 py-3 md:py-3 bg-transparent lg:bg-white/40 lg:backdrop-blur-sm lg:border-b lg:border-white/10 lg:shadow-sm">
+      <header class="relative flex items-center justify-between px-6 md:px-16 py-3 md:py-1 bg-transparent lg:bg-white/40 lg:backdrop-blur-sm lg:border-b lg:border-white/10 lg:shadow-sm">
 
     <div class="flex-1 lg:flex-none flex items-center justify-center lg:justify-start h-16 md:h-24">
         <router-link to="/" @click="closeMenu" class="relative shrink-0 flex items-center">
