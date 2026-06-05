@@ -13,37 +13,41 @@
       <div 
         v-for="(caseItem, index) in patientCases" 
         :key="caseItem.symptom" 
-        class="bg-white border border-line rounded-xl p-8 flex flex-col justify-between hover:shadow-md hover:border-gold/30 transition-all duration-300 group" 
+        class="bg-white border border-line rounded-xl flex flex-col justify-between overflow-hidden hover:shadow-lg hover:border-gold/30 transition-all duration-300 group" 
         data-aos="fade-up" 
         :data-aos-delay="index * 100"
       >
         <div>
-          <!-- Patient Header: Avatar and Role/Demographic -->
-          <div class="flex items-center gap-4 mb-6">
-            <div class="relative w-16 h-16 rounded-full bg-ivory-warm border border-gold/20 flex items-center justify-center overflow-hidden shrink-0 group-hover:scale-105 transition-transform duration-300">
-              <svg class="w-12 h-12 text-navy/60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" v-html="caseItem.avatarSvg"></svg>
-              <!-- Medical cross badge -->
-              <span class="absolute bottom-0 right-0 w-5 h-5 rounded-full bg-navy border border-white flex items-center justify-center text-[10px] text-gold font-bold">+</span>
-            </div>
-            <div>
+          <!-- Banner Image -->
+          <div class="relative h-48 w-full overflow-hidden bg-ivory-warm">
+            <img 
+              :src="caseItem.image" 
+              :alt="caseItem.demographic" 
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+            />
+          </div>
+
+          <div class="p-6 md:p-8">
+            <!-- Patient Header: Role/Demographic -->
+            <div class="mb-4">
               <span class="text-[9px] font-bold tracking-wider text-gold-dark uppercase block mb-0.5">{{ caseItem.demographic }}</span>
               <h4 class="font-serif text-[15px] font-semibold text-navy">Patient Profile</h4>
             </div>
-          </div>
 
-          <!-- Symptom / Presentation -->
-          <div class="mb-6">
-            <span class="inline-block px-2.5 py-0.5 rounded text-[10px] font-semibold tracking-wider uppercase bg-red-50 text-red-700 border border-red-100 mb-2">
-              Symptom: {{ caseItem.symptom }}
-            </span>
-            <p class="text-slate text-xs leading-relaxed">
-              {{ caseItem.presentation }}
-            </p>
+            <!-- Symptom / Presentation -->
+            <div class="mb-6">
+              <span class="inline-block px-2.5 py-0.5 rounded text-[10px] font-semibold tracking-wider uppercase bg-red-50 text-red-700 border border-red-100 mb-2">
+                Symptom: {{ caseItem.symptom }}
+              </span>
+              <p class="text-slate text-xs leading-relaxed">
+                {{ caseItem.presentation }}
+              </p>
+            </div>
           </div>
         </div>
 
         <!-- Clinical Treatment Recommendation -->
-        <div class="border-t border-line pt-6 mt-4">
+        <div class="border-t border-line pt-6 px-6 md:px-8 pb-6 md:pb-8 mt-auto">
           <span class="text-[9px] font-bold tracking-wider text-slate/60 uppercase block mb-2">Recommended Protocol</span>
           <h5 class="font-serif text-[15px] text-navy font-semibold mb-1 group-hover:text-gold transition-colors">
             {{ caseItem.treatment }}
@@ -75,10 +79,7 @@ const patientCases = [
     treatment: 'Hydration & Immunity Protocol',
     treatmentId: 'hydration-immunity',
     treatmentDetails: '1L Normal Saline or Lactated Ringer’s base infused with Vitamin C and Zinc to quickly restore fluid volumes and cellular electrolytes.',
-    avatarSvg: `
-      <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="0.5" fill="rgba(193, 161, 114, 0.1)"/>
-      <path d="M12 11c1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3 1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5z"/>
-    `
+    image: '/images/hydration-imunity.png'
   },
   {
     demographic: 'Executive / Event Attendee',
@@ -87,11 +88,7 @@ const patientCases = [
     treatment: 'Coastal Reset IV',
     treatmentId: 'coastal-reset',
     treatmentDetails: 'Targeted formulation with IV anti-nausea (Zofran) and anti-inflammatory medications to flush toxins and relieve headaches.',
-    avatarSvg: `
-      <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="0.5" fill="rgba(193, 161, 114, 0.1)"/>
-      <path d="M12 11c1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3 1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5z"/>
-      <path d="M10 6h4" stroke="currentColor" stroke-width="1"/>
-    `
+    image: '/images/coastal-reset-1.png'
   },
   {
     demographic: 'Vacationer / Hospitality Worker',
@@ -100,24 +97,16 @@ const patientCases = [
     treatment: 'Coastal Reset IV',
     treatmentId: 'coastal-reset',
     treatmentDetails: 'Direct IV hydration that bypasses a compromised digestive system, supplying immediate anti-nausea meds and core hydration.',
-    avatarSvg: `
-      <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="0.5" fill="rgba(193, 161, 114, 0.1)"/>
-      <path d="M12 11c1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3 1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5z"/>
-      <circle cx="12" cy="8" r="1" fill="currentColor"/>
-    `
+    image: '/images/coastal-reset-2.png'
   },
-{
+  {
     demographic: 'Fitness Enthusiast / Athlete',
     symptom: 'Post-Workout Muscle Recovery',
     presentation: 'Presents with intense muscle soreness, physical exhaustion, and dehydration following heavy training, marathons, or intense athletic competition.',
     treatment: 'Coastal Restore IV',
     treatmentId: 'coastal-restore',
     treatmentDetails: 'Infused with high-dose Glutathione to clear oxidative stress, plus Magnesium and B-Complex to soothe muscle aches and accelerate cellular repair.',
-    avatarSvg: `
-      <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="0.5" fill="rgba(193, 161, 114, 0.1)"/>
-      <path d="M12 11c1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3 1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5z"/>
-      <path d="M12 5v2m0 8v2" stroke="currentColor" stroke-width="1"/>
-    `
+    image: '/images/costal-restore.png'
   },
   {
     demographic: 'Frequent Traveler / Shift Worker',
@@ -126,11 +115,7 @@ const patientCases = [
     treatment: 'Coastal Vitality IV',
     treatmentId: 'coastal-vitality',
     treatmentDetails: 'Formulated with active B-Complex vitamins, B12, and Taurine to recharge cellular mitochondria and naturally boost systemic energy.',
-    avatarSvg: `
-      <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="0.5" fill="rgba(193, 161, 114, 0.1)"/>
-      <path d="M12 11c1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3 1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5z"/>
-      <path d="M9 8h6" stroke="currentColor" stroke-width="1"/>
-    `
+    image: '/images/coastal-vitality.png'
   },
   {
     demographic: 'Bridal / Wellness Enthusiast',
@@ -139,11 +124,7 @@ const patientCases = [
     treatment: 'Coastal Radiance IV',
     treatmentId: 'coastal-radiance',
     treatmentDetails: 'A powerful "Glow Therapy" blend featuring 2000mg+ of Glutathione, High-Dose Vitamin C, and Biotin to brighten skin and boost collagen.',
-    avatarSvg: `
-      <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="0.5" fill="rgba(193, 161, 114, 0.1)"/>
-      <path d="M12 11c1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3 1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5z"/>
-      <path d="M12 7l1 2h-2z" fill="currentColor"/>
-    `
+    image: '/images/costal-radiance.png'
   }
 ];
 </script>
