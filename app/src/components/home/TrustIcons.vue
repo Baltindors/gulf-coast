@@ -1,18 +1,17 @@
 <template>
   <div class="max-w-7xl mx-auto px-4">
-    
-    <div class="text-center mb-16" data-aos="fade-up">
-      <span class="text-xs font-bold tracking-[0.25em] text-gold uppercase block mb-3">Clinical Directory</span>
-      <h2 class="text-3xl md:text-4xl font-serif text-navy font-semibold">Symptom-Targeted Medical Protocols</h2>
-      <p class="mt-4 text-base text-slate max-w-2xl mx-auto">
-        Every protocol is medically supervised and customized to address specific clinical symptoms, ensuring optimal hydration and cellular restoration.
-      </p>
-    </div>
+
+    <!-- Hero Section -->
+    <SectionHeader
+      tag="Clinical Directory"
+      title="Symptom-Targeted Medical Protocols"
+      description="Every protocol is medically supervised and customized to address specific clinical symptoms, ensuring optimal hydration and cellular restoration."
+    />
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-      <div 
-        v-for="(caseItem, index) in patientCases" 
-        :key="caseItem.symptom" 
+      <div
+        v-for="(caseItem, index) in patientCases"
+        :key="caseItem.symptom"
         class="bg-white border border-line rounded-xl flex flex-col justify-between overflow-hidden hover:shadow-lg hover:border-gold/30 transition-all duration-300 group" 
         data-aos="fade-up" 
         :data-aos-delay="index * 100"
@@ -71,6 +70,8 @@
 </template>
 
 <script setup>
+import SectionHeader from '../ui/SectionHeader.vue';
+
 const patientCases = [
   {
     demographic: 'Active Athlete / SWFL Resident',
