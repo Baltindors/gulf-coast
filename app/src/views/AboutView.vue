@@ -3,13 +3,12 @@
     <div class="container mx-auto px-6 md:px-16 max-w-6xl">
       
       <!-- Hero Section -->
-      <div class="text-center mb-20 animate-fade-in" data-aos="fade-up">
-        <span class="text-xs font-bold tracking-[0.25em] text-gold uppercase block mb-3">Clinical Oversight & Standards</span>
-        <h1 class="text-4xl md:text-5xl font-serif text-navy font-semibold mb-6">Medical Leadership. Expert Nursing Care.</h1>
-        <p class="text-slate text-base md:text-lg max-w-3xl mx-auto leading-relaxed">
-          At GC IV Concierge, we believe mobile wellness should never compromise on clinical integrity. We operate under strict medical protocols to deliver safe, effective, and professional IV therapy directly to your environment.
-        </p>
-      </div>
+            <SectionHeader 
+        tag="Clinical Oversight & Standards"
+        title="Medical Leadership."
+        accent="Expert Nursing Care"
+        description="At GC IV Concierge, we believe mobile wellness should never compromise on clinical integrity. We operate under strict medical protocols to deliver safe, effective, and professional IV therapy directly to your environment."
+      />
 
 <!-- Core Leadership Pillars: Auto-Rotating Interactive Showcase -->
       <div class="mb-24" data-aos="fade-up">
@@ -123,6 +122,8 @@
 
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
+import SectionHeader from '@/components/ui/SectionHeader.vue'
+
 
 const activeIndex = ref(0)
 let rotationTimer = null
