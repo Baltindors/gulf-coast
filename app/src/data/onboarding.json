@@ -2,7 +2,7 @@
   "modules": [
     {
       "id": "module_1",
-      "title": "Welcome to Gulf Coast IV",
+      "title": "Welcome to GC IV Concierge",
       "videoId": "Ni83ZWSvn9k",
       "instructions": "Please watch the video to understand our core values and the premium standard of care we provide to every client.",
       "quiz": {
@@ -32,7 +32,7 @@
       "id": "module_3",
       "title": "Client Communication",
       "videoId": "Ni83ZWSvn9k",
-      "instructions": "Learn the Gulf Coast IV standard for communicating with our high-end clientele."
+      "instructions": "Learn the GC IV Concierge standard for communicating with our high-end clientele."
     }
   ]
 }

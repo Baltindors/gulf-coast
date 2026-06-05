@@ -40,8 +40,8 @@ export default {
       },
       fontFamily: {
         sans: ['Inter', '-apple-system', 'sans-serif'],
-        serif: ['Cormorant Garamond', 'Times New Roman', 'serif'],
-        script: ['Pinyon Script', 'cursive'],
+        serif: ['Plus Jakarta Sans', '-apple-system', 'sans-serif'],
+        script: ['Plus Jakarta Sans', '-apple-system', 'sans-serif'],
         mono: ['JetBrains Mono', 'Courier New', 'monospace']
       },
       boxShadow: {

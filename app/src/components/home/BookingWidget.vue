@@ -15,7 +15,7 @@ const tierLevel = ref('Gold') // Default to Gold
 
 const locationGroups = [
   {
-    label: 'Gulf Coast',
+    label: 'West Coast',
     areas: ['Sarasota County', 'Charlotte County', 'Lee County', 'Collier County']
   },
   {

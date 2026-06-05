@@ -5,82 +5,94 @@ export const routes = [
     path: '/',
     name: 'home',
     component: HomeView,
-    meta: { title: 'Mobile IV Therapy in Naples & SWFL | Gulf Coast IV Concierge' }
+    meta: { title: 'Mobile IV Therapy & Clinical Wellness | GC IV Concierge' }
   },
   {
     path: '/packages',
     name: 'packages',
     component: () => import('../views/PackagesView.vue'),
-    meta: { title: 'IV Therapy Packages & Pricing | Gulf Coast IV Concierge' }
+    meta: { title: 'IV Therapy Packages & Pricing | GC IV Concierge' }
+  },
+  {
+    path: '/treatments/:id',
+    name: 'treatment-detail',
+    component: () => import('../views/TreatmentDetailView.vue'),
+    meta: { title: 'Treatment Clinical Profile | GC IV Concierge' }
   },
   {
     path: '/how-it-works',
     name: 'how-it-works',
     component: () => import('../views/HowItWorksView.vue'),
-    meta: { title: 'How Our Mobile IV Service Works | Gulf Coast IV Concierge' }
+    meta: { title: 'How Our Mobile IV Service Works | GC IV Concierge' }
+  },
+  {
+    path: '/about',
+    name: 'about',
+    component: () => import('../views/AboutView.vue'),
+    meta: { title: 'About Our Clinical Standards | GC IV Concierge' }
   },
   {
     path: '/locations',
     name: 'locations',
     component: () => import('../views/LocationsView.vue'),
-    meta: { title: 'Service Areas | Gulf Coast IV Concierge' }
+    meta: { title: 'Service Areas | GC IV Concierge' }
   },
   {
     path: '/faqs',
     name: 'faqs',
     component: () => import('../views/FaqsView.vue'),
-    meta: { title: 'Frequently Asked Questions | Gulf Coast IV Concierge' }
+    meta: { title: 'Frequently Asked Questions | GC IV Concierge' }
   },
   {
     path: '/contact',
     name: 'contact',
     component: () => import('../views/ContactView.vue'),
-    meta: { title: 'Book Your IV Therapy | Gulf Coast IV Concierge' }
+    meta: { title: 'Book Your IV Therapy | GC IV Concierge' }
   },
   {
     path: '/weddings',
     name: 'weddings',
     component: () => import('../views/BridalLandingView.vue'),
-    meta: { title: 'Bridal & Wedding Party IV Therapy | Gulf Coast IV Concierge' }
+    meta: { title: 'Bridal & Wedding Party IV Therapy | GC IV Concierge' }
   },
   {
     path: '/clubhouse',
     name: 'clubhouse',
     component: () => import('../views/ClubhouseLandingView.vue'),
-    meta: { title: 'Golf & Tennis IV Performance | Gulf Coast IV Concierge' }
+    meta: { title: 'Golf & Tennis IV Performance | GC IV Concierge' }
   },
   {
     path: '/inquire',
     name: 'inquire',
     component: () => import('../views/InquireView.vue'),
-    meta: { title: 'Contact Us | Gulf Coast IV Concierge' }
+    meta: { title: 'Contact Us | GC IV Concierge' }
   },
   {
     path: '/success',
     name: 'success',
     component: () => import('../views/SuccessView.vue'),
-    meta: { title: 'Request Received | Gulf Coast IV Concierge' }
+    meta: { title: 'Request Received | GC IV Concierge' }
   },
   {
     path: '/privacy',
     name: 'privacy',
     component: () => import('../views/LegalView.vue'),
     props: { type: 'privacy' },
-    meta: { title: 'Privacy Policy | Gulf Coast IV Concierge' }
+    meta: { title: 'Privacy Policy | GC IV Concierge' }
   },
   {
     path: '/terms',
     name: 'terms',
     component: () => import('../views/LegalView.vue'),
     props: { type: 'terms' },
-    meta: { title: 'Terms of Service | Gulf Coast IV Concierge' }
+    meta: { title: 'Terms of Service | GC IV Concierge' }
   },
   {
     path: '/admin',
     name: 'admin',
     component: () => import('../views/AdminView.vue'),
     meta: {
-      title: 'Admin Portal | Gulf Coast IV Concierge',
+      title: 'Admin Portal | GC IV Concierge',
       robots: 'noindex, nofollow',
       hideNav: true
     }
@@ -90,7 +102,7 @@ export const routes = [
     name: 'onboarding',
     component: () => import('../views/OnboardingView.vue'),
     meta: {
-      title: 'Employee Portal | Gulf Coast IV Concierge',
+      title: 'Employee Portal | GC IV Concierge',
       robots: 'noindex, nofollow',
       hideNav: true
     }
@@ -101,8 +113,8 @@ export const routes = [
     name: 'partnerships',
     component: () => import('../views/PartnershipsHubView.vue'),
     meta: {
-      title: 'Partner with Us | Gulf Coast IV Concierge',
-      robots: 'index, follow' // SEO Strategy: Indexed for organic search
+      title: 'Partner with Us | GC IV Concierge',
+      robots: 'index, follow'
     }
   },
   // B2B Partnership Spokes (Dynamic)
@@ -111,8 +123,6 @@ export const routes = [
     name: 'partnership-spoke',
     component: () => import('../views/PartnershipsSpokeView.vue'),
     meta: {
-      // The title and robots tag will be updated dynamically in the component 
-      // or via the router afterEach hook based on if it's a private deal
       robots: 'index, follow'
     }
   }

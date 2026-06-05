@@ -10,7 +10,7 @@
           <router-link to="/" class="transition-opacity hover:opacity-90">
             <img 
               src="/images/logo_footer.jpg" 
-              alt="Gulf Coast IV Concierge Logo" 
+              alt="GC IV Concierge Logo" 
               class="h-24 md:h-28 w-auto object-contain"
             />
           </router-link>
@@ -35,6 +35,7 @@
         <ul class="flex flex-col gap-2.5">
           <li><router-link to="/packages" class="text-[13px] text-ivory/75 hover:text-gold-light transition-colors">Our Packages</router-link></li>
           <li><router-link to="/how-it-works" class="text-[13px] text-ivory/75 hover:text-gold-light transition-colors">How It Works</router-link></li>
+          <li><router-link to="/about" class="text-[13px] text-ivory/75 hover:text-gold-light transition-colors">About Us</router-link></li>
           <li><router-link to="/faqs" class="text-[13px] text-ivory/75 hover:text-gold-light transition-colors">FAQs</router-link></li>
           <li><router-link to="/contact" class="text-[13px] text-ivory/75 hover:text-gold-light transition-colors">Book an Appointment</router-link></li>
           <li><router-link to="/inquire" class="text-[13px] text-ivory/75 hover:text-gold-light transition-colors">General Inquiries</router-link></li>
@@ -63,7 +64,7 @@
           </li>
           <li class="text-[13px] text-ivory/75 mt-2">
             <span class="block text-gold/60 text-[10px] uppercase tracking-wider mb-0.5">Email</span>
-            info@gulfcoastivconcierge.com
+            info@gcivconcierge.com
           </li>
           <li class="text-[13px] text-ivory/75 mt-2">
             <span class="block text-gold/60 text-[10px] uppercase tracking-wider mb-0.5">Hours</span>
@@ -74,7 +75,7 @@
     </div>
 
     <div class="max-w-[1280px] mx-auto mt-14 pt-6 border-t border-gold/20 flex flex-col md:flex-row justify-between items-center gap-4 text-[11px] tracking-[0.18em] uppercase text-ivory/50">
-      <p>&copy; 2026 Gulf Coast IV Concierge. All Rights Reserved.</p>
+      <p>&copy; 2026 GC IV Concierge. All Rights Reserved.</p>
       <div class="flex gap-6">
         <router-link to="/privacy" class="hover:text-gold-light transition-colors">Privacy Policy</router-link>
         <router-link to="/terms" class="hover:text-gold-light transition-colors">Terms of Service</router-link>

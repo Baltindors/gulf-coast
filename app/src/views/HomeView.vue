@@ -40,7 +40,7 @@ const featuredPackages = computed(() => {
       <div v-if="showSplash" class="fixed inset-0 z-[100] md:hidden bg-navy flex items-center justify-center">
         <img 
           src="/images/logo_footer.jpg" 
-          alt="Gulf Coast IV" 
+          alt="GC IV Concierge" 
           class="w-48 h-auto animate-pulse"
         />
       </div>
@@ -54,11 +54,11 @@ const featuredPackages = computed(() => {
       <div class="container relative z-10 mx-auto px-6 md:px-16 text-center">
         <p class="font-sans text-[11px] font-medium tracking-[0.2em] uppercase text-gold-dark mb-6">Naples &bull; SWFL &bull; Miami &bull; Palm Beach </p>
         <h1 class="font-serif text-5xl md:text-7xl lg:text-[84px] text-navy font-normal leading-[1.05] mb-8 max-w-[900px] mx-auto">
-          Elevated Wellness.<br/>
-          <span class="font-script text-gold-dark italic text-[1.1em] block mt-4">Delivered.</span> 
+          Feel better <br/>
+          <span class="font-script text-gold-dark italic text-[1.1em] block mt-4">faster.</span> 
         </h1>
         <p class="text-[16px] text-navy max-w-[600px] mx-auto mb-10 leading-[1.6]">
-          Feel better faster. Mobile IV therapy delivered to your home, hotel, or yacht by licensed medical professionals.
+          Mobile IV therapy delivered to your home, hotel, or yacht by licensed medical professionals.
         </p>
       </div>
     </section>

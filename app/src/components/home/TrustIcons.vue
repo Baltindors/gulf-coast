@@ -1,60 +1,153 @@
 <template>
-  <div class="max-w-7xl mx-auto">
+  <div class="max-w-7xl mx-auto px-4">
     
     <div class="text-center mb-16" data-aos="fade-up">
-      <h2 class="text-3xl md:text-4xl font-serif text-navy">Rapid Relief for Targeted Conditions</h2>
-      <p class="mt-4 text-lg text-slate max-w-2xl mx-auto">Our medical-grade IV therapies are formulated to get you back on your feet quickly.</p>
+      <span class="text-xs font-bold tracking-[0.25em] text-gold uppercase block mb-3">Clinical Directory</span>
+      <h2 class="text-3xl md:text-4xl font-serif text-navy font-semibold">Symptom-Targeted Medical Protocols</h2>
+      <p class="mt-4 text-base text-slate max-w-2xl mx-auto">
+        Every protocol is medically supervised and customized to address specific clinical symptoms, ensuring optimal hydration and cellular restoration.
+      </p>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16">
-      
-<div v-for="(indication, index) in indications" :key="indication.title" class="flex flex-col items-center text-center group" data-aos="fade-up" :data-aos-delay="index * 100">
-        <!-- Icon Circle: White background with dark gold icon -->
-        <div class="flex items-center justify-center w-20 h-20 rounded-full bg-white border border-gold/20 mb-6 group-hover:scale-105 transition-transform duration-300 shadow-sm">
-          <svg class="w-8 h-8 text-gold-dark" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" v-html="indication.icon"></svg>
-        </div>
-        <!-- Text: Updated to brand fonts and colors -->
-        <h3 class="text-xl font-serif text-navy mb-3">{{ indication.title }}</h3>
-        <p class="text-slate text-sm leading-relaxed max-w-xs">
-          {{ indication.description }}
-        </p>
-      </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div 
+        v-for="(caseItem, index) in patientCases" 
+        :key="caseItem.symptom" 
+        class="bg-white border border-line rounded-xl p-8 flex flex-col justify-between hover:shadow-md hover:border-gold/30 transition-all duration-300 group" 
+        data-aos="fade-up" 
+        :data-aos-delay="index * 100"
+      >
+        <div>
+          <!-- Patient Header: Avatar and Role/Demographic -->
+          <div class="flex items-center gap-4 mb-6">
+            <div class="relative w-16 h-16 rounded-full bg-ivory-warm border border-gold/20 flex items-center justify-center overflow-hidden shrink-0 group-hover:scale-105 transition-transform duration-300">
+              <svg class="w-12 h-12 text-navy/60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" v-html="caseItem.avatarSvg"></svg>
+              <!-- Medical cross badge -->
+              <span class="absolute bottom-0 right-0 w-5 h-5 rounded-full bg-navy border border-white flex items-center justify-center text-[10px] text-gold font-bold">+</span>
+            </div>
+            <div>
+              <span class="text-[9px] font-bold tracking-wider text-gold-dark uppercase block mb-0.5">{{ caseItem.demographic }}</span>
+              <h4 class="font-serif text-[15px] font-semibold text-navy">Patient Profile</h4>
+            </div>
+          </div>
 
+          <!-- Symptom / Presentation -->
+          <div class="mb-6">
+            <span class="inline-block px-2.5 py-0.5 rounded text-[10px] font-semibold tracking-wider uppercase bg-red-50 text-red-700 border border-red-100 mb-2">
+              Symptom: {{ caseItem.symptom }}
+            </span>
+            <p class="text-slate text-xs leading-relaxed">
+              {{ caseItem.presentation }}
+            </p>
+          </div>
+        </div>
+
+        <!-- Clinical Treatment Recommendation -->
+        <div class="border-t border-line pt-6 mt-4">
+          <span class="text-[9px] font-bold tracking-wider text-slate/60 uppercase block mb-2">Recommended Protocol</span>
+          <h5 class="font-serif text-[15px] text-navy font-semibold mb-1 group-hover:text-gold transition-colors">
+            {{ caseItem.treatment }}
+          </h5>
+          <p class="text-slate text-xs leading-relaxed mb-4">
+            {{ caseItem.treatmentDetails }}
+          </p>
+          <router-link 
+            :to="`/treatments/${caseItem.treatmentId}`" 
+            class="inline-flex items-center text-[10px] font-bold tracking-[0.15em] text-navy uppercase group-hover:text-gold transition-colors"
+          >
+            View Clinical Profile
+            <svg class="w-3 h-3 ml-1.5 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+            </svg>
+          </router-link>
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <script setup>
-const indications = [
+const patientCases = [
   {
-    title: 'Dehydration',
-    description: 'Instantly restore your body’s fluid balance with 100% absorption of essential electrolytes.',
-    icon: '<path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16a4.5 4.5 0 004.5-4.5M12 21a4.5 4.5 0 01-4.5-4.5c0-3 4.5-9 4.5-9s4.5 6 4.5 9A4.5 4.5 0 0112 21z" />'
+    demographic: 'Active Athlete / SWFL Resident',
+    symptom: 'Severe Dehydration',
+    presentation: 'Presents with fatigue, dry mouth, muscle cramping, and heat exhaustion following outdoor activity or prolonged sun exposure.',
+    treatment: 'Hydration & Immunity Protocol',
+    treatmentId: 'hydration-immunity',
+    treatmentDetails: '1L Normal Saline or Lactated Ringer’s base infused with high-dose Vitamin C and Zinc to quickly restore fluid volumes and cellular electrolytes.',
+    avatarSvg: `
+      <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="0.5" fill="rgba(193, 161, 114, 0.1)"/>
+      <path d="M12 11c1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3 1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5z"/>
+    `
   },
   {
-    title: 'Hangovers',
-    description: 'Flush out toxins, soothe nausea, and eliminate headaches so you can reclaim your day.',
-    icon: '<path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />'
+    demographic: 'Executive / Event Attendee',
+    symptom: 'Acute Alcohol Hangover',
+    presentation: 'Presents with severe headache, nausea, photosensitivity, and brain fog resulting from alcohol consumption and toxin accumulation.',
+    treatment: 'Coastal Reset Recovery Drip',
+    treatmentId: 'coastal-reset',
+    treatmentDetails: 'Targeted formulation with IV anti-nausea (Zofran) and anti-inflammatory (Toradol) medications to flush toxins and relieve headaches.',
+    avatarSvg: `
+      <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="0.5" fill="rgba(193, 161, 114, 0.1)"/>
+      <path d="M12 11c1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3 1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5z"/>
+      <path d="M10 6h4" stroke="currentColor" stroke-width="1"/>
+    `
   },
   {
-    title: 'Stomach Viruses & Food Poisoning',
-    description: 'Bypass a compromised digestive system to deliver direct hydration and anti-nausea medication.',
-    icon: '<path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />'
+    demographic: 'Vacationer / Hospitality Worker',
+    symptom: 'Stomach Virus / Food Poisoning',
+    presentation: 'Presents with acute gastrointestinal distress, vomiting, diarrhea, and inability to retain fluids orally, leading to fast-onset dehydration.',
+    treatment: 'Coastal Reset IV',
+    treatmentId: 'coastal-reset',
+    treatmentDetails: 'Direct IV hydration that bypasses a compromised digestive system, supplying immediate anti-nausea meds and core hydration.',
+    avatarSvg: `
+      <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="0.5" fill="rgba(193, 161, 114, 0.1)"/>
+      <path d="M12 11c1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3 1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5z"/>
+      <circle cx="12" cy="8" r="1" fill="currentColor"/>
+    `
   },
   {
-    title: 'Migraines',
-    description: 'Target severe head pain and sensitivity with high-dose magnesium and anti-inflammatory compounds.',
-    icon: '<path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />'
+    demographic: 'Chronic Sufferer / Professional',
+    symptom: 'Severe Migraines',
+    presentation: 'Presents with debilitating head pain, sensory sensitivity, and nausea. Demands rapid relief without standard hospital ER wait times.',
+    treatment: 'Coastal Reset IV (Magnesium Fortified)',
+    treatmentId: 'coastal-reset',
+    treatmentDetails: 'Infused with high-dose Magnesium and anti-inflammatory compounds to relax vascular tone and reduce neurologic inflammation.',
+    avatarSvg: `
+      <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="0.5" fill="rgba(193, 161, 114, 0.1)"/>
+      <path d="M12 11c1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3 1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5z"/>
+      <path d="M12 5v2m0 8v2" stroke="currentColor" stroke-width="1"/>
+    `
   },
   {
-    title: 'Fatigue & Jet Lag',
-    description: 'Reboot your energy levels with B-Complex vitamins designed to naturally boost cellular energy.',
-    icon: '<path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />'
+    demographic: 'Frequent Traveler / Shift Professional',
+    symptom: 'Chronic Fatigue & Jet Lag',
+    presentation: 'Presents with low physical energy, disrupted sleep cycles, brain fog, and lagging cognitive focus due to travel or high stress.',
+    treatment: 'Coastal Vitality Energy Blend',
+    treatmentId: 'coastal-vitality',
+    treatmentDetails: 'Formulated with active B-Complex vitamins, B12, and Taurine to recharge cellular mitochondria and naturally boost systemic energy.',
+    avatarSvg: `
+      <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="0.5" fill="rgba(193, 161, 114, 0.1)"/>
+      <path d="M12 11c1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3 1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5z"/>
+      <path d="M9 8h6" stroke="currentColor" stroke-width="1"/>
+    `
   },
   {
-    title: 'Immune Support',
-    description: 'Supercharge your defenses with high-dose Vitamin C and Zinc to fight off incoming illnesses.',
-    icon: '<path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />'
+    demographic: 'Wellness Enthusiast / Immune Defense',
+    symptom: 'Immune Depletion & Cold Symptoms',
+    presentation: 'Presents with early cold/flu symptoms, seasonal allergies, or seeking proactive viral defense prior to travel or large gatherings.',
+    treatment: 'Hydration & Immunity Drip',
+    treatmentId: 'hydration-immunity',
+    treatmentDetails: 'A high-dose blend of Vitamin C, Zinc, and core vitamins that support immediate antibody production and bolster cellular immunity.',
+    avatarSvg: `
+      <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="0.5" fill="rgba(193, 161, 114, 0.1)"/>
+      <path d="M12 11c1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3 1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5z"/>
+      <path d="M12 7l1 2h-2z" fill="currentColor"/>
+    `
   }
 ];
 </script>
+
+<style scoped>
+/* Clinical card shadow enhancements */
+</style>

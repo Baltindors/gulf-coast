@@ -11,7 +11,7 @@ import BaseButton from '@/components/ui/BaseButton.vue'
     </div>
     <h2 class="font-serif text-5xl text-navy mb-6">Request Received</h2>
     <p class="text-slate text-lg leading-relaxed mb-10">
-      Thank you for choosing Gulf Coast IV Concierge. A licensed professional will review your details and contact you shortly via phone or text to finalize your appointment.
+      Thank you for choosing GC IV Concierge. A licensed professional will review your details and contact you shortly via phone or text to finalize your appointment.
     </p>
     <BaseButton to="/" variant="outline-gold">Return Home</BaseButton>
   </div>

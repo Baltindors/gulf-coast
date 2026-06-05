@@ -11,14 +11,14 @@ import locationsData from '@/data/locations.json'
         tag="Where We Travel"
         title="Service"
         accent="Areas"
-        description="Gulf Coast IV Concierge is a fully mobile service, bringing luxury wellness directly to you across the Gulf Coast and East Coast of Florida."
+        description="GC IV Concierge is a fully mobile service, bringing clinical wellness and hydration protocols directly to you across Florida's West Coast and East Coast."
       />
       
       <!-- Map Placeholder -->
       <div class="max-w-3xl mx-auto w-full mb-20 relative overflow-hidden rounded-lg border border-gold/20 shadow-md bg-white">
         <img 
           src="/images/service_map.png" 
-          alt="Gulf Coast IV Concierge Service Area Map" 
+          alt="GC IV Concierge Service Area Map" 
           class="w-full h-auto block"
         />
         <div class="absolute inset-4 border border-gold/10 pointer-events-none rounded-sm"></div>

@@ -29,7 +29,7 @@ onMounted(() => {
   }
   
   // Dynamic Title
-  document.title = `${industryData.value.title} Partnership | Gulf Coast IV`
+  document.title = `${industryData.value.title} Partnership | GC IV Concierge`
 })
 </script>
 

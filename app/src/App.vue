@@ -15,7 +15,7 @@ const isHome = computed(() => route.path === '/')
     <main 
       class="flex-grow transition-all duration-300"
       :class="[
-        isHome ? 'pt-0 lg:pt-0' : 'pt-24 lg:pt-0'
+        isHome ? 'pt-0' : 'pt-0 lg:pt-12'
       ]"
     >
       <RouterView />

@@ -38,7 +38,7 @@ defineEmits(['update:modelValue'])
 <div class="flex flex-col">
         <select v-model="modelValue.location" :class="['appearance-none border-b py-4 h-14 outline-none focus:border-gold text-base md:text-sm bg-transparent transition-colors', errors.location ? 'border-red-400' : 'border-line']">
           <option value="">Select Service Area *</option>
-          <optgroup label="Gulf Coast" class="font-sans text-xs font-bold text-gold-dark">
+          <optgroup label="West Coast" class="font-sans text-xs font-bold text-gold-dark">
             <option value="Sarasota County" class="font-serif text-navy text-base font-normal">Sarasota County</option>
             <option value="Charlotte County" class="font-serif text-navy text-base font-normal">Charlotte County</option>
             <option value="Lee County" class="font-serif text-navy text-base font-normal">Lee County</option>

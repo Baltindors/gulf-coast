@@ -46,8 +46,17 @@ defineProps({
       </div>
     </div>
     
-    <div class="p-6 text-center border-t border-line">
+    <div class="p-6 text-center border-t border-line flex flex-col gap-3">
       <p class="text-[10px] italic text-slate/70 tracking-wide">Formulated at higher therapeutic doses for optimal results.</p>
+      <router-link 
+        :to="`/treatments/${pkg.id}`" 
+        class="text-[10px] font-bold tracking-widest text-navy uppercase hover:text-gold transition-colors inline-flex items-center justify-center gap-1 mt-1"
+      >
+        View Clinical Profile
+        <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+        </svg>
+      </router-link>
     </div>
   </div>
 </template>

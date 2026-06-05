@@ -12,6 +12,7 @@ const links = [
   { name: 'Home', path: '/' },
   { name: 'Packages', path: '/packages' },
   { name: 'How It Works', path: '/how-it-works' },
+  { name: 'About Us', path: '/about' },
   { name: 'Locations', path: '/locations' },
   { name: 'FAQs', path: '/faqs' }
 ]
@@ -61,7 +62,7 @@ onUnmounted(() => {
         <router-link to="/" @click="closeMenu" class="relative shrink-0 flex items-center">
           <img 
             src="/images/logo_v2.png" 
-            alt="Gulf Coast IV Concierge Logo" 
+            alt="GC IV Concierge Logo" 
             :class="[
               'w-auto object-contain transition-all duration-300 ease-in-out',
               isHomePage ? 'h-24 md:h-28' : 'h-16 md:h-20'

@@ -20,7 +20,7 @@ export const createApp = ViteSSG(
   ({ app: _app, router, isClient }) => {
     router.afterEach((to) => {
       if (isClient) {
-        document.title = to.meta.title || 'Gulf Coast IV Concierge'
+        document.title = to.meta.title || 'GC IV Concierge'
         
         let robotsMeta = document.querySelector('meta[name="robots"]')
         

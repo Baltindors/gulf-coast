@@ -3,9 +3,12 @@
 @tailwind utilities;
 
 @layer base {
-  /* Headings are lighter (font-light) and tighter (tracking-tight) in the mockup */
-  h1, h2, h3 {
-    @apply font-serif font-light tracking-tight text-navy;
+
+  /* Headings are more grounded and clinical */
+  h1,
+  h2,
+  h3 {
+    @apply font-serif font-medium tracking-tight text-navy;
   }
 
   /* Refined Luxury Tag with smaller font and wider spacing for a more high-end feel */
@@ -25,15 +28,15 @@
 
   /* Fix for iOS Select and Input styling */
   /* The :not selector ensures checkboxes and radios keep their native look */
-  input:not([type="checkbox"]):not([type="radio"]), 
-  select, 
+  input:not([type="checkbox"]):not([type="radio"]),
+  select,
   textarea {
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
     @apply rounded-none bg-transparent;
     /* Fixes vertical text alignment in Safari */
-    line-height: normal; 
+    line-height: normal;
   }
 
   /* Luxury accent for checkboxes/radios */
@@ -54,15 +57,26 @@
 }
 
 @layer components {
+
   /* 1. Define the Keyframes at the root level */
   @keyframes fade-in {
-    from { opacity: 0; }
-    to { opacity: 1; }
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+    }
   }
 
   @keyframes zoom-in {
-    from { transform: scale(0.95); }
-    to { transform: scale(1); }
+    from {
+      transform: scale(0.95);
+    }
+
+    to {
+      transform: scale(1);
+    }
   }
 
   /* 2. Assign those animations to your utility classes */
