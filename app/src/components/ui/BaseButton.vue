@@ -5,7 +5,7 @@ const props = defineProps({
   variant: {
     type: String,
     default: 'primary',
-    validator: (value) => ['primary', 'outline-gold', 'ghost'].includes(value)
+    validator: (value) => ['primary', 'outline-gold', 'outline-navy', 'ghost', 'white'].includes(value)
   },
   to: {
     type: [String, Object],
@@ -19,7 +19,9 @@ const classes = computed(() => {
   const variants = {
     'primary': 'bg-navy text-ivory hover:bg-navy-soft',
     'outline-gold': 'border-gold text-gold bg-transparent hover:bg-gold hover:text-white',
-    'ghost': 'border-gold text-navy bg-transparent px-5 py-2.5 text-[9.5px] hover:bg-gold hover:text-white'
+    'outline-navy': 'border-navy/30 text-navy bg-transparent hover:border-navy hover:bg-navy hover:text-white',
+    'ghost': 'border-gold text-navy bg-transparent px-5 py-2.5 text-[9.5px] hover:bg-gold hover:text-white',
+    'white': 'bg-white text-navy shadow-sm hover:bg-navy hover:text-white active:scale-95'
   }
 
   return `${base} ${variants[props.variant]}`

@@ -30,16 +30,15 @@ defineProps({
           <span class="font-serif text-2xl text-navy">${{ tier.price }}</span>
         </div>
 
-        <ul class="space-y-2 mb-6">
+<ul class="space-y-2 mb-6">
           <li v-for="feature in tier.features" :key="feature" class="flex items-start text-[12px] text-slate">
-            <span class="text-gold mr-2 text-[10px]">●</span> {{ feature }}
+            <span class="text-gold mr-2 text-[10px]"> </span> {{ feature }}
           </li>
         </ul>
-
         <BaseButton 
-          :to="{ path: '/contact', query: { service: pkg.name, tier: tier.level }}" 
-          variant="ghost" 
-          class="w-full text-[9px] py-2"
+           :to="{ path: '/contact', query: { service: pkg.name, tier: tier.level }}" 
+           variant="outline-navy" 
+           class="w-full text-[9px] py-2"
         >
           Select {{ tier.level }}
         </BaseButton>

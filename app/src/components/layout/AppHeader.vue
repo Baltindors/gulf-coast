@@ -83,14 +83,11 @@ onUnmounted(() => {
         </router-link>
       </nav>
 
-      <div class="hidden lg:flex lg:w-[250px] items-center justify-end">
+<div class="hidden lg:flex lg:w-[250px] items-center justify-end">
         <BaseButton 
-          to="/contact" 
-          :variant="isHomePage ? 'primary' : 'ghost'"
-          :class="[
-            'shadow-sm transition-all duration-300 whitespace-nowrap',
-            isHomePage ? '!bg-gold !text-white border-gold' : ''
-          ]"
+           to="/contact" 
+           variant="ghost"
+           class="shadow-sm transition-all duration-300 whitespace-nowrap !bg-gold !text-white border-gold hover:opacity-90 active:scale-95"
         >
           Book Now
         </BaseButton>
