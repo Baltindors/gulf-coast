@@ -16,9 +16,8 @@
           alt="Clinical Formulation Banner" 
           class="absolute z-0 inset-0 w-full h-full object-cover"
         />
-        <div class="absolute z-10 inset-0 bg-gradient-to-r from-navy/95 from-30% via-navy/60 via-55% to-transparent to-75% pointer-events-none"></div>
-
-        <div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center p-8 md:p-12 lg:p-16">
+<div class="absolute z-10 inset-0 bg-gradient-to-b from-navy/95 via-navy/80 to-navy/10 lg:bg-gradient-to-r lg:from-navy/95 lg:from-30% lg:via-navy/60 lg:via-55% lg:to-transparent lg:to-75% pointer-events-none"></div>
+        <div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-12 items-center p-6 md:p-12 lg:p-16">
           <div class="lg:col-span-8 animate-fade-in-up">
             <span class="text-xs font-bold tracking-[0.25em] text-gold uppercase block mb-3 drop-shadow-sm">Clinical Treatment Profile</span>
             <h1 class="text-4xl md:text-5xl font-serif text-ivory font-semibold mb-4 leading-tight drop-shadow-md">
@@ -32,8 +31,7 @@
             </p>
           </div>
           
-          <div class="lg:col-span-4 bg-white/95 backdrop-blur-md border border-white/30 p-6 sm:p-8 rounded-xl text-center shadow-xl animate-fade-in-up" style="animation-delay: 0.15s;">
-            <div class="py-2">
+<div class="lg:col-span-4 bg-white/75 backdrop-blur-md border border-white/30 p-4 lg:p-4 rounded-xl text-center shadow-xl animate-fade-in-up" style="animation-delay: 0.15s;">            <div class="py-2">
               <button 
                 @click="scrollToTiers"
                 class="w-full bg-navy hover:bg-navy-soft text-ivory text-xs font-bold tracking-[0.2em] py-4 rounded-md uppercase transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5"
