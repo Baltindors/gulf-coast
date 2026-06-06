@@ -123,7 +123,8 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
 import SectionHeader from '@/components/ui/SectionHeader.vue'
-
+import AOS from 'aos'
+import 'aos/dist/aos.css'
 
 const activeIndex = ref(0)
 let rotationTimer = null
@@ -174,6 +175,12 @@ const setActivePillar = (index) => {
 }
 
 onMounted(() => {
+  AOS.init({
+    duration: 1200,
+    easing: 'ease-out-quad',
+    once: true,
+    offset: 120
+  })
   startRotation()
 })
 
