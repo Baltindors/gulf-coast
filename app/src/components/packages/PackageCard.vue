@@ -1,17 +1,38 @@
 <script setup>
 import BaseButton from '@/components/ui/BaseButton.vue'
+import { computed } from 'vue'
 
-defineProps({
+const props = defineProps({
   pkg: { type: Object, required: true }
+})
+
+// Use the exact same image mapping as the Treatment Details page
+const bannerImagePath = computed(() => {
+  const imageMap = {
+    'hydration-immunity': '/images/treatment-banner-3.png',
+    'coastal-restore': '/images/treatment-banner-3.png',
+    'coastal-vitality': '/images/treatment-banner-2.png',
+    'coastal-radiance': '/images/treatment-banner-1.png',
+    'coastal-reset': '/images/treatment-banner-5.png'
+  }
+  return imageMap[props.pkg.id] || '/images/treatment-banner-6.jpg'
 })
 </script>
 
 <template>
   <div class="bg-white rounded-lg shadow-sm hover:shadow-md transition-all duration-500 flex flex-col border border-gold/10 overflow-hidden group">
-    <div class="bg-navy p-8 text-center relative overflow-hidden">
-      <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(#B89668 1px, transparent 1px); background-size: 12px 12px;"></div>
-      <h3 class="font-serif text-3xl text-gold-light font-medium relative z-10 uppercase tracking-wider">{{ pkg.name }}</h3>
-      <p v-if="pkg.subtitle" class="font-script text-2xl text-ivory/80 mt-2 relative z-10">{{ pkg.subtitle }}</p>
+    <div class="relative overflow-hidden min-h-[160px] flex flex-col justify-center p-6 md:p-8 bg-navy border-b border-line/20">
+      <img 
+        :src="bannerImagePath" 
+        :alt="pkg.name" 
+        class="absolute z-0 inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" 
+      />
+      <div class="absolute z-10 inset-0 bg-gradient-to-r from-navy/95 from-30% via-navy/60 via-55% to-transparent to-75% pointer-events-none"></div>
+      
+      <div class="relative z-20 text-left">
+        <h3 class="font-serif text-3xl text-ivory font-semibold leading-tight drop-shadow-md">{{ pkg.name }}</h3>
+        <p v-if="pkg.subtitle" class="font-serif text-[15px] text-gold italic mt-2 drop-shadow-md pr-4">{{ pkg.subtitle }}</p>
+      </div>
     </div>
 
     <div class="p-4 bg-ivory-warm/30 space-y-4">
