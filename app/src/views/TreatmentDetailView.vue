@@ -202,7 +202,7 @@ const bannerImagePath = computed(() => {
   }
 
   const imageMap = {
-    'hydration-immunity': '/images/treatment-banner-3.png',
+    'hydration-immunity': '/images/treatment-banner-6.png',
     'coastal-restore': '/images/treatment-banner-3.png',
     'coastal-vitality': '/images/treatment-banner-2.png',
     'coastal-radiance': '/images/treatment-banner-1.png'
