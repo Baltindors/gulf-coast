@@ -5,6 +5,7 @@ import SectionHeader from '@/components/ui/SectionHeader.vue'
 import PackageCard from '@/components/packages/PackageCard.vue' // Reuse the card logic
 import TrustIcons from '@/components/home/TrustIcons.vue'
 import BookingWidget from '@/components/home/BookingWidget.vue'
+import GoogleReviews from '@/components/home/GoogleReviews.vue'
 import packagesData from '@/data/packages.json'
 import AOS from 'aos'
 import 'aos/dist/aos.css'
@@ -99,6 +100,8 @@ const featuredPackages = computed(() => {
         </div>
       </div>
     </section>
+
+    <GoogleReviews />
 
     <!-- How It Works Preview -->
     <section class="py-32 px-6 md:px-16 bg-ivory-warm">
